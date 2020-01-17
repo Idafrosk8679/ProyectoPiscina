@@ -89,6 +89,6 @@ class __TwigTemplate_02a27917bf520b2d6ff04c4aedb904e94f667dbd00cf5611f9c65e75158
         ?>
     </div>
 <?php endif ?>
-", "@Framework/Form/week_widget.html.php", "C:\\Frameworks\\ProyectoPiscina\\proyectoPiscina\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\week_widget.html.php");
+", "@Framework/Form/week_widget.html.php", "C:\\Users\\2daw\\Documents\\GitHub\\ProyectoPiscina\\proyectoPiscina\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\week_widget.html.php");
     }
 }

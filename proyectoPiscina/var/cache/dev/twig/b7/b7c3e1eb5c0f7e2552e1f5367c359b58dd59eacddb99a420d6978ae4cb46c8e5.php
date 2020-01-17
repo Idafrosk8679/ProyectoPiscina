@@ -459,7 +459,7 @@ class __TwigTemplate_46d202301015b0e44feab7f2de3fb7ab60178a92440c1ee45e45b34e4d6
             $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "macro", "dump_request_data"));
 
             // line 156
-            $macros["__internal_dfda0e6cd2ed7ba9a4028827c6f3d7f27cd8c87823f365f8c36b34108aa27eac"] = $this;
+            $macros["__internal_b29693e7c33068fe96ed797e0f76abcc731a87bafcef06dc0feee55ccb05c43e"] = $this;
             // line 157
             echo "{
     id: \"";
@@ -476,7 +476,7 @@ class __TwigTemplate_46d202301015b0e44feab7f2de3fb7ab60178a92440c1ee45e45b34e4d6
             echo "\",
     events: [ ";
             // line 161
-            echo twig_call_macro($macros["__internal_dfda0e6cd2ed7ba9a4028827c6f3d7f27cd8c87823f365f8c36b34108aa27eac"], "macro_dump_events", [(isset($context["events"]) || array_key_exists("events", $context) ? $context["events"] : (function () { throw new RuntimeError('Variable "events" does not exist.', 161, $this->source); })())], 161, $context, $this->getSourceContext());
+            echo twig_call_macro($macros["__internal_b29693e7c33068fe96ed797e0f76abcc731a87bafcef06dc0feee55ccb05c43e"], "macro_dump_events", [(isset($context["events"]) || array_key_exists("events", $context) ? $context["events"] : (function () { throw new RuntimeError('Variable "events" does not exist.', 161, $this->source); })())], 161, $context, $this->getSourceContext());
             echo " ],
 }
 ";
@@ -900,6 +900,6 @@ class __TwigTemplate_46d202301015b0e44feab7f2de3fb7ab60178a92440c1ee45e45b34e4d6
         {% endautoescape %}</script>
     </div>
 {% endmacro %}
-", "@WebProfiler/Collector/time.html.twig", "C:\\Frameworks\\ProyectoPiscina\\proyectoPiscina\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\time.html.twig");
+", "@WebProfiler/Collector/time.html.twig", "C:\\Users\\2daw\\Documents\\GitHub\\ProyectoPiscina\\proyectoPiscina\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\time.html.twig");
     }
 }

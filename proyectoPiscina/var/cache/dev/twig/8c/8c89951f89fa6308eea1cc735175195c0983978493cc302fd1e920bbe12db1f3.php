@@ -1843,6 +1843,6 @@ class __TwigTemplate_a08e91b1346c0df5efedb3b6960d434f7e76d1a3716d7289d0755cac4f5
         </tbody>
     </table>
 {% endmacro %}
-", "@Doctrine/Collector/db.html.twig", "C:\\Frameworks\\ProyectoPiscina\\proyectoPiscina\\vendor\\doctrine\\doctrine-bundle\\Resources\\views\\Collector\\db.html.twig");
+", "@Doctrine/Collector/db.html.twig", "C:\\Users\\2daw\\Documents\\GitHub\\ProyectoPiscina\\proyectoPiscina\\vendor\\doctrine\\doctrine-bundle\\Resources\\views\\Collector\\db.html.twig");
     }
 }

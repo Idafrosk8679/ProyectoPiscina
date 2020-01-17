@@ -173,6 +173,6 @@ class __TwigTemplate_a2d6757c76463cbed94b3ee811f6d2e30f009056634b308a28ebf90414b
         {% block javascripts %}{% endblock %}
     </body>
 </html>
-", "base.html.twig", "C:\\Frameworks\\ProyectoPiscina\\proyectoPiscina\\templates\\base.html.twig");
+", "base.html.twig", "C:\\Users\\2daw\\Documents\\GitHub\\ProyectoPiscina\\proyectoPiscina\\templates\\base.html.twig");
     }
 }
