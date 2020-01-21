@@ -46,26 +46,28 @@ class __TwigTemplate_a2d6757c76463cbed94b3ee811f6d2e30f009056634b308a28ebf90414b
         // line 1
         echo "<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset=\"UTF-8\">
-        <title>";
-        // line 5
-        $this->displayBlock('title', $context, $blocks);
-        echo "</title>
-        ";
+\t<head>
+\t\t<meta charset=\"UTF-8\">
+\t\t<title>
+\t\t\t";
         // line 6
+        $this->displayBlock('title', $context, $blocks);
+        // line 8
+        echo "\t\t</title>
+\t\t";
+        // line 9
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 12
-        echo "    </head>
-    <body>
-        ";
-        // line 14
-        $this->displayBlock('body', $context, $blocks);
         // line 15
-        echo "        ";
+        echo "\t</head>
+\t<body>
+\t\t";
+        // line 17
+        $this->displayBlock('body', $context, $blocks);
+        // line 18
+        echo "\t\t";
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 16
-        echo "    </body>
+        // line 19
+        echo "\t</body>
 </html>
 ";
         
@@ -76,7 +78,7 @@ class __TwigTemplate_a2d6757c76463cbed94b3ee811f6d2e30f009056634b308a28ebf90414b
 
     }
 
-    // line 5
+    // line 6
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -86,7 +88,8 @@ class __TwigTemplate_a2d6757c76463cbed94b3ee811f6d2e30f009056634b308a28ebf90414b
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Welcome!";
+        echo "Welcome!
+\t\t\t";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -95,7 +98,7 @@ class __TwigTemplate_a2d6757c76463cbed94b3ee811f6d2e30f009056634b308a28ebf90414b
 
     }
 
-    // line 6
+    // line 9
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -105,12 +108,12 @@ class __TwigTemplate_a2d6757c76463cbed94b3ee811f6d2e30f009056634b308a28ebf90414b
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 7
-        echo "        <link rel=\"stylesheet\" href=\"css/bootstrap.min.css\">
-        <link rel=\"stylesheet\" href=\"css/style.css\">
-        <script src=\"js/jquery-3.4.1.min.js\"></script>
-        <script src=\"js/bootstrap.min.js\"></script>
-        ";
+        // line 10
+        echo "\t\t\t<link rel=\"stylesheet\" href=\"css/bootstrap.min.css\">
+\t\t\t<link rel=\"stylesheet\" href=\"css/styles.css\">
+\t\t\t<script src=\"js/jquery-3.4.1.min.js\"></script>
+\t\t\t<script src=\"js/bootstrap.min.js\"></script>
+\t\t";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -119,7 +122,7 @@ class __TwigTemplate_a2d6757c76463cbed94b3ee811f6d2e30f009056634b308a28ebf90414b
 
     }
 
-    // line 14
+    // line 17
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -137,7 +140,7 @@ class __TwigTemplate_a2d6757c76463cbed94b3ee811f6d2e30f009056634b308a28ebf90414b
 
     }
 
-    // line 15
+    // line 18
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -162,27 +165,30 @@ class __TwigTemplate_a2d6757c76463cbed94b3ee811f6d2e30f009056634b308a28ebf90414b
 
     public function getDebugInfo()
     {
-        return array (  141 => 15,  123 => 14,  109 => 7,  99 => 6,  80 => 5,  68 => 16,  65 => 15,  63 => 14,  59 => 12,  57 => 6,  53 => 5,  47 => 1,);
+        return array (  144 => 18,  126 => 17,  112 => 10,  102 => 9,  82 => 6,  70 => 19,  67 => 18,  65 => 17,  61 => 15,  59 => 9,  56 => 8,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset=\"UTF-8\">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-        <link rel=\"stylesheet\" href=\"css/bootstrap.min.css\">
-        <link rel=\"stylesheet\" href=\"css/style.css\">
-        <script src=\"js/jquery-3.4.1.min.js\"></script>
-        <script src=\"js/bootstrap.min.js\"></script>
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+\t<head>
+\t\t<meta charset=\"UTF-8\">
+\t\t<title>
+\t\t\t{% block title %}Welcome!
+\t\t\t{% endblock %}
+\t\t</title>
+\t\t{% block stylesheets %}
+\t\t\t<link rel=\"stylesheet\" href=\"css/bootstrap.min.css\">
+\t\t\t<link rel=\"stylesheet\" href=\"css/styles.css\">
+\t\t\t<script src=\"js/jquery-3.4.1.min.js\"></script>
+\t\t\t<script src=\"js/bootstrap.min.js\"></script>
+\t\t{% endblock %}
+\t</head>
+\t<body>
+\t\t{% block body %}{% endblock %}
+\t\t{% block javascripts %}{% endblock %}
+\t</body>
 </html>
 ", "base.html.twig", "C:\\Users\\2daw\\Documents\\ProyectoPiscina\\proyectoPiscina\\templates\\base.html.twig");
     }
