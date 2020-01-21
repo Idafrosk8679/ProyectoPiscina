@@ -900,6 +900,6 @@ class __TwigTemplate_46d202301015b0e44feab7f2de3fb7ab60178a92440c1ee45e45b34e4d6
         {% endautoescape %}</script>
     </div>
 {% endmacro %}
-", "@WebProfiler/Collector/time.html.twig", "C:\\Users\\2daw\\Documents\\GitHub\\ProyectoPiscina\\proyectoPiscina\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\time.html.twig");
+", "@WebProfiler/Collector/time.html.twig", "C:\\Users\\2daw\\Documents\\ProyectoPiscina\\proyectoPiscina\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\time.html.twig");
     }
 }

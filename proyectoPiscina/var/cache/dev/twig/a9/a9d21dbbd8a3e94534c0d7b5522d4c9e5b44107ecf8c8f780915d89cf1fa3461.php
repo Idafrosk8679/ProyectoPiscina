@@ -482,6 +482,6 @@ class __TwigTemplate_23b44ee92fa041b7035911456b6efb17a7dffae1146bf1716fa626ffdb8
         {% endfor %}
     </table>
 {% endmacro %}
-", "@WebProfiler/Collector/events.html.twig", "C:\\Users\\2daw\\Documents\\GitHub\\ProyectoPiscina\\proyectoPiscina\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\events.html.twig");
+", "@WebProfiler/Collector/events.html.twig", "C:\\Users\\2daw\\Documents\\ProyectoPiscina\\proyectoPiscina\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\events.html.twig");
     }
 }

@@ -227,6 +227,6 @@ class __TwigTemplate_8ccbe0c3f09872ce7f0f728472bd0fb3e88b9ef459f8bba25a197841f34
         </div>
     {% endif %}
 {% endblock %}
-", "@WebProfiler/Collector/exception.html.twig", "C:\\Users\\2daw\\Documents\\GitHub\\ProyectoPiscina\\proyectoPiscina\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\exception.html.twig");
+", "@WebProfiler/Collector/exception.html.twig", "C:\\Users\\2daw\\Documents\\ProyectoPiscina\\proyectoPiscina\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\exception.html.twig");
     }
 }

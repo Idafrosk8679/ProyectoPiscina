@@ -3,7 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="css/bootstrap.min.css">
+            <link rel="stylesheet" href="css/style.css">
+            <script src="js/jquery-3.4.1.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+        {% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
