@@ -1,4 +1,15 @@
-.header{
+.principal{
     background-color:	#F0050A;
-    color: white;
+}
+
+body{
+    padding-top: 100px;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.logo-top{
+    border: #ffffff;
+    border-width: 1px;
+    border-style: solid;
 }
