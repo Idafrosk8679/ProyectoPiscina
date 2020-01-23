@@ -4,18 +4,24 @@
 {% endblock %}
 
 {% block main %}
-
+{% set num = 0 %}
 	{% for event in data %}
+	<div class="accordion" id="accordion">
+      
 		<div class="card">
-			<div class="card-header">
+			<div class="card-header dropdown-toggle" data-toggle="collapse" href="#multiCollapseExample{{num}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample{{num}}">
 				{{event.getFechas}} {{event.getCompeticion}} {{event.getCategoria}}
 			</div>
-			<div class="card-body">
+
+			<div class="card-body collapse multi-collapse" id="multiCollapseExample{{num}}">
 				<p class="card-text">{{event.getLocalidad}}</p>
 				<p class="card-text">{{event.getCentro}}</p>
 				<p class="card-text">{{event.getHorario}}</p>
 			</div>
 		</div>
+
+	</div>
+	{% set num = num + 1 %}
 	{% endfor %}
 
 {% endblock %}
