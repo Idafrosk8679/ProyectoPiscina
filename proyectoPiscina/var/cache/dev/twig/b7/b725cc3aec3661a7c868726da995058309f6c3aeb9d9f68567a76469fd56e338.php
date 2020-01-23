@@ -57,16 +57,16 @@ class __TwigTemplate_a2d6757c76463cbed94b3ee811f6d2e30f009056634b308a28ebf90414b
 \t\t";
         // line 9
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 15
+        // line 16
         echo "\t</head>
 \t<body>
 \t\t";
-        // line 17
-        $this->displayBlock('body', $context, $blocks);
         // line 18
+        $this->displayBlock('body', $context, $blocks);
+        // line 19
         echo "\t\t";
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 19
+        // line 20
         echo "\t</body>
 </html>
 ";
@@ -113,6 +113,7 @@ class __TwigTemplate_a2d6757c76463cbed94b3ee811f6d2e30f009056634b308a28ebf90414b
 \t\t\t<link rel=\"stylesheet\" href=\"css/styles.css\">
 \t\t\t<script src=\"js/jquery-3.4.1.min.js\"></script>
 \t\t\t<script src=\"js/bootstrap.min.js\"></script>
+\t\t\t<script src=\"js/iconos.js\" crossorigin=\"anonymous\"></script>
 \t\t";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -122,7 +123,7 @@ class __TwigTemplate_a2d6757c76463cbed94b3ee811f6d2e30f009056634b308a28ebf90414b
 
     }
 
-    // line 17
+    // line 18
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -140,7 +141,7 @@ class __TwigTemplate_a2d6757c76463cbed94b3ee811f6d2e30f009056634b308a28ebf90414b
 
     }
 
-    // line 18
+    // line 19
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -165,7 +166,7 @@ class __TwigTemplate_a2d6757c76463cbed94b3ee811f6d2e30f009056634b308a28ebf90414b
 
     public function getDebugInfo()
     {
-        return array (  144 => 18,  126 => 17,  112 => 10,  102 => 9,  82 => 6,  70 => 19,  67 => 18,  65 => 17,  61 => 15,  59 => 9,  56 => 8,  54 => 6,  47 => 1,);
+        return array (  145 => 19,  127 => 18,  112 => 10,  102 => 9,  82 => 6,  70 => 20,  67 => 19,  65 => 18,  61 => 16,  59 => 9,  56 => 8,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -183,6 +184,7 @@ class __TwigTemplate_a2d6757c76463cbed94b3ee811f6d2e30f009056634b308a28ebf90414b
 \t\t\t<link rel=\"stylesheet\" href=\"css/styles.css\">
 \t\t\t<script src=\"js/jquery-3.4.1.min.js\"></script>
 \t\t\t<script src=\"js/bootstrap.min.js\"></script>
+\t\t\t<script src=\"js/iconos.js\" crossorigin=\"anonymous\"></script>
 \t\t{% endblock %}
 \t</head>
 \t<body>
