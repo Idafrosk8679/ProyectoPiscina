@@ -4,24 +4,60 @@
 {% endblock %}
 
 {% block main %}
-{% set num = 0 %}
-	{% for event in data %}
-	<div class="accordion" id="accordion">
-      
-		<div class="card">
-			<div class="card-header dropdown-toggle" data-toggle="collapse" href="#multiCollapseExample{{num}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample{{num}}">
-				{{event.getFechas}} {{event.getCompeticion}} {{event.getCategoria}}
-			</div>
 
-			<div class="card-body collapse multi-collapse" id="multiCollapseExample{{num}}">
-				<p class="card-text">{{event.getLocalidad}}</p>
-				<p class="card-text">{{event.getCentro}}</p>
-				<p class="card-text">{{event.getHorario}}</p>
-			</div>
+
+	<nav>
+		<div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
+			<a class="nav-item nav-link active" id="nav-auto-tab" data-toggle="tab" href="#nav-auto" role="tab" aria-controls="nav-auto" aria-selected="true">Autonomica</a>
+			<a class="nav-item nav-link" id="nav-val-tab" data-toggle="tab" href="#nav-val" role="tab" aria-controls="nav-val" aria-selected="false">Valencia</a>
+		</div>
+	</nav>
+	<div class="tab-content" id="nav-tabContent">
+		<div class="tab-pane fade show active" id="nav-auto" role="tabpanel" aria-labelledby="nav-auto-tab">
+			{% set num = 0 %}
+			{% for eventAuto in dataAuto %}
+
+				<div class="card eventos">
+					<button class="card-header" data-toggle="collapse" href="#multiCollapseExample{{num}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample{{num}}">
+						{{eventAuto.getFechas}}
+						{{eventAuto.getCompeticion}}
+						{{eventAuto.getCategoria}}
+					</button>
+
+					<div class="card-body collapse multi-collapse" id="multiCollapseExample{{num}}">
+						<p class="card-text">{{eventAuto.getLocalidad}}</p>
+						<p class="card-text">{{eventAuto.getCentro}}</p>
+						<p class="card-text">{{eventAuto.getHorario}}</p>
+					</div>
+				</div>
+
+
+				{% set num = num + 1 %}
+
+			{% endfor %}
 		</div>
 
-	</div>
-	{% set num = num + 1 %}
-	{% endfor %}
+		<div class="tab-pane fade" id="nav-val" role="tabpanel" aria-labelledby="nav-val-tab">
+			{% set numVal = 0 %}
+			{% for eventVal in dataVal %}
 
-{% endblock %}
+				<div class="card eventos">
+					<button class="card-header" data-toggle="collapse" href="#multiCollapseExample{{numVal}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample{{numVal}}">
+						{{eventVal.getFechas}}
+						{{eventVal.getCompeticion}}
+						{{eventVal.getCategoria}}
+					</button>
+
+					<div class="card-body collapse multi-collapse" id="multiCollapseExample{{numVal}}">
+						<p class="card-text">{{eventVal.getLocalidad}}</p>
+						<p class="card-text">{{eventVal.getCentro}}</p>
+						<p class="card-text">{{eventVal.getHorario}}</p>
+					</div>
+				</div>
+
+
+				{% set numVal = numVal + 1 %}
+			{% endfor %}
+		</div>
+	</div>
+</div>{% endblock %}
