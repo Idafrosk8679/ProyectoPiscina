@@ -7,7 +7,7 @@
 
 
 	<nav>
-		<div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
+		<div class="nav nav-tabs nav-justified header-eventos" id="nav-tab" role="tablist">
 			<a class="nav-item nav-link active" id="nav-auto-tab" data-toggle="tab" href="#nav-auto" role="tab" aria-controls="nav-auto" aria-selected="true">Autonomica</a>
 			<a class="nav-item nav-link" id="nav-val-tab" data-toggle="tab" href="#nav-val" role="tab" aria-controls="nav-val" aria-selected="false">Valencia</a>
 		</div>
@@ -18,16 +18,69 @@
 			{% for eventAuto in dataAuto %}
 
 				<div class="card eventos">
-					<button class="card-header" data-toggle="collapse" href="#multiCollapseExample{{num}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample{{num}}">
-						{{eventAuto.getFechas}}
-						{{eventAuto.getCompeticion}}
-						{{eventAuto.getCategoria}}
+
+					<button class="card-header text-left d-flex" data-toggle="collapse" href="#multiCollapseExample{{num}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample{{num}}">
+
+						<div class="float-left">
+							<i class="fas fa-calendar"></i>
+							{{eventAuto.getFechas}}
+						</div>
+
+						<div class="ml-auto">
+							<i class="fas fa-trophy"></i>
+							{{eventAuto.getCompeticion}}
+						</div>
+
 					</button>
 
 					<div class="card-body collapse multi-collapse" id="multiCollapseExample{{num}}">
-						<p class="card-text">{{eventAuto.getLocalidad}}</p>
-						<p class="card-text">{{eventAuto.getCentro}}</p>
-						<p class="card-text">{{eventAuto.getHorario}}</p>
+
+						<div class="row text-center">
+
+							<div class="col">
+								<p class="card-text">
+									<strong>
+										Categoria
+									</strong>
+									{{eventAuto.getCategoria}}</p>
+							</div>
+
+
+							{% if eventAuto.getLocalidad|spaceless != ''  %}
+								<div class="col">
+									<p class="card-text">
+										<strong>
+											Localidad
+										</strong>
+										{{eventAuto.getLocalidad}}</p>
+								</div>
+							{% endif %}
+
+
+							{% if eventAuto.getCentro|spaceless != ''  %}
+								<div class="col">
+									<p class="card-text">
+										<strong>
+											Centro
+										</strong>
+										{{eventAuto.getCentro}}</p>
+								</div>
+							{% endif %}
+
+
+							{% if eventAuto.getHorario|spaceless != ''  %}
+								<div class="col">
+									<strong>
+										Horario
+									</strong>
+									<p class="card-text">
+										{{eventAuto.getHorario}}</p>
+								</div>
+							{% endif %}
+
+
+						</div>
+
 					</div>
 				</div>
 
@@ -42,16 +95,68 @@
 			{% for eventVal in dataVal %}
 
 				<div class="card eventos">
-					<button class="card-header" data-toggle="collapse" href="#multiCollapseExample{{numVal}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample{{numVal}}">
-						{{eventVal.getFechas}}
-						{{eventVal.getCompeticion}}
-						{{eventVal.getCategoria}}
+					<button class="card-header text-left d-flex" data-toggle="collapse" href="#multiCollapseExample{{numVal}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample{{numVal}}">
+
+						<div class="float-left">
+							<i class="fas fa-calendar"></i>
+							{{eventVal.getFechas}}
+						</div>
+
+
+						<div class="ml-auto">
+							<i class="fas fa-trophy"></i>
+							{{eventVal.getCompeticion}}
+						</div>
+
+
 					</button>
 
 					<div class="card-body collapse multi-collapse" id="multiCollapseExample{{numVal}}">
-						<p class="card-text">{{eventVal.getLocalidad}}</p>
-						<p class="card-text">{{eventVal.getCentro}}</p>
-						<p class="card-text">{{eventVal.getHorario}}</p>
+						<div class="row text-center">
+
+							<div class="col">
+								<p class="card-text">
+									<strong>
+										Categoria
+									</strong>
+									{{eventVal.getCategoria}}</p>
+							</div>
+
+
+							{% if eventVal.getLocalidad|spaceless != ''  %}
+								<div class="col">
+									<p class="card-text">
+										<strong>
+											Localidad
+										</strong>
+										{{eventVal.getLocalidad}}</p>
+								</div>
+							{% endif %}
+
+
+							{% if eventVal.getCentro|spaceless != ''  %}
+								<div class="col">
+									<p class="card-text">
+										<strong>
+											Centro
+										</strong>
+										{{eventVal.getCentro}}</p>
+								</div>
+							{% endif %}
+
+
+							{% if eventVal.getHorario|spaceless != ''  %}
+								<div class="col">
+									<strong>
+										Horario
+									</strong>
+									<p class="card-text">
+										{{eventVal.getHorario}}</p>
+								</div>
+							{% endif %}
+
+
+						</div>
 					</div>
 				</div>
 
