@@ -15,11 +15,12 @@ class EventosController extends AbstractController
     public function index()
     {
         $eventosAutonomicos=$this->getContent("https://www.fncv.es/es/calendario-natacion", 0);
-        $eventosVlencia=$this->getContent("https://www.fncv.es/es/calendario-natacion", 2);
+        $eventosValencia=$this->getContent("https://www.fncv.es/es/calendario-natacion", 2);
 
         return $this->render('eventos/index.html.twig', [
             'controller_name' => 'EventosController',
-            'data' => $eventosAutonomicos
+            'dataAuto' => $eventosAutonomicos,
+            'dataVal' => $eventosValencia
         ]);
     }
 

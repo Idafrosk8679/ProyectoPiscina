@@ -1,9 +1,43 @@
-.principal{
-    background-color:	#F0050A;
-}
 
 body{
-    padding-top: 100px;
+    padding-top: 75px;
+}
+
+header nav{
+    background-color: #F0050A;
+    color: #ffffff;
+}
+
+footer{
     background-color: #000000;
     color: #ffffff;
+}
+
+html,body
+{
+height:100%;
+}
+
+.eventos{
+    color: #000000;
+}
+
+.header-eventos a{
+    color: #000000;
+}
+
+.header-eventos a.active{
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+#wrap
+{
+min-height: 100%;
+}
+
+main
+{
+overflow:auto;
+padding-bottom:150px;
 }

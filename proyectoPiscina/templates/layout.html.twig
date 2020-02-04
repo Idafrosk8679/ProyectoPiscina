@@ -1,10 +1,10 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-	<header>
-		<nav class="navbar navbar-expand-md nav nav-justified nav-pills nav-tabs fixed-top principal">
-			<a class="navbar-brand pl-lg-5 pl-md-4 pl-sm-3 mr-lg-3 mr-md-2 mr-sm-0">
-				<img class="logo-top" src="/img/logo.jpg" height="50" alt="mdb logo">
+	<header class="header">
+		<nav class="navbar navbar-expand-md nav nav-justified nav-pills nav-tabs fixed-top">
+			<a class="navbar-brand pl-lg-5 pl-md-4 pl-sm-3 mr-lg-3 mr-md-2 mr-sm-0" href="{{ path('eventos') }}">
+				<img src="/img/logo.jpg" height="50" alt="mdb logo">
 				<a>FENIX MANISES</a>
 			</a>
 			<button class="navbar-toggler bg-white navbar-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,16 +19,59 @@
 						<a class="nav-link text-white text-uppercase font-weight-bold" href="#">Equipo</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-white text-uppercase font-weight-bold" href="#">Eventos</a>
+						<a class="nav-link text-white text-uppercase font-weight-bold" href="{{ path('eventos') }}">Eventos</a>
 					</li>
 				</ul>
 			</div>
 		</nav>
 	</header>
 
-	<main>
-		{% block main %}{% endblock %}
-	</main>
-
-	<footer class="tm-footer text-center"></footer>
+	<div id="wrap">
+		<main>
+			{% block main %}{% endblock %}
+		</main>
+	</div>
+	<footer
+		class="footer absolute-bottom tm-footer text-center">
+		<div class="container">
+			<div>
+				<ul class="list-unstyled text-left">
+					<li class="">
+						<a class="btn-floating btn-fb mx-1">
+							Dirección:
+						</a>
+					</li>
+					<li class="">
+						<a class="btn-floating btn-tw mx-1">
+							Teléfono:
+						</a>
+					</li>
+					<li class="">
+						<a class="btn-floating btn-li mx-1">
+							Correo electrónico:
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="ml-auto">
+				<ul class="list-unstyled list-inline text-right mb-0">
+					<li class="list-inline-item">
+						<a class="btn-floating btn-fb mx-1">
+							<i class="fab fa-facebook-f fa-2x"></i>
+						</a>
+					</li>
+					<li class="list-inline-item">
+						<a class="btn-floating btn-tw mx-1">
+							<i class="fab fa-twitter fa-2x"></i>
+						</a>
+					</li>
+					<li class="list-inline-item">
+						<a class="btn-floating btn-li mx-1">
+							<i class="fab fa-instagram fa-2x"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</footer>
 {% endblock %}
