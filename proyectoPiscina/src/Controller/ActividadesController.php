@@ -12,6 +12,7 @@ class ActividadesController extends AbstractController
      */
     public function index()
     {
+        //
 
         return $this->render('actividades/index.html.twig', [
             'controller_name' => 'ActividadesController',

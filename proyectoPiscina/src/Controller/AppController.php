@@ -13,7 +13,8 @@ class AppController extends AbstractController
     public function index()
     {
 
-        //Este es un controller totalmente vacio que no enlaza a ningun sitio, pero estar hecho para algun futuro esta
+        //Este es un controller totalmente vacio que no enlaza a ningun sitio
+        //pero estar hecho para algun futuro esta
 
         return $this->render('app/index.html.twig', [
             'controller_name' => 'AppController',
