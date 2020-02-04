@@ -31,6 +31,10 @@ height:100%;
     color: #ffffff !important;
 }
 
+.nav-link.active{
+    background-color: transparent !important;
+}
+
 #wrap
 {
 min-height: 100%;
