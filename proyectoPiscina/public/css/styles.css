@@ -44,3 +44,16 @@ main
 {
 overflow:auto;
 }
+
+.jumbotron-fluid{
+    background-image: url(/img/jb.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    text-align: center;
+}
+
+.jumbotron-fluid h1{
+    color: #fff;
+    font-size: 45pt;
+}
