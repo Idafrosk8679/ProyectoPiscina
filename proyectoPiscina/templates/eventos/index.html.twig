@@ -4,24 +4,171 @@
 {% endblock %}
 
 {% block main %}
-{% set num = 0 %}
-	{% for event in data %}
-	<div class="accordion" id="accordion">
-      
-		<div class="card">
-			<div class="card-header dropdown-toggle" data-toggle="collapse" href="#multiCollapseExample{{num}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample{{num}}">
-				{{event.getFechas}} {{event.getCompeticion}} {{event.getCategoria}}
+
+
+	<nav>
+		<div class="nav nav-tabs nav-justified header-eventos row" id="nav-tab" role="tablist">
+
+			<div class="col">
+				<a class="nav-item nav-link active" id="nav-auto-tab" data-toggle="tab" href="#nav-auto" role="tab" aria-controls="nav-auto" aria-selected="true">Autonomica</a>
 			</div>
 
-			<div class="card-body collapse multi-collapse" id="multiCollapseExample{{num}}">
-				<p class="card-text">{{event.getLocalidad}}</p>
-				<p class="card-text">{{event.getCentro}}</p>
-				<p class="card-text">{{event.getHorario}}</p>
+			<div class="col">
+				<a class="nav-item nav-link" id="nav-val-tab" data-toggle="tab" href="#nav-val" role="tab" aria-controls="nav-val" aria-selected="false">Valencia</a>
 			</div>
+
+		</div>
+	</nav>
+	<div class="tab-content" id="nav-tabContent">
+		<div class="tab-pane fade show active" id="nav-auto" role="tabpanel" aria-labelledby="nav-auto-tab">
+			{% set num = 0 %}
+			{% for eventAuto in dataAuto %}
+
+				<div class="card eventos">
+
+					<button class="card-header text-left d-flex row" data-toggle="collapse" href="#multiCollapseExample{{num}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample{{num}}">
+
+						<div class="float-left col-md-12">
+							<i class="fas fa-calendar"></i>
+							{{eventAuto.getFechas}}
+						</div>
+
+						<div class="text-md-right text-left ml-auto col-md-12">
+							<i class="fas fa-trophy"></i>
+							{{eventAuto.getCompeticion}}
+						</div>
+
+					</button>
+
+					<div class="card-body collapse multi-collapse" id="multiCollapseExample{{num}}">
+
+						<div class="row text-left">
+
+							<div class="col-6 col-lg pb-4">
+								<p class="card-text text-md-center">
+									<strong>
+										Categoria
+									</strong>
+									{{eventAuto.getCategoria}}</p>
+							</div>
+
+
+							{% if eventAuto.getLocalidad|spaceless != ''  %}
+								<div class="col-6 col-lg pb-4">
+									<p class="card-text text-md-center">
+										<strong>
+											Localidad
+										</strong>
+										{{eventAuto.getLocalidad}}</p>
+								</div>
+							{% endif %}
+
+
+							{% if eventAuto.getCentro|spaceless != ''  %}
+								<div class="col-6 col-lg pb-4">
+									<p class="card-text text-md-center">
+										<strong>
+											Centro
+										</strong>
+										{{eventAuto.getCentro}}</p>
+								</div>
+							{% endif %}
+
+
+							{% if eventAuto.getHorario|spaceless != ''  %}
+								<div class="col-6 col-lg pb-4">
+									<strong>
+										Horario
+									</strong>
+									<p class="card-text text-md-center">
+										{{eventAuto.getHorario}}</p>
+								</div>
+							{% endif %}
+
+
+						</div>
+
+					</div>
+				</div>
+
+
+				{% set num = num + 1 %}
+
+			{% endfor %}
 		</div>
 
-	</div>
-	{% set num = num + 1 %}
-	{% endfor %}
+		<div class="tab-pane fade" id="nav-val" role="tabpanel" aria-labelledby="nav-val-tab">
+			{% set numVal = 0 %}
+			{% for eventVal in dataVal %}
 
-{% endblock %}
+				<div class="card eventos">
+					<button class="card-header text-left d-flex" data-toggle="collapse" href="#multiCollapseExample{{numVal}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample{{numVal}}">
+
+						<div class="float-left">
+							<i class="fas fa-calendar"></i>
+							{{eventVal.getFechas}}
+						</div>
+
+
+						<div class="ml-auto">
+							<i class="fas fa-trophy"></i>
+							{{eventVal.getCompeticion}}
+						</div>
+
+
+					</button>
+
+					<div class="card-body collapse multi-collapse" id="multiCollapseExample{{numVal}}">
+						<div class="row text-left">
+
+							<div class="col-6 col-lg pb-4">
+								<p class="card-text text-md-center">
+									<strong>
+										Categoria
+									</strong>
+									{{eventVal.getCategoria}}</p>
+							</div>
+
+
+							{% if eventVal.getLocalidad|spaceless != ''  %}
+								<div class="col-6 col-lg pb-4">
+									<p class="card-text text-md-center">
+										<strong>
+											Localidad
+										</strong>
+										{{eventVal.getLocalidad}}</p>
+								</div>
+							{% endif %}
+
+
+							{% if eventVal.getCentro|spaceless != ''  %}
+								<div class="col-6 col-lg pb-4">
+									<p class="card-text text-md-center">
+										<strong>
+											Centro
+										</strong>
+										{{eventVal.getCentro}}</p>
+								</div>
+							{% endif %}
+
+
+							{% if eventVal.getHorario|spaceless != ''  %}
+								<div class="col-6 col-lg pb-4">
+									<strong>
+										Horario
+									</strong>
+									<p class="card-text text-md-center">
+										{{eventVal.getHorario}}</p>
+								</div>
+							{% endif %}
+
+						</div>
+					</div>
+				</div>
+
+
+				{% set numVal = numVal + 1 %}
+			{% endfor %}
+		</div>
+	</div>
+</div>{% endblock %}
