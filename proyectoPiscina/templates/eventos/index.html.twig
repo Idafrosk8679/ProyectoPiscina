@@ -9,13 +9,9 @@
 	<nav>
 		<div class="nav nav-tabs nav-justified header-eventos row" id="nav-tab" role="tablist">
 
-			<div class="col">
-				<a class="nav-item nav-link active" id="nav-auto-tab" data-toggle="tab" href="#nav-auto" role="tab" aria-controls="nav-auto" aria-selected="true">Autonomica</a>
-			</div>
+			<a class="nav-item nav-link active" id="nav-auto-tab" data-toggle="tab" href="#nav-auto" role="tab" aria-controls="nav-auto" aria-selected="true">Autonomica</a>
 
-			<div class="col">
-				<a class="nav-item nav-link" id="nav-val-tab" data-toggle="tab" href="#nav-val" role="tab" aria-controls="nav-val" aria-selected="false">Valencia</a>
-			</div>
+			<a class="nav-item nav-link" id="nav-val-tab" data-toggle="tab" href="#nav-val" role="tab" aria-controls="nav-val" aria-selected="false">Valencia</a>
 
 		</div>
 	</nav>
@@ -28,12 +24,12 @@
 
 					<button class="card-header text-left d-flex row" data-toggle="collapse" href="#multiCollapseExample{{num}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample{{num}}">
 
-						<div class="float-left col-md-12">
+						<div class="float-left col-md-6 col-12">
 							<i class="fas fa-calendar"></i>
 							{{eventAuto.getFechas}}
 						</div>
 
-						<div class="text-md-right text-left ml-auto col-md-12">
+						<div class="text-md-right text-left ml-auto col-md-6 col-12">
 							<i class="fas fa-trophy"></i>
 							{{eventAuto.getCompeticion}}
 						</div>
@@ -77,10 +73,11 @@
 
 							{% if eventAuto.getHorario|spaceless != ''  %}
 								<div class="col-6 col-lg pb-4">
-									<strong>
-										Horario
-									</strong>
+
 									<p class="card-text text-md-center">
+										<strong>
+											Horario
+										</strong>
 										{{eventAuto.getHorario}}</p>
 								</div>
 							{% endif %}
@@ -102,15 +99,14 @@
 			{% for eventVal in dataVal %}
 
 				<div class="card eventos">
-					<button class="card-header text-left d-flex" data-toggle="collapse" href="#multiCollapseExample{{numVal}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample{{numVal}}">
+					<button class="card-header text-left d-flex row" data-toggle="collapse" href="#multiCollapseExample{{numVal}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample{{numVal}}">
 
-						<div class="float-left">
+						<div class="float-left col-md-6 col-12">
 							<i class="fas fa-calendar"></i>
 							{{eventVal.getFechas}}
 						</div>
 
-
-						<div class="ml-auto">
+						<div class="text-md-right text-left ml-auto col-md-6 col-12">
 							<i class="fas fa-trophy"></i>
 							{{eventVal.getCompeticion}}
 						</div>
@@ -154,10 +150,11 @@
 
 							{% if eventVal.getHorario|spaceless != ''  %}
 								<div class="col-6 col-lg pb-4">
-									<strong>
-										Horario
-									</strong>
+
 									<p class="card-text text-md-center">
+										<strong>
+											Horario
+										</strong>
 										{{eventVal.getHorario}}</p>
 								</div>
 							{% endif %}
