@@ -7,9 +7,16 @@
 
 
 	<nav>
-		<div class="nav nav-tabs nav-justified header-eventos" id="nav-tab" role="tablist">
-			<a class="nav-item nav-link active" id="nav-auto-tab" data-toggle="tab" href="#nav-auto" role="tab" aria-controls="nav-auto" aria-selected="true">Autonomica</a>
-			<a class="nav-item nav-link" id="nav-val-tab" data-toggle="tab" href="#nav-val" role="tab" aria-controls="nav-val" aria-selected="false">Valencia</a>
+		<div class="nav nav-tabs nav-justified header-eventos row" id="nav-tab" role="tablist">
+
+			<div class="col">
+				<a class="nav-item nav-link active" id="nav-auto-tab" data-toggle="tab" href="#nav-auto" role="tab" aria-controls="nav-auto" aria-selected="true">Autonomica</a>
+			</div>
+
+			<div class="col">
+				<a class="nav-item nav-link" id="nav-val-tab" data-toggle="tab" href="#nav-val" role="tab" aria-controls="nav-val" aria-selected="false">Valencia</a>
+			</div>
+
 		</div>
 	</nav>
 	<div class="tab-content" id="nav-tabContent">
@@ -19,14 +26,14 @@
 
 				<div class="card eventos">
 
-					<button class="card-header text-left d-flex" data-toggle="collapse" href="#multiCollapseExample{{num}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample{{num}}">
+					<button class="card-header text-left d-flex row" data-toggle="collapse" href="#multiCollapseExample{{num}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample{{num}}">
 
-						<div class="float-left">
+						<div class="float-left col-md-12">
 							<i class="fas fa-calendar"></i>
 							{{eventAuto.getFechas}}
 						</div>
 
-						<div class="ml-auto">
+						<div class="text-md-right text-left ml-auto col-md-12">
 							<i class="fas fa-trophy"></i>
 							{{eventAuto.getCompeticion}}
 						</div>
@@ -35,10 +42,10 @@
 
 					<div class="card-body collapse multi-collapse" id="multiCollapseExample{{num}}">
 
-						<div class="row text-center">
+						<div class="row text-left">
 
-							<div class="col">
-								<p class="card-text">
+							<div class="col-6 col-lg pb-4">
+								<p class="card-text text-md-center">
 									<strong>
 										Categoria
 									</strong>
@@ -47,8 +54,8 @@
 
 
 							{% if eventAuto.getLocalidad|spaceless != ''  %}
-								<div class="col">
-									<p class="card-text">
+								<div class="col-6 col-lg pb-4">
+									<p class="card-text text-md-center">
 										<strong>
 											Localidad
 										</strong>
@@ -58,8 +65,8 @@
 
 
 							{% if eventAuto.getCentro|spaceless != ''  %}
-								<div class="col">
-									<p class="card-text">
+								<div class="col-6 col-lg pb-4">
+									<p class="card-text text-md-center">
 										<strong>
 											Centro
 										</strong>
@@ -69,11 +76,11 @@
 
 
 							{% if eventAuto.getHorario|spaceless != ''  %}
-								<div class="col">
+								<div class="col-6 col-lg pb-4">
 									<strong>
 										Horario
 									</strong>
-									<p class="card-text">
+									<p class="card-text text-md-center">
 										{{eventAuto.getHorario}}</p>
 								</div>
 							{% endif %}
@@ -112,10 +119,10 @@
 					</button>
 
 					<div class="card-body collapse multi-collapse" id="multiCollapseExample{{numVal}}">
-						<div class="row text-center">
+						<div class="row text-left">
 
-							<div class="col">
-								<p class="card-text">
+							<div class="col-6 col-lg pb-4">
+								<p class="card-text text-md-center">
 									<strong>
 										Categoria
 									</strong>
@@ -124,8 +131,8 @@
 
 
 							{% if eventVal.getLocalidad|spaceless != ''  %}
-								<div class="col">
-									<p class="card-text">
+								<div class="col-6 col-lg pb-4">
+									<p class="card-text text-md-center">
 										<strong>
 											Localidad
 										</strong>
@@ -135,8 +142,8 @@
 
 
 							{% if eventVal.getCentro|spaceless != ''  %}
-								<div class="col">
-									<p class="card-text">
+								<div class="col-6 col-lg pb-4">
+									<p class="card-text text-md-center">
 										<strong>
 											Centro
 										</strong>
@@ -146,15 +153,14 @@
 
 
 							{% if eventVal.getHorario|spaceless != ''  %}
-								<div class="col">
+								<div class="col-6 col-lg pb-4">
 									<strong>
 										Horario
 									</strong>
-									<p class="card-text">
+									<p class="card-text text-md-center">
 										{{eventVal.getHorario}}</p>
 								</div>
 							{% endif %}
-
 
 						</div>
 					</div>
