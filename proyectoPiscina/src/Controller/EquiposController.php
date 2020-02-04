@@ -12,7 +12,6 @@ class EquiposController extends AbstractController
      */
     public function index()
     {
-        //
 
         return $this->render('equipos/index.html.twig', [
             'controller_name' => 'EquiposController',
