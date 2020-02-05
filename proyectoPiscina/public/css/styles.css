@@ -35,6 +35,22 @@ height:100%;
     background-color: transparent !important;
 }
 
+.texto-historia{
+    width: 70%;
+    text-align: justify;
+    margin: 0 auto;
+    margin-top: 3%;
+    margin-bottom: 3%;
+
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+.card{
+    margin: 0 auto;
+    margin-top: 5%;
+}
+
 #wrap
 {
 min-height: 100%;
