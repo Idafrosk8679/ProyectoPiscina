@@ -18,5 +18,17 @@ class MainController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/historia", name="historia")
+     */
+    public function historia()
+    {
+
+        return $this->render('main/historia.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
+
+
     
 }
