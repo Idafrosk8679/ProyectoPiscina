@@ -1,102 +1,75 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Hello MainController!
+{% block title %}{{title}}
 {% endblock %}
 
 {% block main %}
 
-	<div class="jumbotron-fluid d-flex justify-content-center align-items-center">
+<div class="jumbotron-fluid d-flex justify-content-center align-items-center">
 
-		<div class="container-fluid">
+	<div class="container-fluid">
 
-			<h1 class="text-uppercase text-bold">Eslogan</h1>
-
-		</div>
+		<h1 class="text-uppercase text-bold">Eslogan</h1>
 
 	</div>
-	<hr>
-	<div class="texto-encabezado">
-		<p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</p>
-	</div>
-	<hr>
 
-
-	<!--Carousel Wrapper-->
-	<div
-		id="carousel-with-lb" class="carousel slide carousel-multi-item" data-ride="carousel">
-
-
-		<!--Indicators-->
-		<ol class="carousel-indicators">
-			<li data-target="#carousel-with-lb" data-slide-to="0" class="active secondary-color"></li>
-			<li data-target="#carousel-with-lb" data-slide-to="1" class="secondary-color"></li>
-			<li data-target="#carousel-with-lb" data-slide-to="2" class="secondary-color"></li>
-		</ol>
-		<!--/.Indicators-->
-
-		<!--Slides and lightbox-->
-
-		<div class="carousel-inner mdb-lightbox" role="listbox">
-			<div id="mdb-lightbox-ui"></div>
-			<!--First slide-->
-			<div class=" carousel-item active text-center">
-
-				<figure class="col-md-3 d-md-inline-block">
-					<img src="/img/1.PNG" class="img-fluid" height="165" widht="165">
-				</figure>
-
-				<figure class="col-md-3 d-md-inline-block">
-					<img src="/img/2.PNG" class="img-fluid" height="165" widht="165">
-				</figure>
-
-				<figure class="col-md-3 d-md-inline-block">
-					<img src="/img/3.PNG" class="img-fluid" height="165" widht="165">
-				</figure>
-
-			</div>
-			<!--/.First slide-->
-
-			<!--Second slide-->
-			<div class="carousel-item text-center">
-
-				<figure class="col-md-3 d-md-inline-block">
-					<img src="/img/4.PNG" class="img-fluid" height="165" widht="165">
-				</figure>
-
-				<figure class="col-md-3 d-md-inline-block">
-					<img src="/img/5.PNG" class="img-fluid" height="165" widht="165">
-				</figure>
-
-				<figure class="col-md-3 d-md-inline-block">
-					<img src="/img/6.PNG" class="img-fluid" height="165" widht="165">
-				</figure>
-
-			</div>
-			<!--/.Second slide-->
-
-			<!--Third slide-->
-			<div class="carousel-item text-center">
-
-				<figure class="col-md-3 d-md-inline-block">
-					<img src="/img/7.PNG" class="img-fluid" height="165" widht="165">
-				</figure>
-
-				<figure class="col-md-3 d-md-inline-block">
-					<img src="/img/8.PNG" class="img-fluid" height="165" widht="165">
-				</figure>
-
-				<figure class="col-md-3 d-md-inline-block">
-					<img src="/img/9.PNG" class="img-fluid" height="165" widht="165">
-				</figure>
-			</div>
-			<!--/.Third slide-->
-			<div id="myModal" class="modal">
-				<span class="close">&times;</span>
-				<img class="modal-content">
-			</div>
-		</div>
-		<!--/.Slides-->
-
-	</div>
 </div>
-<!--/.Carousel Wrapper-->{% endblock %}
+
+<div class="texto-encabezado">
+
+	<p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto
+		de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a
+		la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos
+		especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos
+		electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas
+		"Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como
+		por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</p>
+</div>
+
+
+<div id="carousel-with-lb" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+	{% set itemsPerpage = 3 %}
+	{% set numPages = imagenes|length / itemsPerpage %}
+
+	<ol class="carousel-indicators">
+
+		{% for i in 0.. numPages - 1 %}
+
+		<li data-target="#carousel-with-lb" data-slide-to="{{i}}" class="{% if i == 0 %} active {% endif %} secondary-color"></li>
+
+		{% endfor %}
+
+	</ol>
+
+
+	<div class="carousel-inner mdb-lightbox" role="listbox">
+
+		<div id="mdb-lightbox-ui"></div>
+
+		{% for i in 1.. numPages %}
+
+		<div class=" carousel-item {% if i == 1 %} active {% endif %} text-center">
+
+			{% for numImg in i * itemsPerpage - itemsPerpage .. i * itemsPerpage - 1 %}
+
+			<figure class="col-md-3 d-md-inline-block">
+				<img src="/img/muestra/{{ imagenes[numImg] }}" class="img-fluid">
+			</figure>
+
+			{% endfor %}
+
+		</div>
+
+		{% endfor %}
+
+		<div id="myModal" class="modal">
+			<span class="close">&times;</span>
+			<img class="modal-content">
+		</div>
+	</div>
+
+
+</div>
+</div>
+{% endblock %}

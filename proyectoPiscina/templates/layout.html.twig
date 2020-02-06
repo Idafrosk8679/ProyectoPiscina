@@ -4,7 +4,7 @@
 <header class="header">
 	<nav class="navbar navbar-expand-md nav nav-justified nav-pills nav-tabs fixed-top">
 		<a class="navbar-brand pl-lg-5 pl-md-4 pl-sm-3 mr-lg-3 mr-md-2 mr-sm-0" href="{{ path('eventos') }}">
-			<img src="/img/logo.jpg" height="50" alt="mdb logo">
+			<img src="{{ asset ('logo.jpg', 'logos')}}" height="50" alt="mdb logo">
 			<a class="titulo-fenixmanises">FENIX MANISES</a>
 		</a>
 		<button class="navbar-toggler bg-white navbar-light" type="button" data-toggle="collapse"
@@ -66,8 +66,8 @@
 
 
 			<div class="col-md-4 mb-md-0 mb-3 d-flex justify-content-center align-items-center">
-				<a class="navbar-brand" href="#">
-					<img src="/img/logoR.png" height="100" alt="mdb logo">
+				<a class="navbar-brand" href="{{ path('app') }}">
+					<img src="{{ asset ('logoR.png', 'logos')}}" height="100" alt="mdb logo">
 				</a>
 			</div>
 

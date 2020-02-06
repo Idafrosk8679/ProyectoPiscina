@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let nav = document.querySelector('#navbarSupportedContent');
 
-    if (document.documentElement.clientWidth < 1024) {
+    if (document.documentElement.clientWidth < 975) {
         nav.className=nav.className.split(" collapse")[0]+" collapse";
     }
     else {
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener("resize", () => {
         let nav = document.querySelector('#navbarSupportedContent');
 
-        if (document.documentElement.clientWidth < 1024) {
+        if (document.documentElement.clientWidth < 975) {
             nav.className=nav.className.split(" collapse")[0]+" collapse";
         }
         else {

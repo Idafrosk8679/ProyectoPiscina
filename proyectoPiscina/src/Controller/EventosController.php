@@ -18,6 +18,7 @@ class EventosController extends AbstractController
         $eventosValencia=$this->getContent("https://www.fncv.es/es/calendario-natacion", 2);
 
         return $this->render('eventos/index.html.twig', [
+            'title' => 'Eventos',
             'controller_name' => 'EventosController',
             'dataAuto' => $eventosAutonomicos,
             'dataVal' => $eventosValencia
