@@ -18,6 +18,15 @@ html,body
 height:100%;
 }
 
+.titulo-fenixmanises{
+    color: #ffffff;
+    font-weight: bold;
+    
+}
+
+
+/* Eventos y header */
+
 .eventos{
     color: #000000;
 }
@@ -35,6 +44,22 @@ height:100%;
     background-color: transparent !important;
 }
 
+
+/* Paginas equipos */
+
+.texto-historia{
+    width: 70%;
+    text-align: justify;
+    margin: 0 auto;
+    margin-top: 3%;
+    margin-bottom: 3%;
+
+    font-size: 14px;
+    font-family: Verdana;
+    color: rgb(60, 60, 60);
+    font-weight: bold;
+}
+
 #titulo-equipo{
     margin: 0 auto;
     margin-top: 4%;
@@ -48,21 +73,13 @@ height:100%;
     width: 40%;
 }
 
-.texto-historia{
-    width: 70%;
-    text-align: justify;
-    margin: 0 auto;
-    margin-top: 3%;
-    margin-bottom: 3%;
-
-    font-size: 16px;
-    font-family: sans-serif;
-}
-
 .card-historia{
     margin: 0 auto;
     margin-top: 5%;
 }
+
+
+/* Cosas raras del Jumbotron */ 
 
 #wrap
 {

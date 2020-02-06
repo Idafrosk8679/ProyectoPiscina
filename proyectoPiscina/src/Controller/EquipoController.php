@@ -5,16 +5,16 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class EquiposController extends AbstractController
+class EquipoController extends AbstractController
 {
     /**
-     * @Route("/equipos", name="equipos")
+     * @Route("/equipo", name="equipo")
      */
     public function index()
     {
 
         return $this->render('equipo/index.html.twig', [
-            'controller_name' => 'EquiposController',
+            'controller_name' => 'EquipoController',
         ]);
     }
 
