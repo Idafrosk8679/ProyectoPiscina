@@ -354,3 +354,10 @@ figure img {
 .equipo{
   background-image: url("/img/jbe.jpg") !important;
 }
+
+.carousel-indicators li {
+    background-color: #F0050A !important;
+}
+.carousel-indicators{
+    position: inherit;
+}
