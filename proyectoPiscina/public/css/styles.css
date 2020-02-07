@@ -333,11 +333,14 @@ figure img {
   font-size: 20px;
 }
 
-.carousel img{ 
-  min-width: 255px;
-  max-width: 255px;
-  height: 255px !important;
-  max-height: 255px !important;
+.carousel figure>img{
+  width: 255px;
+  height: 255px;
+
+  min-width: 255px !important;
+  max-width: 750px !important;
+  min-height: 255px !important;
+  max-height: 500px !important;
 }
 
 .img-ajustado{
@@ -346,4 +349,8 @@ figure img {
   max-height: 1200px;
   background-image: url("/img/p.jpg");
   background-attachment: fixed;
+}
+
+.equipo{
+  background-image: url("/img/jbe.jpg") !important;
 }
