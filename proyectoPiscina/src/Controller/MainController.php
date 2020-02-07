@@ -16,6 +16,7 @@ class MainController extends AbstractController
         $imagenes=[];
         
         $abrir=opendir('img/muestra');
+        
         while ($img=readdir($abrir)){
 
             $extension=explode(".", $img)[1];

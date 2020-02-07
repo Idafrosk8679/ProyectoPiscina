@@ -94,7 +94,7 @@ overflow:auto;
     background-image: url(/img/jb.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 400px;
+    height: 600px;
     text-align: center;
 }
 
@@ -210,4 +210,44 @@ figure img {
     color: #ffffff !important;
     background-color: #F0050A !important;
     border: #F0050A!important;
+}
+
+.rrss i:hover{
+  color: #F0050A!important;
+}
+
+.muestras{
+  height: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.img-muestra1{
+  background-image: url("/img/o.jpg");
+}
+.img-muestra2{
+  background-image: url("/img/g.jpg");
+}
+.img-muestra3{
+  background-image: url("/img/a.png");
+}
+
+.actividades p{
+  font-size: 20px;
+}
+
+.carousel img{ 
+  min-width: 255px;
+  max-width: 255px;
+  height: 255px !important;
+  max-height: 255px !important;
+}
+
+.img-ajustado{
+  width: 100%;
+  min-height: 90vh;
+  max-height: 1200px;
+  background-image: url("/img/p.jpg");
+  background-attachment: fixed;
 }
