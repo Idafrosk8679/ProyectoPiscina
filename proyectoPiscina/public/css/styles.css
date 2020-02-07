@@ -22,6 +22,8 @@ height:100%;
 .titulo-fenixmanises{
     color: #ffffff;
     font-weight: bold;
+    font-family: Trebuchet MS, sans-serif;
+    font-size: 30px;
     
 }
 
@@ -59,7 +61,7 @@ height:100%;
 
 /* Seccion equipo */
 .background-equipo{
-    background: rgb(246, 246, 246);
+    background: rgb(243, 243, 243);
 }
 
 .separador-top{
@@ -76,7 +78,7 @@ height:100%;
 .titulo-seccion{
     margin: 0 auto;
     padding-top: 10%;
-    color: #4D4D4D; 
+    color: rgb(68, 68, 68); 
     font-family: 'Open Sans Condensed', sans-serif; 
     font-size: 24px; 
     font-weight: 550; 
@@ -93,7 +95,7 @@ height:100%;
     margin: 0 auto;
     margin-bottom: 3%;
     width: 10%;
-    padding-top: 5px;
+    padding-top: 2px;
     border-bottom: 2.5px solid #f23a2e;
 }
 
