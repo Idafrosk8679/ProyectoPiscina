@@ -64,22 +64,114 @@ height:100%;
 
 /* Paginas equipos */
 
-#titulo-equipo{
-    margin: 0 auto;
-    margin-top: 4%;
-    text-align: center;
-    font-size: 26px;
-    font-family: sans-serif;
-    font-weight: bold;
-
-    background-color: lightgray;
-    border-radius: 25%;
-    width: 40%;
+.background-equipo{
+    background: rgb(246, 246, 246);
 }
 
-.card-historia{
+.separador-top{
+    visibility: hidden;
+    margin-bottom: 2.5%;
+}
+
+.separador-bottom{
+    visibility: hidden;
+    margin-top: 2.5%;
+}
+
+.titulo-seccion{
     margin: 0 auto;
-    margin-top: 5%;
+    padding-top: 10%;
+    color: #4D4D4D; 
+    font-family: 'Open Sans Condensed', sans-serif; 
+    font-size: 24px; 
+    font-weight: 550; 
+    line-height: 48px; 
+    padding: 0 30px; 
+    text-align: center; 
+    text-transform: uppercase;
+
+}
+
+.titulo-seccion:after {
+    content: ""; 
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 3%;
+    width: 10%;
+    padding-top: 5px;
+    border-bottom: 2.5px solid #f23a2e;
+}
+
+
+
+.row-equipo{
+    margin-bottom: 5%;
+}
+
+
+/* relevant styles */
+.img__wrap {
+    margin: 0 auto;
+    position: relative;
+    height: 217px;
+    width: 250px;
+}
+
+.img__img{
+    height: 200px;
+    width: 250px;
+}
+
+.img__title{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding-top: 20%;
+    background: rgba(223, 61, 61, 0.72);
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    visibility: hidden;
+    opacity: 0;
+
+    /* transition effect. not necessary */
+    transition: opacity .2s, visibility .2s;
+}
+
+.img__description {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 35%;
+    text-align: center;
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+
+    /* transition effect. not necessary */
+    transition: opacity .2s, visibility .2s;
+}
+
+.img__wrap:hover .img__description{
+    visibility: visible;
+    opacity: 1;
+}
+
+.img__wrap:hover .img__title{
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.text-white {
+    color: #fff!important;
 }
 
 
