@@ -1,4 +1,33 @@
 
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 2vh !important;
+  }
+}
+
+@media screen and (min-width: 601px) {
+  html {
+    font-size: 3vh !important;
+  }
+}
+
+
+
+
+
+@media screen and (max-width: 600px) {
+  .titulo-jb {
+    font-size: 5vh !important;
+  }
+}
+
+@media screen and (min-width: 601px) {
+  .titulo-jb {
+    font-size: 6.3vh !important;
+  }
+}
+
 header nav{
     background-color: #F23A2E;
     color: #ffffff;
@@ -22,9 +51,8 @@ height:100%;
 .titulo-fenixmanises{
     color: #ffffff;
     font-weight: bold;
+    font-size: 3vh !important;
     font-family: Trebuchet MS, sans-serif;
-    font-size: 30px;
-    
 }
 
 
@@ -38,6 +66,18 @@ height:100%;
 
 .nav-link.active{
     background-color: transparent !important;
+}
+
+@media screen and (max-width: 600px) {
+  .nav-link {
+    font-size: 2vh !important;
+  }
+}
+
+@media screen and (min-width: 601px) {
+  .nav-link {
+    font-size: 1.5vh !important;
+  }
 }
 
 
@@ -113,7 +153,7 @@ height:100%;
 }
 
 .img__img{
-  height: 300px;
+  height: 288px;
   width: 100%;
   max-width: 350px;
 }
@@ -124,6 +164,7 @@ height:100%;
     bottom: 0;
     left: 0;
     right: 0;
+    max-height: 289px;
     text-align: center;
     padding-top: 20%;
     background: rgba(223, 61, 61, 0.72);
@@ -180,7 +221,7 @@ height:100%;
 #wrap
 {
 min-height: 100%;
-padding-top: 75px;
+padding-top: 70px;
 }
 
 main
@@ -192,7 +233,7 @@ overflow:auto;
     background-image: url(/img/jb.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    height: 95vh;
     text-align: center;
 }
 
@@ -222,11 +263,13 @@ figure img {
   }
 
   .modal-content {
+    top: 10%;
     margin: auto;
     display: block;
-    width: 90%;
+    width: 60%;
     max-width: 700px;
-    height: 90%
+    max-height: 500px;
+    height: 60%;
   }
   
 
@@ -250,10 +293,11 @@ figure img {
 
   .close {
     position: relative;
-    float: right;
-    padding-right: 25px;
+    top: 10%;
+    left: 47%;
+    float: unset;
     color: #f1f1f1;
-    font-size: 40px;
+    font-size: 90px;
     font-weight: bold;
     transition: 0.3s;
   }
@@ -332,7 +376,7 @@ figure img {
 }
 
 .actividades p{
-  font-size: 20px;
+  
 }
 
 /*
@@ -348,11 +392,11 @@ figure img {
 */
 
 .img-ajustado{
-  width: 100%;
-  min-height: 90vh;
-  max-height: 1200px;
-  background-image: url("/img/p.jpg");
+  height: 100vh;
+  background-image: url(/img/p3.jpg);
   background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: right;
 }
 
 .equipo{

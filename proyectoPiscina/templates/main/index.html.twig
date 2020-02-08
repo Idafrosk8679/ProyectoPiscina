@@ -9,17 +9,17 @@
 
 	<div class="container-fluid">
 
-		<h1 class="text-uppercase text-bold">Eslogan</h1>
+		<h1 class="text-uppercase text-bold titulo-jb">Eslogan</h1>
 
 	</div>
 
 </div>
 
-<div class="container-fluid actividades">
+<div class="container-fluid actividades p-0 m-0">
 
-	<div class="row mb-5 pl-md-3 vh-100">
+	<div class="row pl-md-3 vh-100 m-0">
 
-		<div class="col-6 py-5 px-5 align-items-center row justify-content-between ">
+		<div class="col py-5 px-5 align-items-center row justify-content-between m-0">
 
 			<div class="col-12">
 				<p class="py-3">
@@ -49,31 +49,44 @@
 
 		</div>
 
-		<div class="col-6 img-ajustado">
+		<div class="col m-0 p-0">
+			<div class="img-ajustado">
 
+			</div>
 		</div>
 
 	</div>
 
-	<div class="row py-3 px-3 px-md-5 align-items-center justify-content-center background-equipo vh-100">
+	<div class="row py-3 px-3 px-md-5 align-items-center justify-content-center background-equipo vh-100 m-0">
 
-		<div class="col-6 col-md-9 order-1 order-md-0 mb-5">
 
-			<p>
-				Gracias al <strong>prestigio</strong> que nos hemos ganado, el club está <strong>creciendo</strong> a un
-				gran ritmo.
-			</p>
-			<p>
+		<div class="col-6 col-md-9 pt-4 col-xs-6 order-1 order-md-0 mb-5 align-items-center row justify-content-between m-0">
 
-				El club está inscrito en la federación de la <strong>Comunidad Valenciana</strong> y participa en las
-				<strong>ligas provinciales y autonómicas</strong>, algunos de nuestros nadadores compiten a<strong>
-					nivel nacional</strong> .
-			</p>
+			<div class="col-12">
+				<p>
+					Gracias al <strong>prestigio</strong> que nos hemos ganado, el club está <strong>creciendo</strong>
+					a un
+					gran ritmo.
+				</p>
+			</div>
 
-			<p>
-				El club ya ha enviado nadadores a los campeonatos de <strong>España</strong> representando a la
-				<strong>Comunidad Valenciana</strong>.
-			</p>
+			<div class="col-12">
+				<p>
+
+					El club está inscrito en la federación de la <strong>Comunidad Valenciana</strong> y participa en
+					las
+					<strong>ligas provinciales y autonómicas</strong>, algunos de nuestros nadadores compiten a<strong>
+						nivel nacional</strong> .
+				</p>
+			</div>
+
+			<div class="col-12">
+				<p>
+					El club ya ha enviado nadadores a los campeonatos de <strong>España</strong> representando a la
+					<strong>Comunidad Valenciana</strong>.
+				</p>
+			</div>
+
 
 		</div>
 
@@ -100,7 +113,7 @@
 
 					{% if imagenes[numImg]|spaceless != ''  %}
 
-					<figure class="col-md-3 d-md-inline-block">
+					<figure class="col-12 col-md-3 d-md-inline-block">
 						<img src="/img/muestra/{{ imagenes[numImg] }}" class="img-fluid">
 					</figure>
 
