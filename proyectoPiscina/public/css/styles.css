@@ -105,15 +105,17 @@ height:100%;
 }
 
 .img__wrap {
-    margin: 0 auto;
-    position: relative;
-    height: 317px;
-    width: 350px;
+  margin: 0 auto;
+  position: relative;
+  height: 317px;
+  width: 100%;
+  max-width: 350px;
 }
 
 .img__img{
-    height: 300px;
-    width: 350px;
+  height: 300px;
+  width: 100%;
+  max-width: 350px;
 }
 
 .img__title{
@@ -333,6 +335,7 @@ figure img {
   font-size: 20px;
 }
 
+/*
 .carousel figure>img{
   width: 255px;
   height: 255px;
@@ -342,6 +345,7 @@ figure img {
   min-height: 255px !important;
   max-height: 500px !important;
 }
+*/
 
 .img-ajustado{
   width: 100%;
