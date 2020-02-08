@@ -17,26 +17,35 @@
 
 <div class="container-fluid actividades">
 
-	<div class="row mb-5 pl-md-3">
+	<div class="row mb-5 pl-md-3 vh-100">
 
-		<div class="col-6 py-5 px-5 align-items-center">
+		<div class="col-6 py-5 px-5 align-items-center row justify-content-between ">
 
-			<p class="py-3">
-				En <strong>Enero de 2011</strong> un grupo de padres decidieron formar un club de natación en Manises,
-				el club <strong>Fenix
-					Manises</strong> .
-			</p>
-			<p class="py-3">
-				Ante la ausencia de un club de natación en <strong>Manises</strong> muchos maniseros buscaron otro club
-				en poblaciones cercanas.
-			</p>
+			<div class="col-12">
+				<p class="py-3">
+					En <strong>Enero de 2011</strong> un grupo de padres decidieron formar un club de natación en
+					Manises,
+					el club <strong>Fenix
+						Manises</strong> .
+				</p>
+			</div>
 
-			<p class="py-3">
-				Todas las gestiones fueron realizadas en tiempo record, gracias a la <strong>concejalía de
-					deportes</strong> y a la
-				dirección de la <strong>Piscina Municipal de Manises</strong>.
+			<div class="col-12">
+				<p class="py-3">
+					Ante la ausencia de un club de natación en <strong>Manises</strong> muchos maniseros buscaron otro
+					club
+					en poblaciones cercanas.
+				</p>
+			</div>
 
-			</p>
+			<div class="col-12">
+				<p class="py-3">
+					Todas las gestiones fueron realizadas en tiempo record, gracias a la <strong>concejalía de
+						deportes</strong> y a la
+					dirección de la <strong>Piscina Municipal de Manises</strong>.
+
+				</p>
+			</div>
 
 		</div>
 
@@ -46,10 +55,10 @@
 
 	</div>
 
-	<div class="row py-3 px-3 px-md-5 align-items-center justify-content-center background-equipo">
+	<div class="row py-3 px-3 px-md-5 align-items-center justify-content-center background-equipo vh-100">
 
 		<div class="col-6 col-md-9 order-1 order-md-0 mb-5">
-			
+
 			<p>
 				Gracias al <strong>prestigio</strong> que nos hemos ganado, el club está <strong>creciendo</strong> a un
 				gran ritmo.
@@ -58,7 +67,7 @@
 
 				El club está inscrito en la federación de la <strong>Comunidad Valenciana</strong> y participa en las
 				<strong>ligas provinciales y autonómicas</strong>, algunos de nuestros nadadores compiten a<strong>
-				nivel nacional</strong> .
+					nivel nacional</strong> .
 			</p>
 
 			<p>
@@ -70,12 +79,13 @@
 
 
 
-		<div class="col-6 col-md-12 order-0 order-md-1 carousel slide carousel-multi-item mb-3" id="carousel-with-lb"  data-ride="carousel">
+		<div class="col-6 col-md-12 order-0 order-md-1 carousel slide carousel-multi-item mb-3" id="carousel-with-lb"
+			data-ride="carousel">
 
 			{% set itemsPerpage = 3 %}
 			{% set numPages = imagenes|length / itemsPerpage %}
 
-			
+
 
 
 			<div class="carousel-inner mdb-lightbox" role="listbox">
@@ -119,9 +129,9 @@
 
 			</ol>
 
-			</div>
 		</div>
 	</div>
+</div>
 
 </div>
 {% endblock %}

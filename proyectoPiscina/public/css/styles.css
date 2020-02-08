@@ -192,7 +192,7 @@ overflow:auto;
     background-image: url(/img/jb.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 600px;
+    height: 100vh;
     text-align: center;
 }
 
@@ -364,4 +364,8 @@ figure img {
 }
 .carousel-indicators{
     position: inherit;
+}
+
+.vh-100{
+height: 100vh;
 }
