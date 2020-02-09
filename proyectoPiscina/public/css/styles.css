@@ -251,8 +251,7 @@ figure img {
   .modal {
     display: none; 
     position: fixed;
-    z-index: 13; 
-    padding-top: 150px;
+    padding-top: 15%;
     left: 0;
     top: 0;
     width: 100%;
@@ -263,13 +262,12 @@ figure img {
   }
 
   .modal-content {
-    top: 10%;
     margin: auto;
     display: block;
-    width: 60%;
-    max-width: 700px;
-    max-height: 500px;
-    height: 60%;
+    width: 70%;
+    max-width: 600px;
+    max-height: 600px;
+    height: 70%
   }
   
 
@@ -293,8 +291,8 @@ figure img {
 
   .close {
     position: relative;
-    top: 10%;
-    left: 47%;
+    top: 30px;
+    left: 46%;
     float: unset;
     color: #f1f1f1;
     font-size: 90px;
@@ -304,7 +302,7 @@ figure img {
   
   .close:hover,
   .close:focus {
-    color: #bbb;
+    color: #F0050A;
     text-decoration: none;
     cursor: pointer;
   }
@@ -315,6 +313,8 @@ figure img {
       width: 100%;
     }
   }
+
+
 .nav-vertical a:link, .nav-vertical a:visited{
     color: #ffffff !important;
 }
