@@ -5,23 +5,48 @@
 
 {% block body %}
 
-<body style="background-color:rgb(223, 223, 223);">
 
 
-<div class="background-login"></div>
-<form class="login-form" action="">
-    <div id="login-caja">
-    <p class="login-title">Iniciar sesión</p>
+
+<div class="background-login container-fluid">
+
+    <div class="row d-flex justify-content-center align-items-center h-100">
+
+        <div class="col-8">
+            <div class="row">
+
+                <form class="login-form" action="">
+
+                    <div class="col-12 pl-0">
+
+                        <div class="row">
+                            <div class="col-1" id="login-caja"></div>
+                            <div class="col-10 col-md-11 d-flex justify-content-center align-items-center">
+                                <p class="login-title">Iniciar sesión</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-12">
+                        <input class="login-input py-2" type="text" name="nombre" placeholder="Usuario">
+                    </div>
+                    <div class="col-12">
+                        <input class="login-input py-2" type="text" name="password" placeholder="Contraseña">
+                    </div>
+                    <div class="col-12">
+                        <input class="login-submit py-3" type="submit" value="Entrar">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
     </div>
-    <input class="login-input" type="text" name="nombre" placeholder="nombre">
-    <br>
-    <input class="login-input" type="text" name="password" placeholder="contraseña">
-    <br><br>
-    <input class="login-submit" type="submit" value="Entrar">
-    <br><br>
-</form> 
 
 
 
-</body>
+
+</div>
+
 {% endblock %}
