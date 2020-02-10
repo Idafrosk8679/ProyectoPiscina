@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}
+{% endblock %}
+
+{% block body %}
+
+<body style="background-color:rgb(223, 223, 223);">
+
+
+<div class="background-login"></div>
+<form class="login-form" action="">
+    <div id="login-caja">
+    <p class="login-title">Iniciar sesión</p>
+    </div>
+    <input class="login-input" type="text" name="nombre" placeholder="nombre">
+    <br>
+    <input class="login-input" type="text" name="password" placeholder="contraseña">
+    <br><br>
+    <input class="login-submit" type="submit" value="Entrar">
+    <br><br>
+    <p class="login-help">¿Eres subnormal? <a href="" class="login-href">Pulsa aquí.</a></p>
+</form> 
+
+
+
+</body>
+{% endblock %}
