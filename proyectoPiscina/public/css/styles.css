@@ -1,30 +1,26 @@
 
 
 @media screen and (max-width: 600px) {
-  html {
-    font-size: 2vh !important;
+
+  .actividades {
+    font-size: 1.21rem !important;
   }
+  .titulo-jb {
+    font-size: 3rem !important;
+  }
+
+  h2#app{
+    font-size: 1.5rem !important;
+  }
+
 }
 
 @media screen and (min-width: 601px) {
-  html {
-    font-size: 3vh !important;
+  .actividades {
+    font-size: 1.45rem !important;
   }
-}
-
-
-
-
-
-@media screen and (max-width: 600px) {
   .titulo-jb {
-    font-size: 5vh !important;
-  }
-}
-
-@media screen and (min-width: 601px) {
-  .titulo-jb {
-    font-size: 6.3vh !important;
+    font-size: 4.5rem !important;
   }
 }
 
@@ -51,7 +47,7 @@ height:100%;
 .titulo-fenixmanises{
     color: #ffffff;
     font-weight: bold;
-    font-size: 3vh !important;
+    font-size: 1.65rem !important;
     font-family: Trebuchet MS, sans-serif;
 }
 
@@ -62,24 +58,13 @@ height:100%;
     color: #000000;
 }
 
-
+.nav-link {
+  font-size: 0.83rem !important;
+}
 
 .nav-link.active{
     background-color: transparent !important;
 }
-
-@media screen and (max-width: 600px) {
-  .nav-link {
-    font-size: 2vh !important;
-  }
-}
-
-@media screen and (min-width: 601px) {
-  .nav-link {
-    font-size: 1.5vh !important;
-  }
-}
-
 
 /* General */
 
@@ -141,7 +126,7 @@ height:100%;
 
 /* Estilos de las imagenes */
 .row-equipo{
-    margin-bottom: 5%;
+    margin-top: 5%;
 }
 
 .img__wrap {
@@ -375,10 +360,6 @@ figure img {
   background-image: url("/img/a.png");
 }
 
-.actividades p{
-  
-}
-
 /*
 .carousel figure>img{
   width: 255px;
@@ -408,8 +389,4 @@ figure img {
 }
 .carousel-indicators{
     position: inherit;
-}
-
-.vh-100{
-height: 100vh;
 }
