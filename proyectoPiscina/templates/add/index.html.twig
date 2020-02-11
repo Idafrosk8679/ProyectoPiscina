@@ -1,0 +1,15 @@
+{% extends 'layoutApp.html.twig' %}
+
+{% block title %}Hello AddController!{% endblock %}
+
+{% block main %}
+
+<h1>Crear un usuario</h1>
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+
+<a href="{{ path('app_add') }}">Atrás</a>
+{% endblock %}

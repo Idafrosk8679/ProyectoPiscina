@@ -3,18 +3,52 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block main %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/2daw/Documents/ProyectoPiscina/proyectoPiscina/src/Controller/AppController.php'|file_link(0) }}">src/Controller/AppController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/2daw/Documents/ProyectoPiscina/proyectoPiscina/templates/app/index.html.twig'|file_link(0) }}">templates/app/index.html.twig</a></code></li>
-    </ul>
-</div>
+<h1>Usuarios index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apelllidos</th>
+                <th>Foto</th>
+                <th>FechaNac</th>
+                <th>Grupo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            {% if user.rol == 'junta' or user.rol == 'admin' %}
+                {% set filtro = '' %}
+            {% endif %}
+
+            {% if user.rol == 'entrenador' or user.rol == 'admin' %}
+                {% set filtro = 'junta' %}
+            {% endif %}
+
+        {% for usuario in data["usuarios"] %}
+
+            {% if usuario.rol.nombre != filtro and usuario.dni != user.dni %}
+            <tr>
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.apelllidos }}</td>
+                <td>{{ usuario.rol.nombre }}</td>
+                <td>{{ usuario.foto }}</td>
+                <td>{{ usuario.fechaNac }}</td>
+                <td>
+                    <a href="{{ path('usuarios_show', {'dni': usuario.dni}) }}">show</a>
+                    <a href="{{ path('usuarios_edit', {'dni': usuario.dni}) }}">edit</a>
+                </td>
+            </tr>
+            {% endif %}
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

@@ -3,7 +3,7 @@
 {% block body %}
 <header class="header">
 	<nav class="navbar navbar-expand-md nav nav-justified nav-pills nav-tabs fixed-top">
-		<a class="navbar-brand pl-lg-5 pl-md-4 pl-sm-3 mr-lg-3 mr-md-2 mr-sm-0" href="{{ path('eventos') }}">
+		<a class="navbar-brand pl-lg-5 pl-md-4 pl-sm-3 mr-lg-3 mr-md-2 mr-sm-0" href="{{ path('main_eventos') }}">
 			<img src="{{ asset ('logo.jpg', 'logos')}}" height="50" alt="mdb logo">
 			<a class="titulo-fenixmanises">FENIX MANISES</a>
 		</a>
@@ -17,15 +17,15 @@
 				{% set currentPath = app.request.attributes.get('_route') %}
 				<li class="nav-item active">
 					<a class="nav-link nav-item text-white text-uppercase font-weight-bold {% if currentPath == 'main' %} active{% endif %}"
-						href="{{ path('main') }}">Actividades</a>
+						href="{{ path('main_index') }}">Inicio</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link text-white text-uppercase font-weight-bold {% if currentPath == 'equipo' %} active{% endif %}"
-						href="{{ path('equipo') }}">Equipo</a>
+						href="{{ path('main_equipo') }}">Equipo</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link text-white text-uppercase font-weight-bold {% if currentPath == 'eventos' %} active{% endif %}"
-						href="{{ path('eventos') }}">Eventos</a>
+						href="{{ path('main_eventos') }}">Eventos</a>
 				</li>
 			</ul>
 		</div>
