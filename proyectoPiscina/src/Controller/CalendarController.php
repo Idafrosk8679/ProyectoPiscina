@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CalendarController extends AbstractController
 {
     /**
-     * @Route("/app", name="calendar")
+     * @Route("/calendar", name="calendar")
      */
     public function index()
     {
@@ -20,3 +20,4 @@ class CalendarController extends AbstractController
 }
 
 ?>
+
