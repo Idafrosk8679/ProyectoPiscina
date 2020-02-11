@@ -5,36 +5,34 @@
 	<div class="row h-100">
 
 		<div class="col-12 p-0">
-			<header>
-				<nav class="navbar nav navbar-expand-md">
+			<header class="header">
+				<nav class="navbar nav navbar-expand-lg">
 					<div class="row w-100">
-						<div class="col-0 d-flex align-items-center justify-content-center">
+						<div class="col-12 col-lg-10 d-flex align-items-center">
 							<button class="navbar-toggler navbar-light" type="button" data-toggle="collapse"
 								data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 								aria-expanded="false" aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon"></span>
 							</button>
-						</div>
+						
 
-						<div class="col-2">
+						
 							<a class="navbar-brand pl-lg-5 pl-md-4 pl-sm-3 mr-lg-3 mr-md-2 mr-sm-0"
-								href="{{ path('eventos') }}">
-								<img src="/img/logoR.png" height="70" alt="mdb logo">
-							</a>
-						</div>
+								href="{{ path('main') }}">
+								<img src="{{ asset ('logoR.png', 'logos')}}" height="70" alt="mdb logo">
+								<h2 id="app">FENIX MANISES</h2>
+							</a>					
+</div>
 
-						<div class="col-8 d-flex align-items-center justify-content-center">
-							<h2>FENIX MANISES</h2>
-						</div>
 
-						<div class="col-12 col-md-2 d-flex align-items-center justify-content-center">
+						<div class="col-12 col-md-12 col-lg-2 d-flex align-items-center justify-content-center">
 							<h5>Hola usuario *</h5>
 						</div>
 					</div>
 			</header>
 		</div>
 
-		<div class="col-12 col-md-2 nav-vertical navbar-collapse text-center text-lg-left collapse show"
+		<div class="col-12 col-md-12 col-lg-2 nav-vertical navbar-collapse text-center text-lg-left collapse show"
 			id="navbarSupportedContent">
 
 			<ul class="nav flex-column p-4">
@@ -57,7 +55,7 @@
 
 		</div>
 
-		<div class="col-10" id="wrap">
+		<div class="col-12 col-md-12 col-lg-10 d-flex justify-content-center" id="wrap">
 			<main>
 				{% block main %}{% endblock %}
 			</main>

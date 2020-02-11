@@ -14,3 +14,18 @@ framework:
     #fragments: true
     php_errors:
         log: true
+
+    assets:
+        packages:
+
+            logos:
+                base_path: '/img/logos'
+
+            img:
+                base_path: '/img'
+
+            muestra:
+                base_path: '/img/muestra'
+
+            fotos:
+                base_path: '/img/fotos'
