@@ -36,7 +36,7 @@ class LoginAuthAuthenticator extends AbstractFormLoginAuthenticator
     public function supports(Request $request)
     {
         return 'app_login' === $request->attributes->get('_route')
-            && $request->isMethod('POST');
+        && $request->isMethod('POST');
     }
 
     public function getCredentials(Request $request)
@@ -78,9 +78,9 @@ class LoginAuthAuthenticator extends AbstractFormLoginAuthenticator
 
         //throw new \Exception('TODO: check the credentials inside '.__FILE__);
 
-
         $password = $credentials['password'];
         if ($password == $user->getPassword()) {
+            $_SESSION['dni'] = $credentials['dni'];
             return true;
         }
         return false;
@@ -89,10 +89,12 @@ class LoginAuthAuthenticator extends AbstractFormLoginAuthenticator
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
         /*if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
-            return new RedirectResponse($targetPath);
+        return new RedirectResponse($targetPath);
         }*/
 
-        return new RedirectResponse ($this->urlGenerator->generate('app'));
+        //session_start();
+
+        return new RedirectResponse($this->urlGenerator->generate('app'));
 
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
         //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);

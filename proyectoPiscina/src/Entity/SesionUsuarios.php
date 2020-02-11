@@ -48,5 +48,46 @@ class SesionUsuarios
      */
     private $dni;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getAsistencia(): ?int
+    {
+        return $this->asistencia;
+    }
+
+    public function setAsistencia(?int $asistencia): self
+    {
+        $this->asistencia = $asistencia;
+
+        return $this;
+    }
+
+    public function getIdSesion(): ?Sesion
+    {
+        return $this->idSesion;
+    }
+
+    public function setIdSesion(?Sesion $idSesion): self
+    {
+        $this->idSesion = $idSesion;
+
+        return $this;
+    }
+
+    public function getDni(): ?Usuarios
+    {
+        return $this->dni;
+    }
+
+    public function setDni(?Usuarios $dni): self
+    {
+        $this->dni = $dni;
+
+        return $this;
+    }
+
 
 }

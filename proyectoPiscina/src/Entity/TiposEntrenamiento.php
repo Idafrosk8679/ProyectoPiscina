@@ -21,5 +21,10 @@ class TiposEntrenamiento
      */
     private $tipo = '';
 
+    public function getTipo(): ?string
+    {
+        return $this->tipo;
+    }
+
 
 }

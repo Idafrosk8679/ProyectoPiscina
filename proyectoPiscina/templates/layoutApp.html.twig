@@ -14,22 +14,19 @@
 								aria-expanded="false" aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon"></span>
 							</button>
-						
 
-						
+
+
 							<a class="navbar-brand pl-lg-5 pl-md-4 pl-sm-3 mr-lg-3 mr-md-2 mr-sm-0"
 								href="{{ path('main') }}">
 								<img src="{{ asset ('logoR.png', 'logos')}}" height="70" alt="mdb logo">
 								<h2 id="app">FENIX MANISES</h2>
 							</a>
-						
 
-						
-							
-						
-</div>
+
+						</div>
 						<div class="col-12 col-md-12 col-lg-2 d-flex align-items-center justify-content-center">
-							<h5>Hola usuario *</h5>
+							<h5>Hola {{ user.nombre }}</h5>
 						</div>
 					</div>
 			</header>
@@ -42,12 +39,16 @@
 				<li class="nav-item">
 					<a class="nav-link" href="#">Calendario</a>
 				</li>
+
+				{% if user.rol = 'usuario' %}
 				<li class="nav-item">
 					<a class="nav-link" href="#">Físico</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Tiempos</a>
 				</li>
+				{% endif %}
+				
 				<li class="nav-item">
 					<a class="nav-link" href="#">Editar perfil</a>
 				</li>
