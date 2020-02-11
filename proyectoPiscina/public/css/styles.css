@@ -391,6 +391,14 @@ figure img {
     position: inherit;
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+.vh-100{
+height: 100vh;
+}
+=======
+>>>>>>> Julio
 
 /* Pagina Login */
 
@@ -470,4 +478,9 @@ figure img {
   text-decoration: none;
   color: #d83d32;
   font-weight: bold;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 2868dbc38070bfe13d6f5a4d3c7a7abc02e07f8f
+>>>>>>> Julio
