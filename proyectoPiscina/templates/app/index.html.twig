@@ -5,6 +5,8 @@
 {% block main %}
 
 
+{% if user.rol != 'usuario' %}
+    
 <h1>Usuarios index</h1>
 
     <table class="table">
@@ -51,4 +53,7 @@
         {% endfor %}
         </tbody>
     </table>
+    
+{% endif %}
+
 {% endblock %}
