@@ -9,19 +9,19 @@
 {{ form_start(form) }}
 
     <label for="">DNI</label>
-    {{ form_widget(form.dni) }}
+    {{ form_widget(form.dni, {'attr':{'class':''} }) }}
     <label for="">Password</label>
-    {{ form_widget(form.pass) }}
+    {{ form_widget(form.pass, {'attr':{'class':'message'} }) }}
     <label for="">Nombre</label>
-    {{ form_widget(form.nombre) }}
+    {{ form_widget(form.nombre, {'attr':{'class':'message'} }) }}
     <label for="">Apellidos</label>
-    {{ form_widget(form.apelllidos) }}
+    {{ form_widget(form.apelllidos, {'attr':{'class':'message'} }) }}
     <label for="">Foto</label>
-    {{ form_widget(form.foto) }}
+    {{ form_widget(form.foto, {'attr':{'class':'message'} }) }}
     <label for="">Fecha de nacimiento</label>
-    {{ form_widget(form.fechaNac) }}
+    {{ form_widget(form.fechaNac, {'attr':{'class':'message'} }) }}
     <label for="">Rol</label>
-    {{ form_widget(form.rol) }}
+    {{ form_widget(form.rol, {'attr':{'class':'message'} }) }}
 
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
