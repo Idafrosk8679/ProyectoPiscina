@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * @Route("/app", name="app")
@@ -21,21 +23,19 @@ class AppController extends AbstractController
 
     private $entityManager;
     private $user;
+    private $urlGenerator;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator)
     {
         $this->entityManager = $entityManager;
+        $this->urlGenerator = $urlGenerator;
 
-       /* if (session_status() != 2 ) {
-             session_start();
-        }*/
-       
-
-        if (isset($_SESSION['dni'])) { 
-            return $this->user = $this->entityManager->getRepository(Usuarios::class)->findOneBy(['dni' => $_SESSION['dni']]);
-        } else {
-            return $this->redirectToRoute('main_index');
+        if(session_status() != 2){
+            session_start();
         }
+
+            return $this->user = $this->entityManager->getRepository(Usuarios::class)->findOneBy(['dni' => $_SESSION['dni']]);
+        
 
     }
 
@@ -45,8 +45,6 @@ class AppController extends AbstractController
     public function index()
     {
         $data["usuarios"] = $this->getUsuarios();
-
-        var_dump(session_status());
 
         return $this->render('app/index.html.twig', [
             'title' => 'App',

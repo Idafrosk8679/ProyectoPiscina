@@ -35,7 +35,7 @@ class AuthController extends AbstractController
      */
     public function logout()
     {
-        unset($_SESSION['dni']);
+        session_unset();
 
         throw new \Exception('This method can be blank - it will be intercepted by the logout key on your firewall');
     }
