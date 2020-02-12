@@ -482,3 +482,10 @@ height: 100vh;
   color: #d83d32;
   font-weight: bold;
 }
+
+#app{
+  text-decoration: none;
+  color:white;
+  margin-left: 50%;
+  margin-top: -25%;
+}
