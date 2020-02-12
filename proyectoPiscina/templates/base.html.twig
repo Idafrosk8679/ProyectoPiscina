@@ -8,13 +8,13 @@
 		</title>
 		<link rel="icon" type="image/png" href="{{ asset ('logoR.png', 'logos')}}">
 		{% block stylesheets %}
-			<link rel="stylesheet" href="css/bootstrap.min.css">
-			<link rel="stylesheet" href="css/styles.css">
-			<script src="js/jquery-3.4.1.min.js"></script>
-			<script src="js/bootstrap.min.js"></script>
-			<script src="js/script.js"></script>
-			<script src="js/script-app.js"></script>
-			<script src="js/iconos.js" crossorigin="anonymous"></script>
+			<link rel="stylesheet" href="{{ asset ('bootstrap.min.css', 'css')}}">
+			<link rel="stylesheet" href="{{ asset ('styles.css', 'css')}}">
+			<script src="{{ asset ('jquery-3.4.1.min.js', 'js')}}"></script>
+			<script src="{{ asset ('bootstrap.min.js', 'js')}}"></script>
+			<script src="{{ asset ('script.js', 'js')}}"></script>
+			<script src="{{ asset ('script-app.js', 'js')}}"></script>
+			<script src="{{ asset ('iconos.js', 'js')}}" crossorigin="anonymous"></script>
 			
 		{% endblock %}
 	</head>

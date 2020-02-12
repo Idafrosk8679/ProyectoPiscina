@@ -1,0 +1,30 @@
+{% extends 'layoutApp.html.twig' %}
+
+{% block title %}Hello AddController!{% endblock %}
+
+{% block main %}
+
+<h1>Crear un usuario</h1>
+
+{{ form_start(form) }}
+
+    <label for="">DNI</label>
+    {{ form_widget(form.dni, {'attr':{'class':''} }) }}
+    <label for="">Password</label>
+    {{ form_widget(form.pass, {'attr':{'class':'message'} }) }}
+    <label for="">Nombre</label>
+    {{ form_widget(form.nombre, {'attr':{'class':'message'} }) }}
+    <label for="">Apellidos</label>
+    {{ form_widget(form.apelllidos, {'attr':{'class':'message'} }) }}
+    <label for="">Foto</label>
+    {{ form_widget(form.foto, {'attr':{'class':'message'} }) }}
+    <label for="">Fecha de nacimiento</label>
+    {{ form_widget(form.fechaNac, {'attr':{'class':'message'} }) }}
+    <label for="">Rol</label>
+    {{ form_widget(form.rol, {'attr':{'class':'message'} }) }}
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+
+<a href="{{ path('app_add') }}">Atrás</a>
+{% endblock %}

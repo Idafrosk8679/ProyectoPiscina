@@ -134,11 +134,10 @@ final class Versions
   'symfony/polyfill-php71' => '*@fd498d06c03485e28077a28dfff538c2e5f75fd3',
   'symfony/polyfill-php70' => '*@fd498d06c03485e28077a28dfff538c2e5f75fd3',
   'symfony/polyfill-php56' => '*@fd498d06c03485e28077a28dfff538c2e5f75fd3',
-<<<<<<< HEAD
+
   '__root__' => 'dev-Saul@fd498d06c03485e28077a28dfff538c2e5f75fd3',
-=======
-  '__root__' => 'dev-master@fd498d06c03485e28077a28dfff538c2e5f75fd3',
->>>>>>> fe09807ccee17bf9a21458225e3124acda97de00
+
+  '__root__' => 'dev-Saul@fd498d06c03485e28077a28dfff538c2e5f75fd3',
 );
 
     private function __construct()

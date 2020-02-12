@@ -1,49 +1,36 @@
-{% extends 'layoutApp.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}{{title}}{% endblock %}
+{% block title %}Usuarios index{% endblock %}
 
-{% block main %}
-
-
-<h1>Usuarios index</h1>
+{% block body %}
+    <h1>Usuarios index</h1>
 
     <table class="table">
         <thead>
             <tr>
+                <th>Dni</th>
                 <th>Nombre</th>
                 <th>Apelllidos</th>
                 <th>Foto</th>
                 <th>FechaNac</th>
-                <th>Grupo</th>
+                <th>Pass</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
-
-
-            {% if user.rol == 'junta' or user.rol == 'admin' %}
-                {% set filtro = '' %}
-            {% endif %}
-
-            {% if user.rol == 'entrenador' or user.rol == 'admin' %}
-                {% set filtro = 'junta' %}
-            {% endif %}
-
-        {% for usuario in data["usuarios"] %}
-
-            {% if usuario.rol.nombre != filtro and usuario.dni != user.dni %}
+        {% for usuario in usuarios %}
             <tr>
+                <td>{{ usuario.dni }}</td>
                 <td>{{ usuario.nombre }}</td>
                 <td>{{ usuario.apelllidos }}</td>
-                <td>{{ usuario.rol.nombre }}</td>
                 <td>{{ usuario.foto }}</td>
                 <td>{{ usuario.fechaNac }}</td>
+                <td>{{ usuario.pass }}</td>
                 <td>
                     <a href="{{ path('usuarios_show', {'dni': usuario.dni}) }}">show</a>
                     <a href="{{ path('usuarios_edit', {'dni': usuario.dni}) }}">edit</a>
                 </td>
             </tr>
-            {% endif %}
         {% else %}
             <tr>
                 <td colspan="7">no records found</td>
@@ -51,4 +38,6 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <a href="{{ path('usuarios_new') }}">Create new</a>
 {% endblock %}

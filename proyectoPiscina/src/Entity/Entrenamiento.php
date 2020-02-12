@@ -47,7 +47,7 @@ class Entrenamiento
      *
      * @ORM\Column(name="DescripciÃ³n", type="text", length=65535, nullable=true)
      */
-    private $descripciã³n;
+    private $descripciï¿½n;
 
     /**
      * @var \TiposEntrenamiento
@@ -58,6 +58,71 @@ class Entrenamiento
      * })
      */
     private $tipos;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getIdSesion(): ?int
+    {
+        return $this->idSesion;
+    }
+
+    public function setIdSesion(int $idSesion): self
+    {
+        $this->idSesion = $idSesion;
+
+        return $this;
+    }
+
+    public function getSeries(): ?string
+    {
+        return $this->series;
+    }
+
+    public function setSeries(?string $series): self
+    {
+        $this->series = $series;
+
+        return $this;
+    }
+
+    public function getMetros(): ?int
+    {
+        return $this->metros;
+    }
+
+    public function setMetros(?int $metros): self
+    {
+        $this->metros = $metros;
+
+        return $this;
+    }
+
+    public function getDescripciï¿½n(): ?string
+    {
+        return $this->descripciï¿½n;
+    }
+
+    public function setDescripciï¿½n(?string $descripciï¿½n): self
+    {
+        $this->descripciï¿½n = $descripciï¿½n;
+
+        return $this;
+    }
+
+    public function getTipos(): ?TiposEntrenamiento
+    {
+        return $this->tipos;
+    }
+
+    public function setTipos(?TiposEntrenamiento $tipos): self
+    {
+        $this->tipos = $tipos;
+
+        return $this;
+    }
 
 
 }
