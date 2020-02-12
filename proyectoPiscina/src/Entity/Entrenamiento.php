@@ -47,7 +47,7 @@ class Entrenamiento
      *
      * @ORM\Column(name="DescripciÃ³n", type="text", length=65535, nullable=true)
      */
-    private $descripciã³n;
+    private $descripciï¿½n;
 
     /**
      * @var \TiposEntrenamiento
@@ -100,14 +100,14 @@ class Entrenamiento
         return $this;
     }
 
-    public function getDescripciã³n(): ?string
+    public function getDescripciï¿½n(): ?string
     {
-        return $this->descripciã³n;
+        return $this->descripciï¿½n;
     }
 
-    public function setDescripciã³n(?string $descripciã³n): self
+    public function setDescripciï¿½n(?string $descripciï¿½n): self
     {
-        $this->descripciã³n = $descripciã³n;
+        $this->descripciï¿½n = $descripciï¿½n;
 
         return $this;
     }

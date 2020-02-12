@@ -110,7 +110,7 @@ class AppController extends AbstractController
     }
 
 
-    public function newUsuario(Request $request): Response
+    public function newUsuario(Request $request)
     {
         $usuario = new Usuarios();
 
