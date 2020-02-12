@@ -5,7 +5,16 @@
 {% block main %}
 
 
-{% if user.rol != 'usuario' %}
+
+
+{% if user.rol =='usuario' or user.rol =='entrenador' or user.rol == 'admin' %}
+    
+
+{% endif %}
+
+
+
+{% if user.rol !='usuario' %}
     
 <h1>Usuarios index</h1>
 
