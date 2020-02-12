@@ -392,6 +392,10 @@ figure img {
 }
 
 
+.vh-100{
+height: 100vh;
+}
+
 /* Pagina Login */
 
 .background-login{
@@ -470,4 +474,11 @@ figure img {
   text-decoration: none;
   color: #d83d32;
   font-weight: bold;
+}
+
+#app{
+  text-decoration: none;
+  color:white;
+  margin-left: 50%;
+  margin-top: -25%;
 }

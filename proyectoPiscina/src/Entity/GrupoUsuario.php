@@ -41,5 +41,34 @@ class GrupoUsuario
      */
     private $idUsuario;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getIdGrupo(): ?Grupos
+    {
+        return $this->idGrupo;
+    }
+
+    public function setIdGrupo(?Grupos $idGrupo): self
+    {
+        $this->idGrupo = $idGrupo;
+
+        return $this;
+    }
+
+    public function getIdUsuario(): ?Usuarios
+    {
+        return $this->idUsuario;
+    }
+
+    public function setIdUsuario(?Usuarios $idUsuario): self
+    {
+        $this->idUsuario = $idUsuario;
+
+        return $this;
+    }
+
 
 }

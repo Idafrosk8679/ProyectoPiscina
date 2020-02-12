@@ -14,22 +14,19 @@
 								aria-expanded="false" aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon"></span>
 							</button>
-						
 
-						
+
+
 							<a class="navbar-brand pl-lg-5 pl-md-4 pl-sm-3 mr-lg-3 mr-md-2 mr-sm-0"
-								href="{{ path('main') }}">
+								href="{{ path('main_index') }}">
 								<img src="{{ asset ('logoR.png', 'logos')}}" height="70" alt="mdb logo">
 								<h2 id="app">FENIX MANISES</h2>
 							</a>
-						
 
-						
-							
-						
-</div>
+
+						</div>
 						<div class="col-12 col-md-12 col-lg-2 d-flex align-items-center justify-content-center">
-							<h5>Hola usuario *</h5>
+							<h5>Hola {{ user.nombre }}</h5>
 						</div>
 					</div>
 			</header>
@@ -39,20 +36,43 @@
 			id="navbarSupportedContent">
 
 			<ul class="nav flex-column p-4">
+
 				<li class="nav-item">
 					<a class="nav-link" href="#">Calendario</a>
 				</li>
+
+				{% if user.rol == 'usuario' or user.rol == 'admin' %}
 				<li class="nav-item">
 					<a class="nav-link" href="#">Físico</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Tiempos</a>
 				</li>
+				{% endif %}
+
+				{% if user.rol == 'entrenador' or user.rol == 'junta' or user.rol == 'admin' %}
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_add') }}">Añadir</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_edit') }}">Modificar</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_remove') }}">Eliminar</a>
+				</li>
+				{% endif %}
+
+				{% if user.rol == 'junta' or user.rol == 'admin' %}
+				<li class="nav-item">
+					<a class="nav-link" href="#">Web</a>
+				</li>
+				{% endif %}
+
 				<li class="nav-item">
 					<a class="nav-link" href="#">Editar perfil</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Cerrar sesión</a>
+					<a class="nav-link" href="{{ path('app_logout') }}">Cerrar sesión</a>
 				</li>
 			</ul>
 

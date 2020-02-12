@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit GrupoUsuario{% endblock %}
+
+{% block body %}
+    <h1>Edit GrupoUsuario</h1>
+
+    {{ include('grupo_usuario/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('grupo_usuario_index') }}">back to list</a>
+
+    {{ include('grupo_usuario/_delete_form.html.twig') }}
+{% endblock %}

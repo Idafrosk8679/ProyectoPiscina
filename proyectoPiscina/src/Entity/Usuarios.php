@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Usuarios
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="usuarios", indexes={@ORM\Index(name="FK_usuarios_roles", columns={"rol"})})
  * @ORM\Entity
  */
-class Usuarios
+class Usuarios implements UserInterface, \Serializable
 {
     /**
      * @var string
@@ -65,6 +66,141 @@ class Usuarios
      * })
      */
     private $rol;
+
+
+    public function getNombre(): ?string
+    {
+        return $this->nombre;
+    }
+
+    public function setNombre(string $nombre): self
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    public function getApelllidos(): ?string
+    {
+        return $this->apelllidos;
+    }
+
+    public function setApelllidos(string $apelllidos): self
+    {
+        $this->apelllidos = $apelllidos;
+
+        return $this;
+    }
+
+    public function getFoto(): ?string
+    {
+        return $this->foto;
+    }
+
+    public function setFoto(?string $foto): self
+    {
+        $this->foto = $foto;
+
+        return $this;
+    }
+
+    public function getFechaNac(): ?string
+    {
+        return $this->fechaNac;
+    }
+
+    public function setFechaNac(?string $fechaNac): self
+    {
+        $this->fechaNac = $fechaNac;
+
+        return $this;
+    }
+
+    public function getRol(): ?Roles
+    {
+        return $this->rol;
+    }
+
+    public function setRol(?Roles $rol): self
+    {
+        $this->rol = $rol;
+
+        return $this;
+    }
+
+    public function getDni(): ?string
+    {
+        return $this->dni;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->dni;
+    }
+
+    public function getSalt()
+    {
+        // podrías necesitar un verdadero salt dependiendo del encoder
+        // ver la sección salt debajo
+        return null;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->pass;
+    }
+
+    public function setPassword(?string $pass): self
+    {
+        $this->pass = $pass;
+
+        return $this;
+    }
+
+    public function getPass(): ?string
+    {
+        return $this->pass;
+    }
+
+    public function setPass(?string $pass): self
+    {
+        $this->pass = $pass;
+
+        return $this;
+    }
+
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+    public function eraseCredentials()
+    {
+    }
+
+    /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->dni,
+            $this->nombre,
+            $this->pass,
+            // ver la sección salt debajo
+            // $this->salt,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->dni,
+            $this->nombre,
+            $this->pass,
+            // ver la sección salt debajo
+            // $this->salt
+        ) = unserialize($serialized);
+    }
 
 
 }

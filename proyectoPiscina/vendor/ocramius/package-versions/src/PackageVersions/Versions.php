@@ -134,6 +134,9 @@ final class Versions
   'symfony/polyfill-php71' => '*@fd498d06c03485e28077a28dfff538c2e5f75fd3',
   'symfony/polyfill-php70' => '*@fd498d06c03485e28077a28dfff538c2e5f75fd3',
   'symfony/polyfill-php56' => '*@fd498d06c03485e28077a28dfff538c2e5f75fd3',
+
+  '__root__' => 'dev-Saul@fd498d06c03485e28077a28dfff538c2e5f75fd3',
+
   '__root__' => 'dev-Saul@fd498d06c03485e28077a28dfff538c2e5f75fd3',
 );
 

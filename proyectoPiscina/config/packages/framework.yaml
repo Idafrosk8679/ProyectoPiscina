@@ -29,3 +29,9 @@ framework:
 
             fotos:
                 base_path: '/img/fotos'
+
+            css:
+                base_path: '/css'
+
+            js:
+                base_path: '/js'

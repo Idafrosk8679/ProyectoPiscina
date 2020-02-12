@@ -52,5 +52,58 @@ class Fisico
      */
     private $dni;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getAltura(): ?float
+    {
+        return $this->altura;
+    }
+
+    public function setAltura(float $altura): self
+    {
+        $this->altura = $altura;
+
+        return $this;
+    }
+
+    public function getPeso(): ?float
+    {
+        return $this->peso;
+    }
+
+    public function setPeso(float $peso): self
+    {
+        $this->peso = $peso;
+
+        return $this;
+    }
+
+    public function getFechaInserc(): ?\DateTimeInterface
+    {
+        return $this->fechaInserc;
+    }
+
+    public function setFechaInserc(\DateTimeInterface $fechaInserc): self
+    {
+        $this->fechaInserc = $fechaInserc;
+
+        return $this;
+    }
+
+    public function getDni(): ?Usuarios
+    {
+        return $this->dni;
+    }
+
+    public function setDni(?Usuarios $dni): self
+    {
+        $this->dni = $dni;
+
+        return $this;
+    }
+
 
 }
