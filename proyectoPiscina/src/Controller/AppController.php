@@ -92,13 +92,6 @@ class AppController extends AbstractController
     }
 
 
-
-
-
-
-
-
-
     public function getUsuarios()
     {
         $usuarios = $this->getDoctrine()

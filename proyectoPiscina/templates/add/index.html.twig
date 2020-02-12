@@ -7,7 +7,22 @@
 <h1>Crear un usuario</h1>
 
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+
+    <label for="">DNI</label>
+    {{ form_widget(form.dni) }}
+    <label for="">Password</label>
+    {{ form_widget(form.pass) }}
+    <label for="">Nombre</label>
+    {{ form_widget(form.nombre) }}
+    <label for="">Apellidos</label>
+    {{ form_widget(form.apelllidos) }}
+    <label for="">Foto</label>
+    {{ form_widget(form.foto) }}
+    <label for="">Fecha de nacimiento</label>
+    {{ form_widget(form.fechaNac) }}
+    <label for="">Rol</label>
+    {{ form_widget(form.rol) }}
+
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
 
