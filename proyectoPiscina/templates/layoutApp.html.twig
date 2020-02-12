@@ -52,13 +52,13 @@
 
 				{% if user.rol == 'entrenador' or user.rol == 'junta' or user.rol == 'admin' %}
 				<li class="nav-item">
-					<a class="nav-link" href="{{ path('app_add') }}">Añadir</a>
+					<a class="nav-link" href="{{ path('app_gestion_usuarios') }}">Gestión Usuarios</a>
 				</li>
+				{% endif %}
+
+				{% if user.rol == 'junta' %}
 				<li class="nav-item">
-					<a class="nav-link" href="{{ path('app_edit') }}">Modificar</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('app_remove') }}">Eliminar</a>
+					<a class="nav-link" href="{{ path('app_gestion_web') }}">Gestión Web</a>
 				</li>
 				{% endif %}
 

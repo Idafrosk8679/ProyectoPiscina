@@ -1,8 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutApp.html.twig' %}
 
 {% block title %}Usuarios{% endblock %}
 
-{% block body %}
+{% block main %}
     <h1>Usuarios</h1>
 
     <table class="table">
@@ -24,8 +24,8 @@
                 <td>{{ usuario.foto }}</td>
             </tr>
             <tr>
-                <th>FechaNac</th>
-                <td>{{ usuario.fechaNac }}</td>
+                <th>Fecha de nacimiento</th>
+                <td>{{ usuario.fechaNac ? usuario.fechaNac|date('d-m-Y') : '' }}</td>
             </tr>
             <tr>
                 <th>Pass</th>
@@ -34,9 +34,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('usuarios_index') }}">back to list</a>
+    <a href="{{ path('app_gestion_usuarios') }}">Atrás</a>
 
-    <a href="{{ path('usuarios_edit', {'dni': usuario.dni}) }}">edit</a>
+    <a href="{{ path('app_usuarios_edit', {'dni': usuario.dni}) }}">Editar</a>
 
     {{ include('usuarios/_delete_form.html.twig') }}
 {% endblock %}
