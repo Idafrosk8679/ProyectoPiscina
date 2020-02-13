@@ -249,10 +249,10 @@ figure img {
   .modal-content {
     margin: auto;
     display: block;
-    width: 70%;
+    width: 40%;
     max-width: 500px;
     max-height: 700px;
-    height: 70%
+    height: 90%
   }
   
 
@@ -420,7 +420,10 @@ height: 100vh;
   background-color: #fa4a3d;
   margin-bottom: 5%;
 }
-
+#login-caja > a{
+  color: #fff;
+  text-decoration: none;
+}
 @media screen and (max-width: 550px) {
   .login-title{
     font-size: 20px;
