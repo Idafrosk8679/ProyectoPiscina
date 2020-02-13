@@ -541,11 +541,8 @@ table.dataTable thead .sorting_desc_disabled:before {
 }
 
 .app-button1{
-  width: 30%;
   background-color: #ff5246;
   border-radius: 10em;
-  padding-left: 2%;
-  padding-right: 2%;
   border: none;
   -webkit-box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
   -moz-box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
@@ -553,11 +550,8 @@ table.dataTable thead .sorting_desc_disabled:before {
 }
 
 .app-button2{
-  width: 55%;
   background-color: #ff5246;
   border-radius: 10em;
-  padding-left: 2%;
-  padding-right: 2%;
   border: none;
   -webkit-box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
   -moz-box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);

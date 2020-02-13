@@ -48,7 +48,7 @@
             <td class="app-td">{{ usuario.fechaNac|date("d-m-Y") }}</td>
             <td class="app-td">
                 <button type="button" class="app-button1"><a class="app-href" href="{{ path('app_usuarios_show', {'dni': usuario.dni}) }}">Ver</a></button>
-                <button type="button" class="app-button2"><a class="app-href" href="{{ path('app_usuarios_edit', {'dni': usuario.dni}) }}">Modificar</a></button>
+                <button type="button" class="app-button2"><a class="app-href" href="{{ path('app_usuarios_edit', {'dni': usuario.dni}) }}">Editar</a></button>
             </td>
         </tr>
         {% endif %}
