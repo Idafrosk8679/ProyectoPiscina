@@ -11,20 +11,20 @@
 
 <h1>Usuarios</h1>
 <a href="{{ path('app_usuarios_new') }}">Añadir</a>
-<table id="dtBasicExample" class="table table-hover table-bordered table-sm" cellspacing="0" width="100%">
+<table id="dtBasicExample" class="app-table" cellspacing="0" width="100%">
     <thead>
         <tr>
-            <th class="th-sm">DNI
+            <th class="app-th">DNI
             </th>
-            <th class="th-sm">Nombre
+            <th class="app-th">Nombre
             </th>
-            <th class="th-sm">Apellidos
+            <th class="app-th">Apellidos
             </th>
-            <th class="th-sm">Rol
+            <th class="app-th">Rol
             </th>
-            <th class="th-sm">Fecha de Nacimiento
+            <th class="app-th">Fecha de Nacimiento
             </th>
-            <th class="th-sm">Acciones
+            <th class="app-th">Acciones
             </th>
         </tr>
     </thead>
@@ -40,15 +40,15 @@
         {% for usuario in data["usuarios"] %}
 
         {% if usuario.rol.nombre != filtro and usuario.dni != user.dni %}
-        <tr>
-            <td>{{ usuario.dni }}</td>
-            <td>{{ usuario.nombre }}</td>
-            <td>{{ usuario.apelllidos }}</td>
-            <td>{{ usuario.rol.nombre }}</td>
-            <td>{{ usuario.fechaNac|date("d-m-Y") }}</td>
-            <td>
-                <a href="{{ path('app_usuarios_show', {'dni': usuario.dni}) }}">Ver</a>
-                <a href="{{ path('app_usuarios_edit', {'dni': usuario.dni}) }}">Modificar</a>
+        <tr class="app-tr">
+            <td class="app-td">{{ usuario.dni }}</td>
+            <td class="app-td">{{ usuario.nombre }}</td>
+            <td class="app-td">{{ usuario.apelllidos }}</td>
+            <td class="app-td">{{ usuario.rol.nombre }}</td>
+            <td class="app-td">{{ usuario.fechaNac|date("d-m-Y") }}</td>
+            <td class="app-td">
+                <button type="button" class="app-button1"><a class="app-href" href="{{ path('app_usuarios_show', {'dni': usuario.dni}) }}">Ver</a></button>
+                <button type="button" class="app-button2"><a class="app-href" href="{{ path('app_usuarios_edit', {'dni': usuario.dni}) }}">Modificar</a></button>
             </td>
         </tr>
         {% endif %}

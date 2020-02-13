@@ -496,3 +496,71 @@ table.dataTable thead .sorting_desc_disabled:after,
 table.dataTable thead .sorting_desc_disabled:before {
   bottom: .5em;
 }
+
+.app-table{
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 0px 15px 4px rgba(204,204,204,1);
+  -moz-box-shadow: 0px 0px 15px 4px rgba(204,204,204,1);
+  box-shadow: 0px 0px 15px 4px rgba(204,204,204,1);
+}
+
+.app-th{
+  background-color: #ff4133;
+  color: white;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 2%;
+  font-size: 18px;
+}
+
+.app-td{
+  color: rgb(80, 80, 80);
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 2%;
+}
+
+.app-tr:nth-child(odd){
+  background-color: white;
+}
+
+.app-tr:nth-child(even){
+  background-color: rgb(240, 240, 240);
+}
+
+.app-href{
+  color: white;
+}
+
+.app-href:hover{
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.app-button1{
+  width: 30%;
+  background-color: #ff5246;
+  border-radius: 10em;
+  padding-left: 2%;
+  padding-right: 2%;
+  border: none;
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
+  -moz-box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
+  box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
+}
+
+.app-button2{
+  width: 55%;
+  background-color: #ff5246;
+  border-radius: 10em;
+  padding-left: 2%;
+  padding-right: 2%;
+  border: none;
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
+  -moz-box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
+  box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
+}
+
