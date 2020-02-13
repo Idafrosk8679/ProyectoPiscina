@@ -5,7 +5,18 @@
 {% block main %}
 
 
-<h1>Listado Usuarios</h1>
+
+
+{% if user.rol =='usuario' or user.rol =='entrenador' or user.rol == 'admin' %}
+    
+
+{% endif %}
+
+
+
+{% if user.rol !='usuario' %}
+    
+<h1>Usuarios index</h1>
 
     <table class="app-table">
         <thead>
@@ -51,4 +62,7 @@
         {% endfor %}
         </tbody>
     </table>
+    
+{% endif %}
+
 {% endblock %}

@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Usuarios;
+use App\Entity\Grupos;
 use App\Form\UsuariosType;
+use App\Form\GruposType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -34,9 +36,8 @@ class AppController extends AbstractController
             session_start();
         }
 
-            return $this->user = $this->entityManager->getRepository(Usuarios::class)->findOneBy(['dni' => $_SESSION['dni']]);
+        return $this->user = $this->entityManager->getRepository(Usuarios::class)->findOneBy(['dni' => $_SESSION['dni']]);
         
-
     }
 
     /**
@@ -60,12 +61,13 @@ class AppController extends AbstractController
     public function add(Request $request)
     {
 
-        $form = $this->newUsuario($request);
+        $data['usuario'] = $this->newUsuario($request);
+        $data['grupo'] = $this->newGrupo($request);
 
         return $this->render('add/index.html.twig', [
             'controller_name' => 'AddController',
             'user' => $this->user,
-            'form' => $form
+            'dataForm' => $data
         ]);
     }
 
@@ -120,6 +122,23 @@ class AppController extends AbstractController
            return $form->createView();
         }
 
+    }
+
+    public function newGrupo(Request $request)
+    {
+        $grupo = new Grupos();
+        $form = $this->createForm(GruposType::class, $grupo);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($grupo);
+            $entityManager->flush();
+
+        return $this->redirectToRoute('app_index');
+        } else{
+           return $form->createView();
+        }
     }
 
 

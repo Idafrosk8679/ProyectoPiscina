@@ -4,27 +4,67 @@
 
 {% block main %}
 
+
+<a href="{{ path('app_index') }}">Atrás</a>
+
 <h1>Crear un usuario</h1>
 
-{{ form_start(form) }}
 
-    <label for="">DNI</label>
-    {{ form_widget(form.dni, {'attr':{'class':''} }) }}
-    <label for="">Password</label>
-    {{ form_widget(form.pass, {'attr':{'class':'message'} }) }}
-    <label for="">Nombre</label>
-    {{ form_widget(form.nombre, {'attr':{'class':'message'} }) }}
-    <label for="">Apellidos</label>
-    {{ form_widget(form.apelllidos, {'attr':{'class':'message'} }) }}
-    <label for="">Foto</label>
-    {{ form_widget(form.foto, {'attr':{'class':'message'} }) }}
-    <label for="">Fecha de nacimiento</label>
-    {{ form_widget(form.fechaNac, {'attr':{'class':'message'} }) }}
-    <label for="">Rol</label>
-    {{ form_widget(form.rol, {'attr':{'class':'message'} }) }}
+<ul class="nav nav-tabs" id="myTab" role="tablist">
 
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+    {% for nombre in dataForm|keys %}
 
-<a href="{{ path('app_add') }}">Atrás</a>
+    <li class="nav-item">
+        <a class="nav-link" id="{{nombre}}-tab" data-toggle="tab" href="#{{nombre}}" role="tab"
+            aria-controls="{{nombre}}" aria-selected="true">{{nombre|upper}}</a>
+    </li>
+
+    {% endfor %}
+
+</ul>
+<div>
+
+</div>
+<div class="tab-content" id="myTabContent">
+
+    
+    <div class="tab-pane fade show active" id="usuario" role="tabpanel" aria-labelledby="usuario-tab">
+            {{ form_start(dataForm['usuario']) }}
+
+            <label for="">DNI</label>
+            {{ form_widget(dataForm['usuario'].dni, {'attr':{'class':''} }) }}
+            <label for="">Password</label>
+            {{ form_widget(dataForm['usuario'].pass, {'attr':{'class':''} }) }}
+            <label for="">Nombre</label>
+            {{ form_widget(dataForm['usuario'].nombre, {'attr':{'class':''} }) }}
+            <label for="">Apellidos</label>
+            {{ form_widget(dataForm['usuario'].apelllidos, {'attr':{'class':''} }) }}
+            <label for="">Foto</label>
+            {{ form_widget(dataForm['usuario'].foto, {'attr':{'class':''} }) }}
+            <label for="">Fecha de nacimiento</label>
+            {{ form_widget(dataForm['usuario'].fechaNac, {'attr':{'class':''} }) }}
+            <label for="">Rol</label>
+            {{ form_widget(dataForm['usuario'].rol, {'attr':{'class':''} }) }}
+            
+            <button class="btn">{{ button_label|default('Save') }}</button>
+            {{ form_end(dataForm['usuario']) }}
+    </div>
+
+
+
+    <div class="tab-pane fade show" id="grupo" role="tabpanel" aria-labelledby="grupo-tab">
+            {{ form_start(dataForm['grupo']) }}
+
+            <label for="">Nombre grupo</label>
+            {{ form_widget(dataForm['grupo'].nombre, {'attr':{'class':''} }) }}
+            
+            <button class="btn">{{ button_label|default('Save') }}</button>
+            {{ form_end(dataForm['grupo']) }}
+    </div>
+
+
+</div>
+
+
+
 {% endblock %}
