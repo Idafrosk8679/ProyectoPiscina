@@ -7,6 +7,7 @@ use App\Entity\Grupos;
 use App\Entity\GrupoUsuario;
 use App\Form\UsuariosType;
 use App\Form\GrupoUsuarioType;
+use App\Form\GruposType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -83,6 +84,21 @@ class AppController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+
+            $uploadedFile = $form['fotoFile']->getData();
+            $destination = $this->getParameter('kernel.project_dir').'/public/img/fotos';
+
+            $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+            /*Urlizer::urlize($originalFilename).'-'.uniqid().'.'.*/
+            $newFilename = $originalFilename.'.'.$uploadedFile->guessExtension();
+            $uploadedFile->move(
+                $destination,
+                $newFilename
+            );
+
+            $usuario->setFoto($newFilename);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($usuario);
             $entityManager->flush();
@@ -117,6 +133,19 @@ class AppController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $uploadedFile = $form['fotoFile']->getData();
+            $destination = $this->getParameter('kernel.project_dir').'/public/img/fotos';
+
+            $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+            /*Urlizer::urlize($originalFilename).'-'.uniqid().'.'.*/
+            $newFilename = $originalFilename.'.'.$uploadedFile->guessExtension();
+            $uploadedFile->move(
+                $destination,
+                $newFilename
+            );
+
+            $usuario->setFoto($newFilename);
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('app_gestion_usuarios');

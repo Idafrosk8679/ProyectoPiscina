@@ -19,17 +19,19 @@
                 <th>Apelllidos</th>
                 <td>{{ usuario.apelllidos }}</td>
             </tr>
+            {% if usuario.foto != null %}
             <tr>
                 <th>Foto</th>
-                <td>{{ usuario.foto }}</td>
+                <td>
+                    
+                    <img src="{{ asset (usuario.foto, 'fotos')}}" width="100px">
+                   
+                </td>
             </tr>
+            {% endif %}
             <tr>
                 <th>Fecha de nacimiento</th>
                 <td>{{ usuario.fechaNac ? usuario.fechaNac|date('d-m-Y') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Pass</th>
-                <td>{{ usuario.pass }}</td>
             </tr>
         </tbody>
     </table>

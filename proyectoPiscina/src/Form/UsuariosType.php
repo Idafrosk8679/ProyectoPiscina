@@ -6,6 +6,7 @@ use App\Entity\Usuarios;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\{PasswordType, BirthdayType, FileType};
 
 class UsuariosType extends AbstractType
 {
@@ -15,9 +16,11 @@ class UsuariosType extends AbstractType
             ->add('dni')
             ->add('nombre')
             ->add('apelllidos')
-            ->add('foto')
-            ->add('fechaNac')
-            ->add('pass')
+            ->add('fotoFile', FileType::class, [
+                'mapped' => false
+            ])
+            ->add('fechaNac', BirthdayType::class)
+            ->add('pass', PasswordType::class)
             ->add('rol')
         ;
     }
