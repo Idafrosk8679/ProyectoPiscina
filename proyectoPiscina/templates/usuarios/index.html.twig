@@ -24,7 +24,7 @@
                 <td>{{ usuario.nombre }}</td>
                 <td>{{ usuario.apelllidos }}</td>
                 <td>{{ usuario.foto }}</td>
-                <td>{{ usuario.fechaNac }}</td>
+                <td>{{ usuario.fechaNac ? usuario.fechaNac|date('Y-m-d') : '' }}</td>
                 <td>{{ usuario.pass }}</td>
                 <td>
                     <a href="{{ path('usuarios_show', {'dni': usuario.dni}) }}">show</a>

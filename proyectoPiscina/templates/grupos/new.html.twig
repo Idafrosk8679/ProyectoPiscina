@@ -1,11 +1,17 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutApp.html.twig' %}
 
 {% block title %}New Grupos{% endblock %}
 
-{% block body %}
-    <h1>Create new Grupos</h1>
+{% block main %}
+<a href="{{ path('app_gestion_usuarios') }}">Volver</a>
 
-    {{ include('grupos/_form.html.twig') }}
+{{ form_start(form, {'attr':{'class':'border border-light p-5'} }) }}
+<h1 class="mb-5 text-center">Crear Grupo</h1>
+    <label for="">Nombre del grupo</label>
+    {{ form_widget(form.nombre, {'attr':{'class':'form-control mb-4'} }) }}
 
-    <a href="{{ path('grupos_index') }}">back to list</a>
+    <button class="btn btn-info btn-block">{{ button_label|default('Save') }}</button>
+
+{{ form_end(form) }}
+
 {% endblock %}

@@ -1,13 +1,49 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutApp.html.twig' %}
 
-{% block title %}Edit Grupos{% endblock %}
+{% block title %}New Grupos{% endblock %}
 
-{% block body %}
-    <h1>Edit Grupos</h1>
+{% block main %}
+<a href="{{ path('app_gestion_usuarios') }}">Volver</a>
 
-    {{ include('grupos/_form.html.twig', {'button_label': 'Update'}) }}
+{{ form_start(form, {'attr':{'class':'border border-light p-5'} }) }}
+<h1 class="mb-5 text-center">Editar grupo: {{grupo}}</h1>
 
-    <a href="{{ path('grupos_index') }}">back to list</a>
 
-    {{ include('grupos/_delete_form.html.twig') }}
+<label for="">Usuario a añadir</label>
+{{ form_widget(form.idUsuario, {'attr':{'class':'form-control mb-4'} }) }}
+
+{{ form_widget(form.idGrupo, {'attr':{'class':'invisible'}, value : grupo.id|number_format }) }}
+
+<button class="btn btn-info btn-block">{{ button_label|default('Añadir') }}</button>
+
+{{ form_end(form) }}
+
+
+<div class="row">
+
+    <div class="col-12">
+
+        <ul class="list-group">
+            <li class="list-group-item active">
+                {{grupo.nombre|upper}}
+            </li>
+
+            {% for grupoF in data|filter(grupoF => grupoF.idGrupo.id == grupo.id) %}
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-8">
+                        {{ grupoF.idUsuario.nombre }}
+                    </div>
+
+                    <div class="col-4">
+                        {{ include('grupo_usuario/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>
+
 {% endblock %}

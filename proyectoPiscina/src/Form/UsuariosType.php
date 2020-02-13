@@ -6,7 +6,6 @@ use App\Entity\Usuarios;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class UsuariosType extends AbstractType
 {
@@ -17,7 +16,7 @@ class UsuariosType extends AbstractType
             ->add('nombre')
             ->add('apelllidos')
             ->add('foto')
-            ->add('fechaNac', DateType::class)
+            ->add('fechaNac')
             ->add('pass')
             ->add('rol')
         ;

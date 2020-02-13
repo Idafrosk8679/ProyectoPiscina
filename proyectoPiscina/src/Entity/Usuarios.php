@@ -18,7 +18,7 @@ class Usuarios implements UserInterface, \Serializable
      *
      * @ORM\Column(name="dni", type="string", length=50, nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
      */
     private $dni;
 
@@ -44,9 +44,9 @@ class Usuarios implements UserInterface, \Serializable
     private $foto;
 
     /**
-     * @var string|null
+     * 
      *
-     * @ORM\Column(name="fecha_nac", type="string", length=50, nullable=true)
+     * @ORM\Column(name="fecha_nac", type="date", nullable=true)
      */
     private $fechaNac;
 
@@ -67,6 +67,9 @@ class Usuarios implements UserInterface, \Serializable
      */
     private $rol;
 
+    public function __toString(){
+        return $this->getNombre();
+    }
 
     public function getNombre(): ?string
     {
@@ -104,12 +107,12 @@ class Usuarios implements UserInterface, \Serializable
         return $this;
     }
 
-    public function getFechaNac(): ?string
+    public function getFechaNac(): ?\DateTimeInterface
     {
         return $this->fechaNac;
     }
 
-    public function setFechaNac(?string $fechaNac): self
+    public function setFechaNac(?\DateTimeInterface $fechaNac): self
     {
         $this->fechaNac = $fechaNac;
 
@@ -131,6 +134,13 @@ class Usuarios implements UserInterface, \Serializable
     public function getDni(): ?string
     {
         return $this->dni;
+    }
+
+    public function setDni(?string $dni): self
+    {
+        $this->dni = $dni;
+
+        return $this;
     }
 
     public function getUsername(): ?string
