@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Entrenamiento
  *
- * @ORM\Table(name="entrenamiento", indexes={@ORM\Index(name="FK_entrenamiento_tipos-entrenamiento", columns={"Tipos"})})
+ * @ORM\Table(name="entrenamiento", indexes={@ORM\Index(name="FK_entrenamiento_distancia_entrenamiento", columns={"metros"}), @ORM\Index(name="FK_entrenamiento_estilos_entrenamiento", columns={"estilo"}), @ORM\Index(name="FK_entrenamiento_tipos_entrenamiento", columns={"tipos"}), @ORM\Index(name="FK_entrenamiento_sesion", columns={"id_sesion"})})
  * @ORM\Entity
  */
 class Entrenamiento
@@ -22,39 +22,55 @@ class Entrenamiento
     private $id;
 
     /**
-     * @var int
+     * @var int|null
      *
-     * @ORM\Column(name="id_sesion", type="integer", nullable=false)
+     * @ORM\Column(name="series", type="integer", nullable=true, options={"default"="NULL"})
      */
-    private $idSesion = '0';
+    private $series = 'NULL';
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="Series", type="string", length=50, nullable=true)
+     * @ORM\Column(name="descripciÃ³n", type="text", length=65535, nullable=true, options={"default"="NULL"})
      */
-    private $series;
+    private $descripciã³n = 'NULL';
 
     /**
-     * @var int|null
+     * @var \DistanciaEntrenamiento
      *
-     * @ORM\Column(name="metros", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="DistanciaEntrenamiento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="metros", referencedColumnName="id")
+     * })
      */
     private $metros;
 
     /**
-     * @var string|null
+     * @var \EstilosEntrenamiento
      *
-     * @ORM\Column(name="DescripciÃ³n", type="text", length=65535, nullable=true)
+     * @ORM\ManyToOne(targetEntity="EstilosEntrenamiento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="estilo", referencedColumnName="id")
+     * })
      */
-    private $descripciï¿½n;
+    private $estilo;
+
+    /**
+     * @var \Sesion
+     *
+     * @ORM\ManyToOne(targetEntity="Sesion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_sesion", referencedColumnName="id")
+     * })
+     */
+    private $idSesion;
 
     /**
      * @var \TiposEntrenamiento
      *
      * @ORM\ManyToOne(targetEntity="TiposEntrenamiento")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Tipos", referencedColumnName="Tipo")
+     *   @ORM\JoinColumn(name="tipos", referencedColumnName="id")
      * })
      */
     private $tipos;
@@ -64,50 +80,62 @@ class Entrenamiento
         return $this->id;
     }
 
-    public function getIdSesion(): ?int
-    {
-        return $this->idSesion;
-    }
-
-    public function setIdSesion(int $idSesion): self
-    {
-        $this->idSesion = $idSesion;
-
-        return $this;
-    }
-
-    public function getSeries(): ?string
+    public function getSeries(): ?int
     {
         return $this->series;
     }
 
-    public function setSeries(?string $series): self
+    public function setSeries(?int $series): self
     {
         $this->series = $series;
 
         return $this;
     }
 
-    public function getMetros(): ?int
+    public function getDescripciã³n(): ?string
+    {
+        return $this->descripciã³n;
+    }
+
+    public function setDescripciã³n(?string $descripciã³n): self
+    {
+        $this->descripciã³n = $descripciã³n;
+
+        return $this;
+    }
+
+    public function getMetros(): ?DistanciaEntrenamiento
     {
         return $this->metros;
     }
 
-    public function setMetros(?int $metros): self
+    public function setMetros(?DistanciaEntrenamiento $metros): self
     {
         $this->metros = $metros;
 
         return $this;
     }
 
-    public function getDescripciï¿½n(): ?string
+    public function getEstilo(): ?EstilosEntrenamiento
     {
-        return $this->descripciï¿½n;
+        return $this->estilo;
     }
 
-    public function setDescripciï¿½n(?string $descripciï¿½n): self
+    public function setEstilo(?EstilosEntrenamiento $estilo): self
     {
-        $this->descripciï¿½n = $descripciï¿½n;
+        $this->estilo = $estilo;
+
+        return $this;
+    }
+
+    public function getIdSesion(): ?Sesion
+    {
+        return $this->idSesion;
+    }
+
+    public function setIdSesion(?Sesion $idSesion): self
+    {
+        $this->idSesion = $idSesion;
 
         return $this;
     }

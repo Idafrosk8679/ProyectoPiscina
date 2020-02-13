@@ -14,7 +14,7 @@
     <img src="{{ asset (usuario.foto, 'fotos')}}" alt="" width="100px">
     {% endif %}
 
-    {{ form_widget(form.fotoFile, {'attr':{'class':'mb-4'} }) }}
+    {{ form_widget(form.fotoFile, {'attr':{'class':'mb-4'}, value : usuario.foto }) }}
 </div>
 
 <div class="row">
@@ -39,7 +39,7 @@
 
 <div class="row">
     <label for="">Rol</label>
-    {{ form_widget(form.rol, {'attr':{'class':'form-control mb-4'} }) }}
+    {{ form_widget(form.rolC, {'attr':{'class':'form-control mb-4'} }) }}
 </div>
 
 <div class="row">

@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * TiposEntrenamiento
+ * EstilosEntrenamiento
  *
- * @ORM\Table(name="tipos_entrenamiento")
+ * @ORM\Table(name="estilos_entrenamiento")
  * @ORM\Entity
  */
-class TiposEntrenamiento
+class EstilosEntrenamiento
 {
     /**
      * @var int
@@ -22,25 +22,25 @@ class TiposEntrenamiento
     private $id;
 
     /**
-     * @var string
+     * @var string|null
      *
-     * @ORM\Column(name="tipo", type="string", length=50, nullable=false, options={"default"="''"})
+     * @ORM\Column(name="nombre", type="string", length=50, nullable=true, options={"default"="NULL"})
      */
-    private $tipo = '\'\'';
+    private $nombre = 'NULL';
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTipo(): ?string
+    public function getNombre(): ?string
     {
-        return $this->tipo;
+        return $this->nombre;
     }
 
-    public function setTipo(string $tipo): self
+    public function setNombre(?string $nombre): self
     {
-        $this->tipo = $tipo;
+        $this->nombre = $nombre;
 
         return $this;
     }

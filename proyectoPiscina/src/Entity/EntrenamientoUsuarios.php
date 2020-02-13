@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * EntrenamientoUsuarios
  *
- * @ORM\Table(name="entrenamiento_usuarios")
+ * @ORM\Table(name="entrenamiento_usuarios", indexes={@ORM\Index(name="FK_entrenamiento_usuarios_usuarios", columns={"dni"})})
  * @ORM\Entity
  */
 class EntrenamientoUsuarios
@@ -24,39 +24,30 @@ class EntrenamientoUsuarios
     /**
      * @var int|null
      *
-     * @ORM\Column(name="dni", type="integer", nullable=true)
+     * @ORM\Column(name="marca", type="integer", nullable=true, options={"default"="NULL"})
+     */
+    private $marca = 'NULL';
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="realizado", type="integer", nullable=true, options={"default"="NULL"})
+     */
+    private $realizado = 'NULL';
+
+    /**
+     * @var \Usuarios
+     *
+     * @ORM\ManyToOne(targetEntity="Usuarios")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="dni", referencedColumnName="dni")
+     * })
      */
     private $dni;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="marca", type="integer", nullable=true)
-     */
-    private $marca;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="realizado", type="integer", nullable=true)
-     */
-    private $realizado;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getDni(): ?int
-    {
-        return $this->dni;
-    }
-
-    public function setDni(?int $dni): self
-    {
-        $this->dni = $dni;
-
-        return $this;
     }
 
     public function getMarca(): ?int
@@ -79,6 +70,18 @@ class EntrenamientoUsuarios
     public function setRealizado(?int $realizado): self
     {
         $this->realizado = $realizado;
+
+        return $this;
+    }
+
+    public function getDni(): ?Usuarios
+    {
+        return $this->dni;
+    }
+
+    public function setDni(?Usuarios $dni): self
+    {
+        $this->dni = $dni;
 
         return $this;
     }

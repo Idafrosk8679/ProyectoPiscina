@@ -87,6 +87,7 @@ class AppController extends AbstractController
             
 
             $uploadedFile = $form['fotoFile']->getData();
+            if($uploadedFile != null){
             $destination = $this->getParameter('kernel.project_dir').'/public/img/fotos';
 
             $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
@@ -98,6 +99,7 @@ class AppController extends AbstractController
             );
 
             $usuario->setFoto($newFilename);
+            }
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($usuario);
@@ -134,7 +136,10 @@ class AppController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+
+
             $uploadedFile = $form['fotoFile']->getData();
+            if($uploadedFile != null){
             $destination = $this->getParameter('kernel.project_dir').'/public/img/fotos';
 
             $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
@@ -146,6 +151,8 @@ class AppController extends AbstractController
             );
 
             $usuario->setFoto($newFilename);
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('app_gestion_usuarios');

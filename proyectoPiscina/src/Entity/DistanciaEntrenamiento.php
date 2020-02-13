@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * TiposEntrenamiento
+ * DistanciaEntrenamiento
  *
- * @ORM\Table(name="tipos_entrenamiento")
+ * @ORM\Table(name="distancia_entrenamiento")
  * @ORM\Entity
  */
-class TiposEntrenamiento
+class DistanciaEntrenamiento
 {
     /**
      * @var int
@@ -22,25 +22,25 @@ class TiposEntrenamiento
     private $id;
 
     /**
-     * @var string
+     * @var int|null
      *
-     * @ORM\Column(name="tipo", type="string", length=50, nullable=false, options={"default"="''"})
+     * @ORM\Column(name="distancia", type="integer", nullable=true, options={"default"="NULL"})
      */
-    private $tipo = '\'\'';
+    private $distancia = 'NULL';
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTipo(): ?string
+    public function getDistancia(): ?int
     {
-        return $this->tipo;
+        return $this->distancia;
     }
 
-    public function setTipo(string $tipo): self
+    public function setDistancia(?int $distancia): self
     {
-        $this->tipo = $tipo;
+        $this->distancia = $distancia;
 
         return $this;
     }
