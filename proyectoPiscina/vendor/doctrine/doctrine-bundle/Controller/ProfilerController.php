@@ -74,10 +74,7 @@ class ProfilerController implements ContainerAwareInterface
         ]));
     }
 
-    /**
-     * @param mixed[] $query
-     */
-    private function explainSQLitePlatform(Connection $connection, array $query)
+    private function explainSQLitePlatform(Connection $connection, $query)
     {
         $params = $query['params'];
 

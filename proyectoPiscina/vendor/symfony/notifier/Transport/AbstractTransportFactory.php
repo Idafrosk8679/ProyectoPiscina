@@ -39,9 +39,6 @@ abstract class AbstractTransportFactory implements TransportFactoryInterface
         return \in_array($dsn->getScheme(), $this->getSupportedSchemes());
     }
 
-    /**
-     * @return string[]
-     */
     abstract protected function getSupportedSchemes(): array;
 
     protected function getUser(Dsn $dsn): string

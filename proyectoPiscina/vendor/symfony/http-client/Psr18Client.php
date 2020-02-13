@@ -11,7 +11,6 @@
 
 namespace Symfony\Component\HttpClient;
 
-use Http\Discovery\Exception\NotFoundException;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7\Request;
@@ -69,13 +68,9 @@ final class Psr18Client implements ClientInterface, RequestFactoryInterface, Str
             throw new \LogicException('You cannot use the "Symfony\Component\HttpClient\Psr18Client" as no PSR-17 factories have been provided. Try running "composer require nyholm/psr7".');
         }
 
-        try {
-            $psr17Factory = class_exists(Psr17Factory::class, false) ? new Psr17Factory() : null;
-            $this->responseFactory = $this->responseFactory ?? $psr17Factory ?? Psr17FactoryDiscovery::findResponseFactory();
-            $this->streamFactory = $this->streamFactory ?? $psr17Factory ?? Psr17FactoryDiscovery::findStreamFactory();
-        } catch (NotFoundException $e) {
-            throw new \LogicException('You cannot use the "Symfony\Component\HttpClient\HttplugClient" as no PSR-17 factories have been found. Try running "composer require nyholm/psr7".', 0, $e);
-        }
+        $psr17Factory = class_exists(Psr17Factory::class, false) ? new Psr17Factory() : null;
+        $this->responseFactory = $this->responseFactory ?? $psr17Factory ?? Psr17FactoryDiscovery::findResponseFactory();
+        $this->streamFactory = $this->streamFactory ?? $psr17Factory ?? Psr17FactoryDiscovery::findStreamFactory();
     }
 
     /**

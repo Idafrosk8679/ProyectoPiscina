@@ -2,7 +2,6 @@
 
 namespace Doctrine\Bundle\DoctrineBundle;
 
-use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\ORMException;
 use ProxyManager\Proxy\LazyLoadingInterface;
 use Psr\Container\ContainerInterface;
@@ -65,9 +64,7 @@ class Registry extends ManagerRegistry implements ResetInterface
 
         $manager = $this->container->get($serviceId);
 
-        assert($manager instanceof EntityManagerInterface);
-
-        if (! $manager instanceof LazyLoadingInterface || $manager->isOpen()) {
+        if (! $manager instanceof LazyLoadingInterface) {
             $manager->clear();
 
             return;

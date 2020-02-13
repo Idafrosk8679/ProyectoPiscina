@@ -760,8 +760,10 @@ class DoctrineExtension extends AbstractDoctrineExtension
 
     /**
      * Loads a property info extractor for each defined entity manager.
+     *
+     * @param string $entityManagerName
      */
-    private function loadPropertyInfoExtractor(string $entityManagerName, ContainerBuilder $container) : void
+    private function loadPropertyInfoExtractor($entityManagerName, ContainerBuilder $container)
     {
         $propertyExtractorDefinition = $container->register(sprintf('doctrine.orm.%s_entity_manager.property_info_extractor', $entityManagerName), DoctrineExtractor::class);
         $argumentId                  = sprintf('doctrine.orm.%s_entity_manager', $entityManagerName);

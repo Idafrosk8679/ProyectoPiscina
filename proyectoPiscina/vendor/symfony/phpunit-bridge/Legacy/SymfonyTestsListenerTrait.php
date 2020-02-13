@@ -40,6 +40,8 @@ class SymfonyTestsListenerTrait
     private $expectedDeprecations = array();
     private $gatheredDeprecations = array();
     private $previousErrorHandler;
+    private $testsWithWarnings;
+    private $reportUselessTests;
     private $error;
     private $runsInSeparateProcess = false;
 
@@ -110,6 +112,7 @@ class SymfonyTestsListenerTrait
     public function startTestSuite($suite)
     {
         $suiteName = $suite->getName();
+        $this->testsWithWarnings = array();
 
         foreach ($suite->tests() as $test) {
             if (!($test instanceof \PHPUnit\Framework\TestCase || $test instanceof TestCase)) {
@@ -193,6 +196,10 @@ class SymfonyTestsListenerTrait
     public function startTest($test)
     {
         if (-2 < $this->state && ($test instanceof \PHPUnit\Framework\TestCase || $test instanceof TestCase)) {
+            if (null !== $test->getTestResultObject()) {
+                $this->reportUselessTests = $test->getTestResultObject()->isStrictAboutTestsThatDoNotTestAnything();
+            }
+
             // This event is triggered before the test is re-run in isolation
             if ($this->willBeIsolated($test)) {
                 $this->runsInSeparateProcess = tempnam(sys_get_temp_dir(), 'deprec');
@@ -229,6 +236,13 @@ class SymfonyTestsListenerTrait
         }
     }
 
+    public function addWarning($test, $e, $time)
+    {
+        if ($test instanceof \PHPUnit\Framework\TestCase || $test instanceof TestCase) {
+            $this->testsWithWarnings[$test->getName()] = true;
+        }
+    }
+
     public function endTest($test, $time)
     {
         if (class_exists(DebugClassLoader::class, false)) {
@@ -237,6 +251,11 @@ class SymfonyTestsListenerTrait
 
         $className = \get_class($test);
         $groups = Test::getGroups($className, $test->getName(false));
+
+        if (null !== $this->reportUselessTests) {
+            $test->getTestResultObject()->beStrictAboutTestsThatDoNotTestAnything($this->reportUselessTests);
+            $this->reportUselessTests = null;
+        }
 
         if ($errored = null !== $this->error) {
             $test->getTestResultObject()->addError($test, $this->error, 0);

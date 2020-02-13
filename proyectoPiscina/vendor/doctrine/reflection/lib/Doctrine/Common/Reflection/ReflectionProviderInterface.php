@@ -2,16 +2,12 @@
 
 namespace Doctrine\Common\Reflection;
 
-use ReflectionClass;
-use ReflectionMethod;
-use ReflectionProperty;
-
 interface ReflectionProviderInterface
 {
     /**
      * Gets the ReflectionClass equivalent for this class.
      *
-     * @return ReflectionClass
+     * @return \ReflectionClass
      */
     public function getReflectionClass();
 
@@ -20,7 +16,7 @@ interface ReflectionProviderInterface
      *
      * @param string $name
      *
-     * @return ReflectionMethod
+     * @return \ReflectionMethod
      */
     public function getReflectionMethod($name);
 
@@ -29,7 +25,7 @@ interface ReflectionProviderInterface
      *
      * @param string $name
      *
-     * @return ReflectionProperty
+     * @return \ReflectionProperty
      */
     public function getReflectionProperty($name);
 }

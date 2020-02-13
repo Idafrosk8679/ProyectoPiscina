@@ -1,6 +1,9 @@
 ``format_currency``
 ===================
 
+.. versionadded:: 2.12
+    The ``format_currency`` filter was added in Twig 2.12.
+
 The ``format_currency`` filter formats a number as a currency:
 
 .. code-block:: twig
@@ -67,6 +70,5 @@ By default, the filter uses the current locale. You can pass it explicitly:
 Arguments
 ---------
 
-* ``currency``: The currency
-* ``attrs``: A map of attributes
 * ``locale``: The locale
+* ``attrs``: A map of attributes

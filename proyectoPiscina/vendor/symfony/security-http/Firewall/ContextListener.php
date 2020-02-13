@@ -201,15 +201,10 @@ class ContextListener extends AbstractListener
 
         $userNotFoundByProvider = false;
         $userDeauthenticated = false;
-        $userClass = \get_class($user);
 
         foreach ($this->userProviders as $provider) {
             if (!$provider instanceof UserProviderInterface) {
                 throw new \InvalidArgumentException(sprintf('User provider "%s" must implement "%s".', \get_class($provider), UserProviderInterface::class));
-            }
-
-            if (!$provider->supportsClass($userClass)) {
-                continue;
             }
 
             try {
@@ -268,7 +263,7 @@ class ContextListener extends AbstractListener
             return null;
         }
 
-        throw new \RuntimeException(sprintf('There is no user provider for user "%s". Shouldn\'t the "supportsClass()" method of your user provider return true for this classname?', $userClass));
+        throw new \RuntimeException(sprintf('There is no user provider for user "%s".', \get_class($user)));
     }
 
     private function safelyUnserialize(string $serializedToken)

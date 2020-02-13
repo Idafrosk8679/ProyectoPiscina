@@ -79,7 +79,7 @@ class CodePointString extends AbstractUnicodeString
     {
         $str = $offset ? $this->slice($offset, 1) : $this;
 
-        return '' === $str->string ? [] : [mb_ord($str->string, 'UTF-8')];
+        return '' === $str->string ? [] : [mb_ord($str->string)];
     }
 
     public function endsWith($suffix): bool

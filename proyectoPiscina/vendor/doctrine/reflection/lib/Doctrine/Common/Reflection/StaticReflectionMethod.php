@@ -89,7 +89,7 @@ class StaticReflectionMethod extends ReflectionMethod
     /**
      * {@inheritDoc}
      */
-    public function getClosure($object = null)
+    public function getClosure($object)
     {
         throw new ReflectionException('Method not implemented');
     }

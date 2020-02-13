@@ -19,7 +19,7 @@ interface PasswordAuthenticatedInterface
     /**
      * Returns the clear-text password contained in credentials if any.
      *
-     * @param mixed $credentials The user credentials
+     * @param mixed The user credentials
      */
     public function getPassword($credentials): ?string;
 }

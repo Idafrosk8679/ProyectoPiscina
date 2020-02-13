@@ -48,13 +48,7 @@ class PropertyMetadata extends MemberMetadata
      */
     public function getPropertyValue($object)
     {
-        $reflProperty = $this->getReflectionMember($object);
-
-        if (\PHP_VERSION_ID >= 70400 && !$reflProperty->isInitialized($object)) {
-            return null;
-        }
-
-        return $reflProperty->getValue($object);
+        return $this->getReflectionMember($object)->getValue($object);
     }
 
     /**
