@@ -56,15 +56,9 @@
 				</li>
 				{% endif %}
 
-				{% if user.rol == 'junta' %}
+				{% if user.rol == 'junta' or user.rol == 'admin'%}
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('app_gestion_web') }}">Gestión Web</a>
-				</li>
-				{% endif %}
-
-				{% if user.rol == 'junta' or user.rol == 'admin' %}
-				<li class="nav-item">
-					<a class="nav-link" href="#">Web</a>
 				</li>
 				{% endif %}
 

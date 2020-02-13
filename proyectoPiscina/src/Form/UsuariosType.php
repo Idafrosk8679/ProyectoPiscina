@@ -30,9 +30,9 @@ class UsuariosType extends AbstractType
             ])
             ->add('fechaNac', BirthdayType::class)
             ->add('pass', PasswordType::class)
-            ->add('rolC', EntityType::class, [
+            ->add('rol', EntityType::class, [
                 'class' => Roles::class,
-                'mapped' => false,
+                'mapped' => true,
                 'query_builder' => function (EntityRepository $er) {
 
                     $queryBuilder = $er->createQueryBuilder('r');

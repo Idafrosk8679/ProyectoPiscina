@@ -22,11 +22,11 @@ class Informacion
     private $id;
 
     /**
-     * @var \DateTime|null
+     * @var \DateTime
      *
-     * @ORM\Column(name="fecha", type="date", nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="fecha", type="date", nullable=false)
      */
-    private $fecha = 'NULL';
+    private $fecha;
 
     /**
      * @var string|null
@@ -52,7 +52,7 @@ class Informacion
         return $this->fecha;
     }
 
-    public function setFecha(?\DateTimeInterface $fecha): self
+    public function setFecha(\DateTimeInterface $fecha): self
     {
         $this->fecha = $fecha;
 

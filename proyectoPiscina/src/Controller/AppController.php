@@ -5,9 +5,13 @@ namespace App\Controller;
 use App\Entity\Usuarios;
 use App\Entity\Grupos;
 use App\Entity\GrupoUsuario;
+use App\Entity\Web;
+use App\Entity\WebFotos;
 use App\Form\UsuariosType;
 use App\Form\GrupoUsuarioType;
 use App\Form\GruposType;
+use App\Form\WebType;
+use App\Form\WebFotosType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -281,18 +285,50 @@ class AppController extends AbstractController
     /******************************************************************************************* */
 
     /**
-     * @Route("/gestion_web", name="_gestion_web")
+     * @Route("/gestion_web", name="_gestion_web", methods={"GET","POST"})
      */
-    public function gestionWeb(Request $request)
+    public function gestionWeb(Request $request): Response
     {
-        return $this->render('add/index.html.twig', [
-            'controller_name' => 'AddController',
+        $web = $this->getDoctrine()
+                    ->getRepository(Web::class)
+                    ->findBy(['id' => 0])[0];
+
+        $form = $this->createForm(WebType::class, $web);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+        }
+
+
+        $webFoto = new WebFotos();
+        $form2 = $this->createForm(WebFotosType::class, $webFoto);
+        $form2->handleRequest($request);
+
+        if ($form2->isSubmitted() && $form2->isValid()) {
+
+            $img = $this->getDoctrine()
+            ->getRepository(Usuarios::class)
+            ->findBy(['dni' => $form2['idUsuario']->getData()])[0];
+
+            if($img != null){
+                $webFoto->setFoto($img->getFoto());
+            }
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($webFoto);
+            $entityManager->flush();
+        }
+
+
+        return $this->render('gestion_web/index.html.twig', [
             'user' => $this->user,
-            
+            'web' => $web,
+            'web_foto' => $webFoto,
+            'form2' => $form2->createView(),
+            'form' => $form->createView(),
         ]);
     }
-
-
 
 
 
