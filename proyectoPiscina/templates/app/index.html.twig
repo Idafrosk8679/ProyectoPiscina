@@ -5,17 +5,17 @@
 {% block main %}
 
 
-<h1>Usuarios index</h1>
+<h1>Listado Usuarios</h1>
 
-    <table class="table">
+    <table class="app-table">
         <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Apelllidos</th>
-                <th>Foto</th>
-                <th>FechaNac</th>
-                <th>Grupo</th>
-                <th>actions</th>
+                <th class="app-th">Nombre</th>
+                <th class="app-th">Apelllidos</th>
+                <th class="app-th">Foto</th>
+                <th class="app-th">FechaNac</th>
+                <th class="app-th">Grupo</th>
+                <th class="app-th">actions</th>
             </tr>
         </thead>
         <tbody>
@@ -33,12 +33,12 @@
 
             {% if usuario.rol.nombre != filtro and usuario.dni != user.dni %}
             <tr>
-                <td>{{ usuario.nombre }}</td>
-                <td>{{ usuario.apelllidos }}</td>
-                <td>{{ usuario.rol.nombre }}</td>
-                <td>{{ usuario.foto }}</td>
-                <td>{{ usuario.fechaNac }}</td>
-                <td>
+                <td class="app-td">{{ usuario.nombre }}</td>
+                <td class="app-td">{{ usuario.apelllidos }}</td>
+                <td class="app-td">{{ usuario.rol.nombre }}</td>
+                <td class="app-td">{{ usuario.foto }}</td>
+                <td class="app-td">{{ usuario.fechaNac }}</td>
+                <td class="app-td">
                     <a href="{{ path('usuarios_show', {'dni': usuario.dni}) }}">show</a>
                     <a href="{{ path('usuarios_edit', {'dni': usuario.dni}) }}">edit</a>
                 </td>

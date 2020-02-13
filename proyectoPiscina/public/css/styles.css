@@ -483,9 +483,26 @@ height: 100vh;
   font-weight: bold;
 }
 
+
+/* Parte de la App */
+
 #app{
   text-decoration: none;
   color:white;
   margin-left: 50%;
   margin-top: -25%;
 }
+
+.app-table{
+  
+}
+
+.app-th{
+
+
+}
+
+.app-td{
+
+}
+
