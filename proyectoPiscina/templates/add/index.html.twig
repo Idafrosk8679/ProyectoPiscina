@@ -39,12 +39,12 @@
             {{ form_widget(dataForm['usuario'].nombre, {'attr':{'class':'form-control'} }) }}
             <label for="">Apellidos</label>
             {{ form_widget(dataForm['usuario'].apelllidos, {'attr':{'class':'form-control'} }) }}
-            <label for="">Foto</label>
-            {{ form_widget(dataForm['usuario'].foto, {'attr':{'class':'form-control'} }) }}
-            <label for="">Fecha de nacimiento</label>
-            {{ form_widget(dataForm['usuario'].fechaNac, {'attr':{'class':'form-control'} }) }}
             <label for="">Rol</label>
             {{ form_widget(dataForm['usuario'].rol, {'attr':{'class':'form-control'} }) }}
+            <label for="">Fecha de nacimiento</label>
+            {{ form_widget(dataForm['usuario'].fechaNac, {'attr':{'class':'form-control'} }) }}
+            <label for="">Foto</label>
+            {{ form_widget(dataForm['usuario'].foto, {'attr':{'class':'form-control'} }) }}
             
             <button class="btn btn-primary btn-sm">{{ button_label|default('Save') }}</button>
             {{ form_end(dataForm['usuario']) }}
