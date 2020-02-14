@@ -5,10 +5,27 @@
 {% block main %}
 
 
-
-
 {% if user.rol =='usuario' or user.rol =='entrenador' or user.rol == 'admin' %}
     
+    <table id="calendar" class="table">
+
+        <h5 id="month"></h5>
+
+        <thead id="week" class="black white-text">
+
+            <tr>
+                
+            </tr>
+
+        </thead>
+
+        <tbody id="day">
+            <tr>
+                
+            </tr>
+        </tbody>
+
+    </table>
 
 {% endif %}
 
