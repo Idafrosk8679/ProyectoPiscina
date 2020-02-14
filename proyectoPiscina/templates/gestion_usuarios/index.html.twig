@@ -5,12 +5,15 @@
 {% block main %}
 
 
-<a href="{{ path('app_index') }}">Atrás</a>
+<button class="atras-button">
+    <a class="atras-href" href="{{ path('app_index') }}">❮ Volver</a>
+</button>
 
 
-
-<h1>Usuarios</h1>
-<a href="{{ path('app_usuarios_new') }}">Añadir</a>
+<h1 class="app-title">Usuarios</h1>
+<button class="app-button">
+    <a class="app-button-href" href="{{ path('app_usuarios_new') }}">Añadir</a>
+</button>
 <table id="dtBasicExample" class="app-table" cellspacing="0" width="100%">
     <thead>
         <tr>
@@ -47,8 +50,8 @@
             <td class="app-td">{{ usuario.rol.nombre }}</td>
             <td class="app-td">{{ usuario.fechaNac|date("d-m-Y") }}</td>
             <td class="app-td">
-                <button type="button" class="app-button1"><a class="app-href" href="{{ path('app_usuarios_show', {'dni': usuario.dni}) }}">Ver</a></button>
-                <button type="button" class="app-button2"><a class="app-href" href="{{ path('app_usuarios_edit', {'dni': usuario.dni}) }}">Editar</a></button>
+                <button type="button" class="app-button-func1"><a class="app-href" href="{{ path('app_usuarios_show', {'dni': usuario.dni}) }}">Ver</a></button>
+                <button type="button" class="app-button-func2"><a class="app-href" href="{{ path('app_usuarios_edit', {'dni': usuario.dni}) }}">Editar</a></button>
             </td>
         </tr>
         {% endif %}
@@ -62,9 +65,12 @@
 
 
 
-<h1>Grupos</h1>
+<h1 class="app-title">Grupos</h1>
 
-<a href="{{ path('app_grupos_new') }}">Crear grupo</a>
+<button class="app-button">
+    <a class="app-button-href" href="{{ path('app_grupos_new') }}">Crear grupo</a>
+</button>
+
 <div class="row">
     {% for grupo in data["grupos"] %}
     <div class="col-6">

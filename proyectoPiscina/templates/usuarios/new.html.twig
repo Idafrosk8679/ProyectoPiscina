@@ -3,7 +3,10 @@
 {% block title %}New Usuarios{% endblock %}
 
 {% block main %}
-<a href="{{ path('app_gestion_usuarios') }}">Volver</a>
+<button class="atras-button">
+    <a class="atras-href" href="{{ path('app_gestion_usuarios') }}">❮ Volver</a>
+</button>
+
 
 
 {{ form_start(form, {'attr':{'class':'border border-light p-5'} }) }}

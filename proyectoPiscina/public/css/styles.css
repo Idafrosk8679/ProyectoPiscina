@@ -540,7 +540,7 @@ table.dataTable thead .sorting_desc_disabled:before {
   text-decoration: none;
 }
 
-.app-button1{
+.app-button-func1{
   background-color: #ff5246;
   border-radius: 10em;
   border: none;
@@ -549,12 +549,98 @@ table.dataTable thead .sorting_desc_disabled:before {
   box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
 }
 
-.app-button2{
+.app-button-func2{
   background-color: #ff5246;
   border-radius: 10em;
   border: none;
   -webkit-box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
   -moz-box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
   box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
+}
+
+
+
+.app-title:after {
+  content: ""; 
+  display: block;
+  margin-bottom: 3%;
+  width: 150px;
+  padding-top: 2px;
+  border-bottom: 2.5px solid #f23a2e;
+
+  margin-bottom: 30px;
+}
+
+
+/* Botones y href */
+
+.atras-button{
+  width: 100px;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border-collapse: collapse;
+  border-radius: 1em;
+  border: none;
+  background-color: #ff4133;
+  text-align: center;
+  font-family: Verdana, sans-serif;
+
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
+  -moz-box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
+  box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
+
+  margin-bottom: 20px;
+}
+
+.atras-button:hover{
+  background-color: #e03e32;
+}
+
+.atras-href{
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+}
+
+.atras-href:hover{
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.app-button{
+  width: 150px;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border-collapse: collapse;
+  border-radius: 1em;
+  border: none;
+  background-color: #ff4133;
+  text-align: center;
+  font-family: Verdana, sans-serif;
+
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
+  -moz-box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
+  box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
+
+  margin-bottom: 20px;
+}
+
+.app-button:hover{
+  background-color: #e03e32;
+}
+
+.app-button-href{
+  color: white !important;
+  text-decoration: none !important;
+  font-size: 18px;
+  display: block;
+}
+
+.app-button-href:hover{
+  color: white !important;
+  text-decoration: none !important;
+  font-size: 18px;
 }
 

@@ -3,14 +3,20 @@
 {% block title %}New Grupos{% endblock %}
 
 {% block main %}
-<a href="{{ path('app_gestion_usuarios') }}">Volver</a>
+<button class="atras-button">
+    <a class="atras-href" href="{{ path('app_gestion_usuarios') }}">❮ Volver</a>
+</button>
 
 {{ form_start(form, {'attr':{'class':'border border-light p-5'} }) }}
 <h1 class="mb-5 text-center">Crear Grupo</h1>
     <label for="">Nombre del grupo</label>
     {{ form_widget(form.nombre, {'attr':{'class':'form-control mb-4'} }) }}
 
-    <button class="btn btn-info btn-block">{{ button_label|default('Save') }}</button>
+    <p align="center">
+        <button class="app-button" style="width:200px;">
+            <a class="app-button-href">{{ button_label|default('Save') }}</a>
+        </button>
+    </p>
 
 {{ form_end(form) }}
 
