@@ -3,7 +3,7 @@
 {% block title %}Usuarios{% endblock %}
 
 {% block main %}
-    <h1>Usuarios</h1>
+    <h1 class="app-title">Perfil de usuario</h1>
 
     <table class="table">
         <tbody>
@@ -36,9 +36,13 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_gestion_usuarios') }}">Atrás</a>
+    <button class="atras-button">
+        <a class="atras-href" href="{{ path('app_gestion_usuarios') }}">❮ Volver</a>
+    </button>
 
-    <a href="{{ path('app_usuarios_edit', {'dni': usuario.dni}) }}">Editar</a>
+    <button class="app-button">
+        <a class="app-button-href" href="{{ path('app_usuarios_edit', {'dni': usuario.dni}) }}">Editar</a>
+    </button>
 
     {{ include('usuarios/_delete_form.html.twig') }}
 {% endblock %}
