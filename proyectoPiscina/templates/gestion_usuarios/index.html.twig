@@ -33,7 +33,7 @@
         {% set filtro = '' %}
         {% endif %}
 
-        {% if user.rol == 'entrenador' or user.rol == 'admin' %}
+        {% if user.rol == 'entrenador' %}
         {% set filtro = 'junta' %}
         {% endif %}
 

@@ -300,12 +300,23 @@ class AppController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
         }
 
+        $webFotos = $this->getWebFotos();
 
         $webFoto = new WebFotos();
         $form2 = $this->createForm(WebFotosType::class, $webFoto);
         $form2->handleRequest($request);
 
-        if ($form2->isSubmitted() && $form2->isValid()) {
+        $filter=null;
+        try {
+            $filter = $this->getDoctrine()
+            ->getRepository(WebFotos::class)
+            ->findBy(['idUsuario' => $form2['idUsuario']->getData()])[0];
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+        
+
+        if ($form2->isSubmitted() && $form2->isValid() && $filter == null) {
 
             $img = $this->getDoctrine()
             ->getRepository(Usuarios::class)
@@ -318,16 +329,39 @@ class AppController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($webFoto);
             $entityManager->flush();
+
+
+            return $this->redirectToRoute('app_gestion_web');
+        }else{
+            unset($webFoto);
+            unset($form2);
+
+            $webFoto = new WebFotos();
+            $form2 = $this->createForm(WebFotosType::class, $webFoto);
         }
 
 
         return $this->render('gestion_web/index.html.twig', [
             'user' => $this->user,
             'web' => $web,
-            'web_foto' => $webFoto,
+            'data' => $webFotos,
             'form2' => $form2->createView(),
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/gestion_web/delete/{id}", name="_webfotos_delete", methods={"DELETE"})
+     */
+    public function deleteWeb(Request $request, WebFotos $webFoto): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$webFoto->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($webFoto);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_gestion_web');
     }
 
 
@@ -361,6 +395,16 @@ class AppController extends AbstractController
             ->findAll();
 
         return  $grupos_usuario;
+
+    }
+
+    public function getWebFotos()
+    {
+        $webFotos = $this->getDoctrine()
+            ->getRepository(WebFotos::class)
+            ->findAll();
+
+        return  $webFotos;
 
     }
 

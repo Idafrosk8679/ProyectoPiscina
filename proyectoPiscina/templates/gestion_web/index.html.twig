@@ -46,4 +46,45 @@
 
 {{ form_end(form2) }}
 
+<table id="dtBasicExample" class="app-table" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th class="app-th">Foto
+            </th>
+            <th class="app-th">Nombre
+            </th>
+            <th class="app-th">Rol
+            </th>
+            <th class="app-th">Descripción
+            </th>
+            <th class="app-th">Acciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for webfoto in data %}
+
+        <tr class="app-tr">
+                
+            <td class="app-td"><img src="{{ asset (webfoto.foto, 'fotos')}}" alt="" width="100px"></td>
+            <td class="app-td">{{ webfoto.idUsuario.nombre }}</td>
+            <td class="app-td">{{ webfoto.idUsuario.rol }}</td>
+            <td class="app-td">{{ webfoto.descripcion }}</td>
+            <td class="app-td">
+                <form method="post" action="{{ path('app_webfotos_delete', {'id': webfoto.id}) }}" onsubmit="return confirm('Estás seguro/a de borrarlo?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ webfoto.id) }}">
+                    <button class="app-button2">Eliminar</button>
+                </form>
+            </td>
+
+        </tr>
+        {% else %}
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
 {% endblock %}

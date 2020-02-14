@@ -5,6 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\EventoFederacion;
+use App\Entity\Web;
+use App\Entity\WebFotos;
+use Doctrine\ORM\EntityManagerInterface;
 use DOMDocument;
 
     /**
@@ -13,6 +16,20 @@ use DOMDocument;
 
 class MainController extends AbstractController
 {
+
+    private $entityManager;
+    private $web;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+
+        return $this->web = $this->entityManager->getRepository(Web::class)->findAll()[0];
+        
+    }
+
+
+
     /**
      * @Route("/", name="_index")
      */
@@ -38,7 +55,8 @@ class MainController extends AbstractController
         return $this->render('main/index.html.twig', [
             'title' => 'Actividades',
             'controller_name' => 'MainController',
-            'imagenes' => $imagenes
+            'imagenes' => $imagenes,
+            'web' => $this->web
         ]);
     }
 
@@ -54,7 +72,8 @@ class MainController extends AbstractController
             'title' => 'Eventos',
             'controller_name' => 'EventosController',
             'dataAuto' => $eventosAutonomicos,
-            'dataVal' => $eventosValencia
+            'dataVal' => $eventosValencia,
+            'web' => $this->web
         ]);
     }
 
@@ -128,10 +147,24 @@ class MainController extends AbstractController
      */
     public function indexEquipo()
     {
+        $webFotos=$this->getWebFotos();
 
         return $this->render('equipo/index.html.twig', [
             'title' => 'Equipo',
             'controller_name' => 'EquipoController',
+            'web' => $this->web,
+            'webfotos' => $webFotos
         ]);
+    }
+
+
+    public function getWebFotos()
+    {
+        $webFotos = $this->getDoctrine()
+            ->getRepository(WebFotos::class)
+            ->findAll();
+
+        return  $webFotos;
+
     }
 }

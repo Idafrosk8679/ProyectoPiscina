@@ -33,7 +33,7 @@ class WebFotos
      *
      * @ORM\Column(name="descripcion", type="string", length=50, nullable=true, options={"default"="NULL"})
      */
-    private $descripcion = 'NULL';
+    private $descripcion;
 
     /**
      * @var \Usuarios
