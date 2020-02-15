@@ -644,3 +644,19 @@ table.dataTable thead .sorting_desc_disabled:before {
   font-size: 18px;
 }
 
+
+
+@media screen and (max-width: 650px) {
+
+  .fc-toolbar h2 {
+  font-size: 1.4em !important;
+  }
+  .fc-button{
+    padding: 1px 6px !important;
+  }
+
+}
+
+@media screen and (min-width: 651px) {
+
+}

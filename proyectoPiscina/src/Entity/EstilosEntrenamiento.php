@@ -26,7 +26,11 @@ class EstilosEntrenamiento
      *
      * @ORM\Column(name="nombre", type="string", length=50, nullable=true, options={"default"="NULL"})
      */
-    private $nombre = 'NULL';
+    private $nombre;
+
+    public function __toString(){
+        return $this->getNombre();
+    }
 
     public function getId(): ?int
     {

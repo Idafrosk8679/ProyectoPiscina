@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Entrenamiento
  *
- * @ORM\Table(name="entrenamiento", indexes={@ORM\Index(name="FK_entrenamiento_estilos_entrenamiento", columns={"estilo"}), @ORM\Index(name="FK_entrenamiento_tipos_entrenamiento", columns={"tipos"}), @ORM\Index(name="FK_entrenamiento_sesion", columns={"id_sesion"}), @ORM\Index(name="FK_entrenamiento_distancia_entrenamiento", columns={"metros"})})
+ * @ORM\Table(name="entrenamiento", indexes={@ORM\Index(name="FK_entrenamiento_estilos_entrenamiento", columns={"estilo"}), @ORM\Index(name="FK_entrenamiento_tipos_entrenamiento", columns={"tipos"}), @ORM\Index(name="FK_entrenamiento_sesion", columns={"id_sesion"}), @ORM\Index(name="FK_entrenamiento_distancia", columns={"metros"})})
  * @ORM\Entity
  */
 class Entrenamiento
@@ -26,19 +26,19 @@ class Entrenamiento
      *
      * @ORM\Column(name="series", type="integer", nullable=true, options={"default"="NULL"})
      */
-    private $series = 'NULL';
+    private $series;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="descripciÃ³n", type="text", length=65535, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="descripcion", type="text", length=65535, nullable=true, options={"default"="NULL"})
      */
-    private $descripciã³n = 'NULL';
+    private $descripcion;
 
     /**
-     * @var \DistanciaEntrenamiento
+     * @var \Distancia
      *
-     * @ORM\ManyToOne(targetEntity="DistanciaEntrenamiento")
+     * @ORM\ManyToOne(targetEntity="Distancia")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="metros", referencedColumnName="id")
      * })
@@ -58,7 +58,7 @@ class Entrenamiento
     /**
      * @var \Sesion
      *
-     * @ORM\ManyToOne(targetEntity="Sesion")
+     * @ORM\ManyToOne(targetEntity="Sesion", inversedBy="entrenamientos")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_sesion", referencedColumnName="id")
      * })
@@ -74,6 +74,7 @@ class Entrenamiento
      * })
      */
     private $tipos;
+
 
     public function getId(): ?int
     {
@@ -92,24 +93,24 @@ class Entrenamiento
         return $this;
     }
 
-    public function getDescripciã³n(): ?string
+    public function getDescripcion(): ?string
     {
-        return $this->descripciã³n;
+        return $this->descripcion;
     }
 
-    public function setDescripciã³n(?string $descripciã³n): self
+    public function setDescripcion(?string $descripcion): self
     {
-        $this->descripciã³n = $descripciã³n;
+        $this->descripcion = $descripcion;
 
         return $this;
     }
 
-    public function getMetros(): ?DistanciaEntrenamiento
+    public function getMetros(): ?Distancia
     {
         return $this->metros;
     }
 
-    public function setMetros(?DistanciaEntrenamiento $metros): self
+    public function setMetros(?Distancia $metros): self
     {
         $this->metros = $metros;
 

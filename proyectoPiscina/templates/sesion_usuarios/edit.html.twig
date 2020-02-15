@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit SesionUsuarios{% endblock %}
+
+{% block body %}
+    <h1>Edit SesionUsuarios</h1>
+
+    {{ include('sesion_usuarios/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('sesion_usuarios_index') }}">back to list</a>
+
+    {{ include('sesion_usuarios/_delete_form.html.twig') }}
+{% endblock %}

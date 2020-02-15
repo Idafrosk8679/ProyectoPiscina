@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,25 +24,36 @@ class Sesion
     private $id;
 
     /**
-     * @var \DateTime
+     * 
      *
      * @ORM\Column(name="fecha", type="date", nullable=false)
      */
     private $fecha;
 
     /**
-     * @var \DateTime|null
+     * 
      *
      * @ORM\Column(name="hora_inicio", type="time", nullable=true, options={"default"="NULL"})
      */
-    private $horaInicio = 'NULL';
+    private $horaInicio;
 
     /**
-     * @var \DateTime|null
+     * 
      *
      * @ORM\Column(name="hora_final", type="time", nullable=true, options={"default"="NULL"})
      */
-    private $horaFinal = 'NULL';
+    private $horaFinal;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Entrenamiento", mappedBy="idSesion")
+     */
+    private $entrenamientos;
+
+    public function __construct()
+    {
+        $this->fecha = new \DateTime();
+        $this->entrenamientos = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -79,6 +92,37 @@ class Sesion
     public function setHoraFinal(?\DateTimeInterface $horaFinal): self
     {
         $this->horaFinal = $horaFinal;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Entrenamiento[]
+     */
+    public function getEntrenamientos(): Collection
+    {
+        return $this->entrenamientos;
+    }
+
+    public function addEntrenamiento(Entrenamiento $entrenamiento): self
+    {
+        if (!$this->entrenamientos->contains($entrenamiento)) {
+            $this->entrenamientos[] = $entrenamiento;
+            $entrenamiento->setSession($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEntrenamiento(Entrenamiento $entrenamiento): self
+    {
+        if ($this->entrenamientos->contains($entrenamiento)) {
+            $this->entrenamientos->removeElement($entrenamiento);
+            // set the owning side to null (unless already changed)
+            if ($entrenamiento->getSession() === $this) {
+                $entrenamiento->setSession(null);
+            }
+        }
 
         return $this;
     }

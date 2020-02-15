@@ -28,6 +28,10 @@ class TiposEntrenamiento
      */
     private $tipo = '\'\'';
 
+    public function __toString(){
+        return $this->getTipo();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
