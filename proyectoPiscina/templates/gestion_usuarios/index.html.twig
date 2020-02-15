@@ -73,28 +73,33 @@
 
 <div class="row">
     {% for grupo in data["grupos"] %}
-    <div class="col-6">
 
-        <ul class="list-group">
-            <li class="list-group-item active">
+    <div class="col-6">
+        <div class="grupo-container">
+            <div class="grupo-header">
                 <div class="row">
-                    <div class="col-6">
-                       <a class="list-group-item active" href="{{ path('app_grupos_show', {'id': grupo.id}) }}">{{grupo.nombre|upper}}</a> 
+                    <div class="grupo-name col-12 col-md-6">
+                        <button class="grupo-button-1 float-md-center float-center">
+                            <a class="grupo-href-1" href="{{ path('app_grupos_show', {'id': grupo.id}) }}">{{grupo.nombre|upper}}</a> 
+                        </button>
                     </div>
-                    <div class="col-6">
-                        <a class="list-group-item active" href="{{ path('app_grupos_edit', {'id': grupo.id}) }}">Añadir a grupo</a>
+                    <div class="grupo-add col-12 col-md-6">
+                        <button class="grupo-button-2 float-md-right float-left">
+                            <a class="grupo-href-2" href="{{ path('app_grupos_edit', {'id': grupo.id}) }}">Añadir a grupo</a>
+                        </button>
                     </div>
                 </div>
-
-            </li>
-
+            </div>
+            
             {% for grupoF in data["grupo_usuarios"]|filter(grupoF => grupoF.idGrupo.id == grupo.id) %}
-            <li class="list-group-item">{{ grupoF.idUsuario.nombre }}</li>
+                <li class="grupo-li">{{ grupoF.idUsuario.nombre }} {{ grupoF.idUsuario.apelllidos }}</li>
             {% endfor %}
 
-        </ul>
-
+        </div>
     </div>
+
+
+
     {% endfor %}
 </div>
 

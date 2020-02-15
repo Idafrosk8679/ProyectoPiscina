@@ -1,5 +1,4 @@
 
-
 @media screen and (max-width: 600px) {
 
   .actividades {
@@ -13,6 +12,10 @@
     font-size: 1.5rem !important;
   }
 
+  .grupo-button-1{
+    font-size: 15px !important; 
+  }
+
 }
 
 @media screen and (min-width: 601px) {
@@ -21,6 +24,10 @@
   }
   .titulo-jb {
     font-size: 4.5rem !important;
+  }
+
+  .grupo-button-1{
+    font-size: 20px !important; 
   }
 }
 
@@ -47,8 +54,8 @@ height:100%;
 .titulo-fenixmanises{
     color: #ffffff;
     font-weight: bold;
-    font-size: 1.65rem !important;
-    font-family: Trebuchet MS, sans-serif;
+    font-size: 1.4rem !important;
+    font-family: Verdana, sans-serif;
 }
 
 
@@ -574,6 +581,26 @@ table.dataTable thead .sorting_desc_disabled:before {
 
 /* Botones y href */
 
+.delete-button{
+  background-color: #363636;
+  color: white;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+}
+
+.delete-button:hover{
+  color: white;
+  font-weight: bold;
+}
+
 .atras-button{
   width: 100px;
   padding-top: 1%;
@@ -658,5 +685,75 @@ table.dataTable thead .sorting_desc_disabled:before {
 }
 
 @media screen and (min-width: 651px) {
+
+/* Parte de grupos */
+
+.grupo-container{
+  margin-bottom: 50px;
+}
+
+.grupo-header {
+  padding: 2%;
+  border: none;
+  border-top: 5px solid #cf3429;
+  border-left: 4px solid #cf3429;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  background-color: #ff4133;
+}
+
+.grupo-href-1{
+  color: white;
+}
+
+.grupo-href-1:hover{
+  color: white;
+  text-decoration: none;
+}
+
+.grupo-href-2{
+  color: white;
+}
+
+.grupo-href-2:hover{
+  color: white;
+  text-decoration: none;
+}
+
+.grupo-button-1{
+  background-color: #ff4133;
+  font-weight: bold;
+  border: none;
+  font-size: 20px;
+  font-family: Verdana, sans-serif;
+}
+
+.grupo-button-2{
+  background-color: #ff5246;
+  border-radius: 1em;
+}
+
+.grupo-li:nth-child(odd){
+  padding: 2%;
+  padding-left: 3%;
+  border-left: 4px solid #cf3429 !important;
+  border-right: 1px solid lightgray;
+  list-style: none;
+  background-color: rgb(240, 240, 240);
+}
+
+.grupo-li:nth-child(even){
+  padding: 2%;
+  padding-left: 3%;
+  border-left: 4px solid #cf3429 !important;
+  border-right: 1px solid lightgray;
+  list-style: none;
+  background-color: white;
+}
+
+.grupo-li:last-child{
+  border-bottom: 1px solid lightgray;
+  border-bottom-right-radius: 1em;
+}
 
 }
