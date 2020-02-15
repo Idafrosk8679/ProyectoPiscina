@@ -672,6 +672,20 @@ table.dataTable thead .sorting_desc_disabled:before {
 }
 
 
+
+@media screen and (max-width: 650px) {
+
+  .fc-toolbar h2 {
+  font-size: 1.4em !important;
+  }
+  .fc-button{
+    padding: 1px 6px !important;
+  }
+
+}
+
+@media screen and (min-width: 651px) {
+
 /* Parte de grupos */
 
 .grupo-container{
@@ -690,7 +704,6 @@ table.dataTable thead .sorting_desc_disabled:before {
 
 .grupo-href-1{
   color: white;
-  text-shadow: 2px 2px 4px #000000;
 }
 
 .grupo-href-1:hover{
@@ -741,4 +754,6 @@ table.dataTable thead .sorting_desc_disabled:before {
 .grupo-li:last-child{
   border-bottom: 1px solid lightgray;
   border-bottom-right-radius: 1em;
+}
+
 }

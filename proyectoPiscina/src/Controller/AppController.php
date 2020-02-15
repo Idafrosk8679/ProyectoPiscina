@@ -3,11 +3,19 @@
 namespace App\Controller;
 
 use App\Entity\Usuarios;
+use App\Entity\Entrenamiento;
+use App\Entity\Sesion;
 use App\Entity\Grupos;
 use App\Entity\GrupoUsuario;
+use App\Entity\Web;
+use App\Entity\WebFotos;
 use App\Form\UsuariosType;
+use App\Form\EntrenamientoType;
+use App\Form\SesionType;
 use App\Form\GrupoUsuarioType;
 use App\Form\GruposType;
+use App\Form\WebType;
+use App\Form\WebFotosType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -16,6 +24,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+
 
 /**
  * @Route("/app", name="app")
@@ -43,17 +52,99 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/", name="_index")
+     * @Route("/", name="_index", methods={"GET","POST"})
      */
-    public function index()
+    public function index(Request $request): Response
     {
+
+        $sesion = new Sesion();
+        $form = $this->createForm(SesionType::class, $sesion);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($sesion);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_index',);
+        }
+
+        $data = $this->getEntrenamientos();
+
+        $json= json_encode($data);
+        echo "<script type='text/javascript'>
+        let data = ".$json."
+        </script>";
 
         return $this->render('app/index.html.twig', [
             'title' => 'App',
+            'sesion' => $sesion,
             'user' => $this->user,
+            'form' => $form->createView(),
             'controller_name' => 'AppController',
         ]);
     }
+
+
+
+    /**
+     * @Route("/sesion/{id}", name="_sesion", methods={"GET","POST"})
+     */
+    public function sesion(Request $request, Sesion $sesion): Response
+    {
+        $entrenamiento = new Entrenamiento();
+        $form = $this->createForm(EntrenamientoType::class, $entrenamiento);
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entrenamiento->setIdSesion($sesion);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($entrenamiento);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_sesion',array('id' => $sesion->getId()));
+        }
+
+        return $this->render('sesion/index.html.twig', [
+            'sesion' => $sesion,
+            'user' => $this->user,
+            'entrenamiento' => $entrenamiento,
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+
+    /**
+     * @Route("/sesion/delete/{id}", name="_sesion_delete", methods={"DELETE"})
+     */
+    public function deleteSesion(Request $request, Sesion $sesion): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$sesion->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($sesion);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('sesion_index');
+    }
+
+    /**
+     * @Route("/sesion/entrenamiento/{id}", name="_entrenamiento_delete", methods={"DELETE"})
+     */
+    public function deleteEntrenamiento(Request $request, Entrenamiento $entrenamiento): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$entrenamiento->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($entrenamiento);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_index');
+    }
+
 
     /**
      * @Route("/gestion_usuarios", name="_gestion_usuarios")
@@ -87,6 +178,7 @@ class AppController extends AbstractController
             
 
             $uploadedFile = $form['fotoFile']->getData();
+            if($uploadedFile != null){
             $destination = $this->getParameter('kernel.project_dir').'/public/img/fotos';
 
             $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
@@ -98,6 +190,7 @@ class AppController extends AbstractController
             );
 
             $usuario->setFoto($newFilename);
+            }
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($usuario);
@@ -134,7 +227,10 @@ class AppController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+
+
             $uploadedFile = $form['fotoFile']->getData();
+            if($uploadedFile != null){
             $destination = $this->getParameter('kernel.project_dir').'/public/img/fotos';
 
             $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
@@ -146,6 +242,8 @@ class AppController extends AbstractController
             );
 
             $usuario->setFoto($newFilename);
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('app_gestion_usuarios');
@@ -274,18 +372,84 @@ class AppController extends AbstractController
     /******************************************************************************************* */
 
     /**
-     * @Route("/gestion_web", name="_gestion_web")
+     * @Route("/gestion_web", name="_gestion_web", methods={"GET","POST"})
      */
-    public function gestionWeb(Request $request)
+    public function gestionWeb(Request $request): Response
     {
-        return $this->render('add/index.html.twig', [
-            'controller_name' => 'AddController',
+        $web = $this->getDoctrine()
+                    ->getRepository(Web::class)
+                    ->findBy(['id' => 0])[0];
+
+        $form = $this->createForm(WebType::class, $web);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+        }
+
+        $webFotos = $this->getWebFotos();
+
+        $webFoto = new WebFotos();
+        $form2 = $this->createForm(WebFotosType::class, $webFoto);
+        $form2->handleRequest($request);
+
+        $filter=null;
+        try {
+            $filter = $this->getDoctrine()
+            ->getRepository(WebFotos::class)
+            ->findBy(['idUsuario' => $form2['idUsuario']->getData()])[0];
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+        
+
+        if ($form2->isSubmitted() && $form2->isValid() && $filter == null) {
+
+            $img = $this->getDoctrine()
+            ->getRepository(Usuarios::class)
+            ->findBy(['dni' => $form2['idUsuario']->getData()])[0];
+
+            if($img != null){
+                $webFoto->setFoto($img->getFoto());
+            }
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($webFoto);
+            $entityManager->flush();
+
+
+            return $this->redirectToRoute('app_gestion_web');
+        }else{
+            unset($webFoto);
+            unset($form2);
+
+            $webFoto = new WebFotos();
+            $form2 = $this->createForm(WebFotosType::class, $webFoto);
+        }
+
+
+        return $this->render('gestion_web/index.html.twig', [
             'user' => $this->user,
-            
+            'web' => $web,
+            'data' => $webFotos,
+            'form2' => $form2->createView(),
+            'form' => $form->createView(),
         ]);
     }
 
+    /**
+     * @Route("/gestion_web/delete/{id}", name="_webfotos_delete", methods={"DELETE"})
+     */
+    public function deleteWeb(Request $request, WebFotos $webFoto): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$webFoto->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($webFoto);
+            $entityManager->flush();
+        }
 
+        return $this->redirectToRoute('app_gestion_web');
+    }
 
 
 
@@ -320,5 +484,70 @@ class AppController extends AbstractController
         return  $grupos_usuario;
 
     }
+
+    public function getWebFotos()
+    {
+        $webFotos = $this->getDoctrine()
+            ->getRepository(WebFotos::class)
+            ->findAll();
+
+        return  $webFotos;
+
+    }
+
+    public function getEntrenamientos()
+    {
+        $entrenamientos= [];
+
+        $sesion = $this->getDoctrine()
+            ->getRepository(Sesion::class)
+            ->findAll();
+
+        foreach ($sesion as $s) {
+
+            $entr=$s->getEntrenamientos();
+
+            $color='#F3F3F3';
+            $textColor='#000000';
+            $fecha=$s->getFecha();
+            $title='';
+
+            foreach ($entr as $e) {
+
+                $estilo='';
+                $series='';
+                $metros='';
+                
+
+                if ($e->getEstilo() !=null) {
+                    $estilo=$e->getEstilo()->getNombre().PHP_EOL;
+                }elseif($e->getSeries() !=null){
+                   $series= $e->getSeries().' series'.PHP_EOL;
+                }elseif($e->getMetros() !=null){
+                   $metros=$e->getMetros()->getDistancia().'m'; 
+                }
+
+                
+
+                $title=$title.$e->getTipos()->getTipo().PHP_EOL.$estilo.$series.$metros.PHP_EOL.PHP_EOL;
+                
+            }
+
+            array_push($entrenamientos,array(
+                'title' => $title,
+                'start' => date_format($fecha,"Y-m-d"),
+                'url'=> $this->generateUrl('app_sesion', array('id'=> $s->getId()), UrlGeneratorInterface::ABSOLUTE_URL),
+                'color'=> $color,
+                'textColor'=>$textColor,
+                'firstDay'=>0
+                ));
+
+        }
+        
+        
+        return  $entrenamientos;
+
+    }
+
 
 }

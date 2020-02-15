@@ -16,7 +16,7 @@ class Usuarios implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="dni", type="string", length=50, nullable=false)
+     * @ORM\Column(name="dni", type="string", length=9, nullable=false)
      * @ORM\Id
      *
      */
@@ -53,7 +53,7 @@ class Usuarios implements UserInterface, \Serializable
     /**
      * @var string|null
      *
-     * @ORM\Column(name="pass", type="string", length=50, nullable=true)
+     * @ORM\Column(name="pass", type="string", length=20, nullable=false)
      */
     private $pass;
 

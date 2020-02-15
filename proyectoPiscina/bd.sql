@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `entrenamiento` (
   CONSTRAINT `FK_entrenamiento_tipos_entrenamiento` FOREIGN KEY (`tipos`) REFERENCES `tipos_entrenamiento` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla piscina.entrenamiento: ~4 rows (aproximadamente)
+-- Volcando datos para la tabla piscina.entrenamiento: ~6 rows (aproximadamente)
 /*!40000 ALTER TABLE `entrenamiento` DISABLE KEYS */;
 INSERT INTO `entrenamiento` (`id`, `id_sesion`, `tipos`, `estilo`, `series`, `metros`, `descripcion`) VALUES
 	(6, 1, 1, 5, 5, 5, 'hgyhjfu u uyg uyf jkug liugiuiuiugiug u  iuiugi gio  iuogi iou iou iuog'),
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `grupos` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla piscina.grupos: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla piscina.grupos: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `grupos` DISABLE KEYS */;
 INSERT INTO `grupos` (`id`, `nombre`) VALUES
 	(1, 'hola'),
@@ -169,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `sesion` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla piscina.sesion: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla piscina.sesion: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `sesion` DISABLE KEYS */;
 INSERT INTO `sesion` (`id`, `fecha`, `hora_inicio`, `hora_final`) VALUES
 	(1, '2018-02-13', '11:06:00', '15:06:00'),
@@ -230,7 +230,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 INSERT INTO `usuarios` (`dni`, `nombre`, `apelllidos`, `foto`, `fecha_nac`, `rol`, `pass`) VALUES
 	('23513456h', 'dawdaw', 'dwadwad', NULL, '2018-02-13', 6, '123piscina'),
-	('23513456p', 'Saúl', 'aaaaa ni', NULL, '1916-01-01', 9, '123piscina'),
+	('23513456p', 'Saúl', 'aaaaa ni', NULL, '1916-01-01', 6, '123piscina'),
 	('443231432', 'fes', 'fesfes', NULL, '2018-02-13', 8, '123');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
@@ -242,7 +242,7 @@ CREATE TABLE IF NOT EXISTS `web` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla piscina.web: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla piscina.web: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `web` DISABLE KEYS */;
 INSERT INTO `web` (`id`, `telefono`, `email`) VALUES
 	(0, '961 84 92 44', 'cnfenixmanises@gmail.com');
@@ -259,7 +259,7 @@ CREATE TABLE IF NOT EXISTS `web_fotos` (
   CONSTRAINT `FK_web_fotos_usuarios` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`dni`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla piscina.web_fotos: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla piscina.web_fotos: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `web_fotos` DISABLE KEYS */;
 INSERT INTO `web_fotos` (`id`, `id_usuario`, `foto`, `descripcion`) VALUES
 	(1, '443231432', 'fes', 'igiug');

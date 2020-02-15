@@ -7,118 +7,97 @@
 
 <div class="background-equipo">
 
-<div class="jumbotron-fluid equipo d-flex justify-content-center align-items-center">
+	<div class="jumbotron-fluid equipo d-flex justify-content-center align-items-center">
 
 		<div class="container-fluid">
-	
+
 			<h1 class="text-uppercase text-bold titulo-jb">equipo</h1>
-	
+
 		</div>
-	
+
 	</div>
-	
+
 
 	<div class="container">
-	<hr class="separador-top">
+		<hr class="separador-top">
+
+
+		{% if webfotos|filter(w => w.idUsuario.rol == 'junta')|length !=0 %}
 
 		<div class="titulo-seccion">
 			Junta Directiva
 		</div>
-			<div class="row row-equipo justify-content-center">
+		<div class="row row-equipo justify-content-center">
 
-				<div class="col-12 col-md-4">
-					<div class="img__wrap">
-						<img class="img__img" src="{{ asset ('image.jpg', 'fotos')}}" />
-						<p class="img__title">xxxx</p>
-						<p class="img__description">descrip</p>
-					</div>
+			{% for info in webfotos|filter(w => w.idUsuario.rol == 'junta') %}
+
+			<div class="col-12 col-md-4">
+				<div class="img__wrap">
+					<img class="img__img" src="{{ asset (info.foto, 'fotos')}}" />
+					<p class="img__title">{{info.idUsuario.nombre}}</p>
+					<p class="img__description">{{info.descripcion}}</p>
 				</div>
-
-				<div class="col-12 col-md-4">
-					<div class="img__wrap">
-						<img class="img__img" src="{{ asset ('image.jpg', 'fotos')}}" />
-						<p class="img__title">xxxx</p>
-						<p class="img__description">descrip</p>
-					</div>
-				</div>
-
-
 			</div>
-		
 
+			{% endfor %}
+
+
+		</div>
+		{% endif %}
+
+
+		{% if webfotos|filter(w => w.idUsuario.rol == 'entrenador')|length !=0 %}
 
 		<div class="titulo-seccion">
 			Entrenadores
 		</div>
 
-		
-			<div class="row row-equipo justify-content-center">
 
-				<div class="col-12 col-md-4">
-					<div class="img__wrap">
-						<img class="img__img" src="{{ asset ('image.jpg', 'fotos')}}" />
-						<p class="img__title">xxxx</p>
-						<p class="img__description">descrip</p>
-					</div>
+		<div class="row row-equipo justify-content-center">
+
+			{% for info in webfotos|filter(w => w.idUsuario.rol == 'entrenador') %}
+
+			<div class="col-12 col-md-4">
+				<div class="img__wrap">
+					<img class="img__img" src="{{ asset (info.foto, 'fotos')}}" />
+					<p class="img__title">{{info.idUsuario.nombre}}</p>
+					<p class="img__description">{{info.descripcion}}</p>
 				</div>
-
 			</div>
 
+			{% endfor %}
+
+		</div>
+		{% endif %}
 
 
+		{% if webfotos|filter(w => w.idUsuario.rol == 'usuario')|length !=0 %}
 
 		<div class="titulo-seccion">
 			Nadadores
 		</div>
 
 
-			<div class="row row-equipo justify-content-center">
+		<div class="row row-equipo justify-content-center">
 
-				<div class="col-12 col-md-4">
-					<div class="img__wrap">
-						<img class="img__img" src="{{ asset ('image.jpg', 'fotos')}}" />
-						<p class="img__title">xxxx</p>
-						<p class="img__description">descrip</p>
-					</div>
+			{% for info in webfotos|filter(w => w.idUsuario.rol == 'usuario') %}
+
+			<div class="col-12 col-md-4">
+				<div class="img__wrap">
+					<img class="img__img" src="{{ asset (info.foto, 'fotos')}}" />
+					<p class="img__title">{{info.idUsuario.nombre}}</p>
+					<p class="img__description">{{info.descripcion}}</p>
 				</div>
+			</div>
 
-				<div class="col-12 col-md-4">
-					<div class="img__wrap">
-						<img class="img__img" src="{{ asset ('image.jpg', 'fotos')}}" />
-						<p class="img__title">xxxx</p>
-						<p class="img__description">descrip</p>
-					</div>
-				</div>
+			{% endfor %}
 
-				<div class="col-12 col-md-4">
-					<div class="img__wrap">
-						<img class="img__img" src="{{ asset ('image.jpg', 'fotos')}}" />
-						<p class="img__title">xxxx</p>
-						<p class="img__description">descrip</p>
-					</div>
-				</div>
-
-
-				<div class="col-12 col-md-4">
-					<div class="img__wrap">
-						<img class="img__img" src="{{ asset ('image.jpg', 'fotos')}}" />
-						<p class="img__title">xxxx</p>
-						<p class="img__description">descrip</p>
-					</div>
-				</div>
-
-				<div class="col-12 col-md-4">
-					<div class="img__wrap">
-						<img class="img__img" src="{{ asset ('image.jpg', 'fotos')}}" />
-						<p class="img__title">xxxx</p>
-						<p class="img__description">descrip</p>
-					</div>
-				</div>
 		</div>
+
+		{% endif %}
 
 	</div>
 
 </div>
-	
-{% endblock %}
 
+{% endblock %}

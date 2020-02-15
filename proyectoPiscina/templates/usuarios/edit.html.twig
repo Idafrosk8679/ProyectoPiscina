@@ -16,7 +16,7 @@
     <img src="{{ asset (usuario.foto, 'fotos')}}" alt="" width="100px">
     {% endif %}
 
-    {{ form_widget(form.fotoFile, {'attr':{'class':'mb-4'} }) }}
+    {{ form_widget(form.fotoFile, {'attr':{'class':'mb-4'}, value : usuario.foto }) }}
 </div>
 
 <div class="row">

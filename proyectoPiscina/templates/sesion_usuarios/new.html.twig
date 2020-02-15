@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New SesionUsuarios{% endblock %}
+
+{% block body %}
+    <h1>Create new SesionUsuarios</h1>
+
+    {{ include('sesion_usuarios/_form.html.twig') }}
+
+    <a href="{{ path('sesion_usuarios_index') }}">back to list</a>
+{% endblock %}

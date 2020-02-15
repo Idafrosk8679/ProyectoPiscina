@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SesionUsuarios{% endblock %}
+
+{% block body %}
+    <h1>SesionUsuarios</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Asistencia</th>
+                <td>{{ sesion_usuario.asistencia }}</td>
+            </tr>
+            <tr>
+                <th>Comentario</th>
+                <td>{{ sesion_usuario.comentario }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('sesion_usuarios_index') }}">back to list</a>
+
+    <a href="{{ path('sesion_usuarios_edit', {'id': sesion_usuario.id}) }}">edit</a>
+
+    {{ include('sesion_usuarios/_delete_form.html.twig') }}
+{% endblock %}

@@ -13,17 +13,40 @@ use Doctrine\ORM\Mapping as ORM;
 class TiposEntrenamiento
 {
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="Tipo", type="string", length=50, nullable=false)
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $tipo = '';
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipo", type="string", length=50, nullable=false, options={"default"="''"})
+     */
+    private $tipo = '\'\'';
+
+    public function __toString(){
+        return $this->getTipo();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getTipo(): ?string
     {
         return $this->tipo;
+    }
+
+    public function setTipo(string $tipo): self
+    {
+        $this->tipo = $tipo;
+
+        return $this;
     }
 
 

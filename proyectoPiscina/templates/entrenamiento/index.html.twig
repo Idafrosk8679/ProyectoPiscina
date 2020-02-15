@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entrenamiento index{% endblock %}
+
+{% block body %}
+    <h1>Entrenamiento index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Series</th>
+                <th>Descripci�n</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entrenamiento in entrenamientos %}
+            <tr>
+                <td>{{ entrenamiento.id }}</td>
+                <td>{{ entrenamiento.series }}</td>
+                <td>{{ entrenamiento.descripci�n }}</td>
+                <td>
+                    <a href="{{ path('entrenamiento_show', {'id': entrenamiento.id}) }}">show</a>
+                    <a href="{{ path('entrenamiento_edit', {'id': entrenamiento.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('entrenamiento_new') }}">Create new</a>
+{% endblock %}
