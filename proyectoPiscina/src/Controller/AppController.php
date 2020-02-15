@@ -107,11 +107,25 @@ class AppController extends AbstractController
             return $this->redirectToRoute('app_sesion',array('id' => $sesion->getId()));
         }
 
+        $sesionUsuario = new SesionUsuarios();
+        $form2 = $this->createForm(SesionUsuariosType::class, $sesionUsuario);
+        $form2->handleRequest($request);
+
+        if ($form2->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($sesionUsuario);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_sesion',array('id' => $sesion->getId()));
+        }
+
         return $this->render('sesion/index.html.twig', [
             'sesion' => $sesion,
             'user' => $this->user,
             'entrenamiento' => $entrenamiento,
             'form' => $form->createView(),
+            'sesion_usuario' => $sesionUsuario,
+            'form2' => $form2->createView(),
         ]);
     }
 
