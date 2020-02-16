@@ -1,13 +1,26 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutApp.html.twig' %}
 
-{% block title %}Edit Informacion{% endblock %}
+{% block title %}Edit Fisico{% endblock %}
 
-{% block body %}
-    <h1>Edit Informacion</h1>
+{% block main %}
+<button class="atras-button">
+    <a class="atras-href" href="{{ path('app_noticias') }}">❮ Volver</a>
+</button>
 
-    {{ include('informacion/_form.html.twig', {'button_label': 'Update'}) }}
+{{ form_start(form, {'attr':{'class':'border border-light p-5'} }) }}
+<h3 class="mb-5 text-center">Editar noticia</h3>
 
-    <a href="{{ path('informacion_index') }}">back to list</a>
+<div class="row">
+    <label for="">Nombre</label>
+    {{ form_widget(form.nombre, {'attr':{'class':'form-control mb-4'} }) }}
+</div>
 
-    {{ include('informacion/_delete_form.html.twig') }}
+<div class="row">
+    <label for="">Descripción</label>
+    {{ form_widget(form.descripcion, {'attr':{'class':'form-control mb-4'} }) }}
+</div>
+
+<button class="btn app-button-func1 btn-block">{{ button_label|default('Añadir') }}</button>
+
+{{ form_end(form) }}
 {% endblock %}

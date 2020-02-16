@@ -7,6 +7,7 @@
     <a class="atras-href" href="{{ path('app_gestion_usuarios') }}">❮ Volver</a>
 </button>
 
+
 {{ form_start(form, {'attr':{'class':'border border-light p-5'} }) }}
 <h1 class="mb-5 text-center">Crear Usuario</h1>
 
@@ -28,21 +29,6 @@
 <div class="row">
     <label for="">Apellidos</label>
     {{ form_widget(form.apelllidos, {'attr':{'class':'form-control mb-4'} }) }}
-</div>
-
-<div class="row">
-    <label for="">Rol</label>
-    {{ form_widget(form.rol, {'attr':{'class':'form-control mb-4'} }) }}
-</div>
-
-<div class="row">
-    <label for="">Foto</label>
-    {{ form_widget(form.fotoFile, {'attr':{'class':'mb-4'} }) }}
-</div>
-
-<div class="row">
-    <label for="">Fecha de nacimiento</label>
-    {{ form_widget(form.fechaNac, {'attr':{'class':'mb-4'} }) }}
 </div>
 
 

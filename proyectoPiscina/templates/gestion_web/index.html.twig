@@ -18,7 +18,7 @@
 
 </div>
 
-<button class="btn btn-info btn-block">{{ button_label|default('Update') }}</button>
+<button class="btn app-button-func1 btn-block">{{ button_label|default('Update') }}</button>
 
 {{ form_end(form) }}
 
@@ -42,7 +42,7 @@
     {{ form_widget(form2.foto, {'attr':{'class':'invisible'} }) }}
 
 
-<button class="btn btn-info btn-block">{{ button_label|default('Update') }}</button>
+<button class="btn app-button-func1 btn-block">{{ button_label|default('Update') }}</button>
 
 {{ form_end(form2) }}
 
@@ -75,7 +75,7 @@
                 <form method="post" action="{{ path('app_webfotos_delete', {'id': webfoto.id}) }}" onsubmit="return confirm('Estás seguro/a de borrarlo?');">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ webfoto.id) }}">
-                    <button class="app-button2">Eliminar</button>
+                    <button class="app-button-func2">Eliminar</button>
                 </form>
             </td>
 

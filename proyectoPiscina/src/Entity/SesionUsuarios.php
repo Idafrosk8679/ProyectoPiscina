@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,31 +14,40 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class SesionUsuarios
 {
+
     /**
-     * @var int|null
+     * @var int
      *
-     * @ORM\Column(name="asistencia", type="integer", nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $asistencia = 'NULL';
+    private $id;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="asistencia", type="string", length=2, nullable=true, options={"default"="NULL"})
+     */
+    private $asistencia;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="comentario", type="text", length=65535, nullable=true, options={"default"="NULL"})
      */
-    private $comentario = 'NULL';
+    private $comentario;
 
     /**
      * @var \Sesion
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * 
      * @ORM\OneToOne(targetEntity="Sesion")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_sesion", referencedColumnName="id")
      * })
      */
-    private $id;
+    private $id_sesion;
 
     /**
      * @var \Usuarios
@@ -48,12 +59,27 @@ class SesionUsuarios
      */
     private $dni;
 
-    public function getAsistencia(): ?int
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Usuarios", mappedBy="dni")
+     */
+    private $usuarios;
+
+    public function __construct()
+    {
+        $this->usuarios = new ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getAsistencia(): ?string
     {
         return $this->asistencia;
     }
 
-    public function setAsistencia(?int $asistencia): self
+    public function setAsistencia(?string $asistencia): self
     {
         $this->asistencia = $asistencia;
 
@@ -72,14 +98,14 @@ class SesionUsuarios
         return $this;
     }
 
-    public function getId(): ?Sesion
+    public function getIdSesion(): ?Sesion
     {
-        return $this->id;
+        return $this->id_sesion;
     }
 
-    public function setId(?Sesion $id): self
+    public function setIdSesion(?Sesion $id_sesion): self
     {
-        $this->id = $id;
+        $this->id_sesion = $id_sesion;
 
         return $this;
     }
@@ -92,6 +118,37 @@ class SesionUsuarios
     public function setDni(?Usuarios $dni): self
     {
         $this->dni = $dni;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Usuarios[]
+     */
+    public function getUsuarios(): Collection
+    {
+        return $this->usuarios;
+    }
+
+    public function addUsuario(Usuarios $usuario): self
+    {
+        if (!$this->usuarios->contains($usuario)) {
+            $this->usuarios[] = $usuario;
+            $usuario->setSesionUsuarios($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUsuario(Usuarios $usuario): self
+    {
+        if ($this->usuarios->contains($usuario)) {
+            $this->usuarios->removeElement($usuario);
+            // set the owning side to null (unless already changed)
+            if ($usuario->getSesionUsuarios() === $this) {
+                $usuario->setSesionUsuarios(null);
+            }
+        }
 
         return $this;
     }

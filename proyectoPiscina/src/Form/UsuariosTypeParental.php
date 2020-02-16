@@ -2,7 +2,6 @@
 
 namespace App\Form;
 
-use App\Entity\Roles;
 use App\Entity\Usuarios;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityRepository;
@@ -16,7 +15,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Doctrine\ORM\QueryBuilder;
 
-class UsuariosType extends AbstractType
+class UsuariosTypeParental extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -24,25 +23,7 @@ class UsuariosType extends AbstractType
             ->add('dni')
             ->add('nombre')
             ->add('apelllidos')
-            ->add('fotoFile', FileType::class, [
-                'required' => false,
-                'mapped' => false,
-            ])
-            ->add('fechaNac', BirthdayType::class)
             ->add('pass', PasswordType::class)
-            ->add('rol', EntityType::class, [
-                'class' => Roles::class,
-                'mapped' => true,
-                'query_builder' => function (EntityRepository $er) {
-
-                    $queryBuilder = $er->createQueryBuilder('r');
-
-                    return $queryBuilder
-                        ->where($queryBuilder->expr()->neq('r.id', 6))
-                        ;
-                     
-                },
-            ])
         ;
     }
 
@@ -53,5 +34,3 @@ class UsuariosType extends AbstractType
         ]);
     }
 }
-
-

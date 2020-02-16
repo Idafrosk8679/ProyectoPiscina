@@ -33,14 +33,14 @@ class Informacion
      *
      * @ORM\Column(name="nombre", type="string", length=50, nullable=true, options={"default"="NULL"})
      */
-    private $nombre = 'NULL';
+    private $nombre;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="descripcion", type="text", length=65535, nullable=true, options={"default"="NULL"})
      */
-    private $descripcion = 'NULL';
+    private $descripcion;
 
     public function getId(): ?int
     {

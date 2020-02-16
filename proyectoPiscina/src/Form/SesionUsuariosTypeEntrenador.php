@@ -11,7 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class SesionUsuariosType extends AbstractType
+class SesionUsuariosTypeEntrenador extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -23,8 +23,21 @@ class SesionUsuariosType extends AbstractType
                     'No' => 'No',
                 ))
             )
-            ->add('comentario')
-            ->add('dni')
+            ->add('usuarios', EntityType::class, [
+                'class' => Usuarios::class,
+                'expanded' => true,
+                'multiple' => true,
+                'query_builder' => function (EntityRepository $er) {
+
+                    $queryBuilder = $er->createQueryBuilder('u');
+
+                    return $queryBuilder
+                        ->where($queryBuilder->expr()->eq('u.rol', 7))
+                    ;
+
+                },
+
+            ])
         ;
     }
 

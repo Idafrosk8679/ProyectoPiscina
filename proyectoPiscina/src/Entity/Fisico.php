@@ -24,14 +24,14 @@ class Fisico
     /**
      * @var float
      *
-     * @ORM\Column(name="altura", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\Column(name="altura", type="float", precision=10, scale=2, nullable=false)
      */
     private $altura;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="peso", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\Column(name="peso", type="float", precision=10, scale=2, nullable=false)
      */
     private $peso;
 

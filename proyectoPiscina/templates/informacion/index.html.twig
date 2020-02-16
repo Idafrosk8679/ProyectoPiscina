@@ -1,39 +1,47 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutApp.html.twig' %}
 
-{% block title %}Informacion index{% endblock %}
+{% block title %}Noticias{% endblock %}
 
-{% block body %}
-    <h1>Informacion index</h1>
+{% block main %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Fecha</th>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for informacion in informacions %}
-            <tr>
-                <td>{{ informacion.id }}</td>
-                <td>{{ informacion.fecha ? informacion.fecha|date('Y-m-d') : '' }}</td>
-                <td>{{ informacion.nombre }}</td>
-                <td>{{ informacion.descripcion }}</td>
-                <td>
-                    <a href="{{ path('informacion_show', {'id': informacion.id}) }}">show</a>
-                    <a href="{{ path('informacion_edit', {'id': informacion.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<h1>Noticias</h1>
 
-    <a href="{{ path('informacion_new') }}">Create new</a>
+
+{% for noticia in noticias %}
+
+<div class="card mt-5">
+    <div class="card-body">
+        <h5 class="card-title">{{noticia.nombre}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted"> {{noticia.fecha|date('d-m-Y')}}</h6>
+        <p class="card-text">{{noticia.descripcion}}</p>
+        {% if user.rol != 'usuario' or user.rol != 'parental' %}
+        <button type="button" class="app-button-func2"><a class="app-href" href="{{ path('app_noticias_edit', {'id': noticia.id}) }}">Editar</a></button>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endfor %}
+
+{% if user.rol == 'admin' or user.rol == 'entrenador' or user.rol == 'junta' %}
+
+{{ form_start(form, {'attr':{'class':'border border-light p-5'} }) }}
+<h3 class="mb-5 text-center">Añadir noticia</h3>
+
+<div class="row">
+    <label for="">Nombre</label>
+    {{ form_widget(form.nombre, {'attr':{'class':'form-control mb-4'} }) }}
+</div>
+
+<div class="row">
+    <label for="">Descripción</label>
+    {{ form_widget(form.descripcion, {'attr':{'class':'form-control mb-4'} }) }}
+</div>
+
+<button class="btn app-button-func1 btn-block">{{ button_label|default('Añadir') }}</button>
+
+{{ form_end(form) }}
+
+{% endif %}
+
 {% endblock %}

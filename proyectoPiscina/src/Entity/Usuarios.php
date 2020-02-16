@@ -15,7 +15,8 @@ class Usuarios implements UserInterface, \Serializable
 {
     /**
      * @var string
-     *
+     * 
+     * @ORM\ManyToOne(targetEntity="App\Entity\SesionUsuarios", inversedBy="usuarios")
      * @ORM\Column(name="dni", type="string", length=9, nullable=false)
      * @ORM\Id
      *
@@ -28,6 +29,13 @@ class Usuarios implements UserInterface, \Serializable
      * @ORM\Column(name="nombre", type="string", length=50, nullable=false)
      */
     private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="familiar", type="string", length=50, nullable=false)
+     */
+    private $familiar = 'NULL';
 
     /**
      * @var string
@@ -67,6 +75,7 @@ class Usuarios implements UserInterface, \Serializable
      */
     private $rol;
 
+
     public function __toString(){
         return $this->getNombre();
     }
@@ -79,6 +88,18 @@ class Usuarios implements UserInterface, \Serializable
     public function setNombre(string $nombre): self
     {
         $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    public function getFamiliar(): ?string
+    {
+        return $this->familiar;
+    }
+
+    public function setFamiliar(string $familiar): self
+    {
+        $this->familiar = $familiar;
 
         return $this;
     }

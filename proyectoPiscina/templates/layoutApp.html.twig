@@ -41,9 +41,13 @@
 					<a class="nav-link" href="{{path('app_index')}}">Inicio</a>
 				</li>
 
+				<li class="nav-item">
+					<a class="nav-link" href="{{path('app_noticias')}}">Noticias</a>
+				</li>
+
 				{% if user.rol == 'usuario' or user.rol == 'admin'  or user.rol == 'entrenador' %}
 				<li class="nav-item">
-					<a class="nav-link" href="#">Físico</a>
+					<a class="nav-link" href="{{ path('app_fisico') }}">Físico</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Marcas</a>
