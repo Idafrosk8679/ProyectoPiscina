@@ -14,7 +14,7 @@
         <h5 class="card-title">{{noticia.nombre}}</h5>
         <h6 class="card-subtitle mb-2 text-muted"> {{noticia.fecha|date('d-m-Y')}}</h6>
         <p class="card-text">{{noticia.descripcion}}</p>
-        {% if user.rol != 'usuario' or user.rol != 'parental' %}
+        {% if user.rol != 'usuario' and user.rol != 'parental' %}
         <button type="button" class="app-button-func2"><a class="app-href" href="{{ path('app_noticias_edit', {'id': noticia.id}) }}">Editar</a></button>
         {% endif %}
     </div>

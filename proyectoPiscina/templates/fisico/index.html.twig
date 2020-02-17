@@ -3,6 +3,9 @@
 {% block title %}Fisico{% endblock %}
 
 {% block main %}
+
+{% if user.rol == 'usuario' or user.rol == 'parental' %}
+
 <div class="col-12">
     <canvas id="lineChartAltura"></canvas>
 </div>
@@ -12,7 +15,7 @@
 </div>
 
 
-
+<div {% if user.rol == 'parental'%}hidden{% endif %}>
 {{ form_start(form, {'attr':{'class':'border border-light p-5'} }) }}
 
 
@@ -38,8 +41,10 @@
 <button class="btn app-button-func2 btn-block mt-3">{{ button_label|default('Añadir') }}</button>
 
 {{ form_end(form) }}
+</div>
+{% endif %}
 
-<table class="mb-3" cellspacing="0" width="100%">
+<table id="dtBasicExample" class="app-table mb-3" cellspacing="0" width="100%">
     <thead>
         <tr>
             <th class="app-th">Fecha

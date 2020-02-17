@@ -42,7 +42,7 @@
 
         {% for usuario in data["usuarios"] %}
 
-        {% if usuario.rol.nombre != filtro and usuario.dni != user.dni %}
+        {% if usuario.rol.nombre != filtro and usuario.dni != user.dni and usuario.rol.nombre !='admin' %}
         <tr class="app-tr">
             <td class="app-td">{{ usuario.dni }}</td>
             <td class="app-td">{{ usuario.nombre }}</td>

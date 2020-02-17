@@ -135,7 +135,6 @@ class AppController extends AbstractController
                     }
 
                     if ($filterSU == null) {
-                        $this->debug_to_console('fuera');
                         $su = new SesionUsuarios();
                         $su->setDni($u);
                         $su->setIdSesion($sesion);

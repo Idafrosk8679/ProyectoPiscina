@@ -26,7 +26,7 @@
     <button class="app-button-func2">Eliminar sesion</button>
 </form>
 
-
+{% if sesion.entrenamientos|length > 0 %}
 <table class="app-table mb-4" cellspacing="0" width="100%">
     <thead>
         <tr>
@@ -87,6 +87,7 @@
     </tbody>
 
 </table>
+{% endif %}
 
 {% for comen in dataUsers %}
 
