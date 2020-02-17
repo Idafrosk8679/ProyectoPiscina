@@ -57,6 +57,10 @@ CREATE TABLE IF NOT EXISTS `entrenamiento` (
 
 -- Volcando datos para la tabla piscina.entrenamiento: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `entrenamiento` DISABLE KEYS */;
+INSERT INTO `entrenamiento` (`id`, `id_sesion`, `tipos`, `estilo`, `series`, `metros`, `descripcion`) VALUES
+	(15, 6, 1, 1, 3, 4, 'Descripción del ejercicio'),
+	(16, 6, 4, NULL, NULL, NULL, 'Descripción breve'),
+	(17, 6, 6, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `entrenamiento` ENABLE KEYS */;
 
 -- Volcando estructura para tabla piscina.estilos_entrenamiento
@@ -90,6 +94,9 @@ CREATE TABLE IF NOT EXISTS `fisico` (
 
 -- Volcando datos para la tabla piscina.fisico: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `fisico` DISABLE KEYS */;
+INSERT INTO `fisico` (`id`, `dni`, `altura`, `peso`, `fecha_inserc`) VALUES
+	(8, '555555555', 1.89, 80.00, '2020-02-17'),
+	(10, '555555555', 1.90, 82.00, '2020-02-18');
 /*!40000 ALTER TABLE `fisico` ENABLE KEYS */;
 
 -- Volcando estructura para tabla piscina.grupos
@@ -130,6 +137,10 @@ CREATE TABLE IF NOT EXISTS `informacion` (
 
 -- Volcando datos para la tabla piscina.informacion: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `informacion` DISABLE KEYS */;
+INSERT INTO `informacion` (`id`, `fecha`, `nombre`, `descripcion`) VALUES
+	(5, '2020-02-17', 'Noticia1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
+	(6, '2020-02-17', 'Noticia2', 't in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
+	(7, '2020-02-17', 'Articulo1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 /*!40000 ALTER TABLE `informacion` ENABLE KEYS */;
 
 -- Volcando estructura para tabla piscina.marcas
@@ -146,6 +157,8 @@ CREATE TABLE IF NOT EXISTS `marcas` (
 
 -- Volcando datos para la tabla piscina.marcas: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `marcas` DISABLE KEYS */;
+INSERT INTO `marcas` (`id`, `dni`, `nombre_comp`, `marca`, `fecha`) VALUES
+	(3, '555555555', 'Competición', '01:06:12', '2020-02-14');
 /*!40000 ALTER TABLE `marcas` ENABLE KEYS */;
 
 -- Volcando estructura para tabla piscina.roles
@@ -176,6 +189,8 @@ CREATE TABLE IF NOT EXISTS `sesion` (
 
 -- Volcando datos para la tabla piscina.sesion: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `sesion` DISABLE KEYS */;
+INSERT INTO `sesion` (`id`, `fecha`, `hora_inicio`, `hora_final`) VALUES
+	(6, '2020-02-17', '19:15:00', '20:40:00');
 /*!40000 ALTER TABLE `sesion` ENABLE KEYS */;
 
 -- Volcando estructura para tabla piscina.sesion_usuarios
@@ -194,6 +209,9 @@ CREATE TABLE IF NOT EXISTS `sesion_usuarios` (
 
 -- Volcando datos para la tabla piscina.sesion_usuarios: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `sesion_usuarios` DISABLE KEYS */;
+INSERT INTO `sesion_usuarios` (`id`, `dni`, `id_sesion`, `asistencia`, `comentario`) VALUES
+	(26, '555555555', 6, 'Si', 'Buena sesión de entrenamiento'),
+	(27, '666666666', 6, NULL, NULL);
 /*!40000 ALTER TABLE `sesion_usuarios` ENABLE KEYS */;
 
 -- Volcando estructura para tabla piscina.tipos_entrenamiento
@@ -229,12 +247,13 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   CONSTRAINT `FK_usuarios_roles` FOREIGN KEY (`rol`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=ucs2 COLLATE=ucs2_spanish_ci;
 
--- Volcando datos para la tabla piscina.usuarios: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla piscina.usuarios: ~8 rows (aproximadamente)
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 INSERT INTO `usuarios` (`dni`, `nombre`, `apelllidos`, `foto`, `fecha_nac`, `rol`, `pass`, `familiar`) VALUES
 	('111111111', 'Junta', 'Usuario', 'image1.jpeg', '1991-08-13', 9, '123123', 'NULL'),
+	('123123123', 'Parental', 'Usuario', 'NULL', NULL, 10, '123', '555555555'),
 	('222222222', 'Junta2', 'Usuario', NULL, '1975-09-13', 9, '123123', 'NULL'),
-	('333333333', 'Entrenador', 'Usuario', 'image3.jpeg', '1988-10-23', 8, '123123', 'NULL'),
+	('333333333', 'Entrenador', 'Usuarios', 'image3.jpeg', '1988-10-23', 8, '123123', 'NULL'),
 	('444444444', 'Nadador1', 'Usuario', 'image4.jpeg', '2008-09-17', 7, '123123', 'NULL'),
 	('555555555', 'Nadador2', 'Usuario', 'image5.jpeg', '2011-09-16', 7, '123123', 'NULL'),
 	('666666666', 'Nadador3', 'Usuario', 'image6.jpeg', '1999-08-15', 7, '123123', 'NULL'),
@@ -269,6 +288,13 @@ CREATE TABLE IF NOT EXISTS `web_fotos` (
 
 -- Volcando datos para la tabla piscina.web_fotos: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `web_fotos` DISABLE KEYS */;
+INSERT INTO `web_fotos` (`id`, `id_usuario`, `foto`, `descripcion`) VALUES
+	(3, '111111111', 'image1.jpeg', 'Vicepresidente'),
+	(4, '333333333', 'image3.jpeg', 'Entrenador'),
+	(5, '444444444', 'image4.jpeg', 'Descripcion'),
+	(6, '555555555', 'image5.jpeg', 'Descripcion'),
+	(7, '666666666', 'image6.jpeg', 'Descripcion'),
+	(8, '777777777', 'image7.jpeg', 'Descripcion');
 /*!40000 ALTER TABLE `web_fotos` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
