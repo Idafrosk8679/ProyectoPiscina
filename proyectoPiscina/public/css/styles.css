@@ -256,10 +256,10 @@ figure img {
   .modal-content {
     margin: auto;
     display: block;
-    width: 60%;
-    max-width: 800px;
+    width: 50%;
+    max-width: 1000px;
     max-height: 1000px;
-    height: 80%;
+    height: 100%;
     margin-top: -6%;
   }
   
@@ -775,6 +775,11 @@ table.dataTable thead .sorting_desc_disabled:before {
 .grupo-li:last-child{
   border-bottom: 1px solid lightgray;
   border-bottom-right-radius: 1em;
+}
+
+.activo-app {
+    border: solid;
+    border-color: #F23A2E;
 }
 
 }

@@ -37,6 +37,7 @@ class AppController extends AbstractController
     private $entityManager;
     private $user;
     private $urlGenerator;
+    private $seccionApp;
 
     public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator)
     {
@@ -58,6 +59,7 @@ class AppController extends AbstractController
     {
 
         $sesion = new Sesion();
+        $sesionApp = 'index';
         $form = $this->createForm(SesionType::class, $sesion);
         $form->handleRequest($request);
 
@@ -82,6 +84,7 @@ class AppController extends AbstractController
             'user' => $this->user,
             'form' => $form->createView(),
             'controller_name' => 'AppController',
+            'sesionApp' => $sesionApp
         ]);
     }
 
@@ -93,6 +96,7 @@ class AppController extends AbstractController
     public function sesion(Request $request, Sesion $sesion): Response
     {
         $entrenamiento = new Entrenamiento();
+        $sesionApp = 'index';
         $form = $this->createForm(EntrenamientoType::class, $entrenamiento);
         $form->handleRequest($request);
 
@@ -112,6 +116,7 @@ class AppController extends AbstractController
             'user' => $this->user,
             'entrenamiento' => $entrenamiento,
             'form' => $form->createView(),
+            'sesionApp' => $sesionApp
         ]);
     }
 
@@ -151,7 +156,7 @@ class AppController extends AbstractController
      */
     public function gestionUsuarios(Request $request)
     {
-
+        $sesionApp = 'Gestion Usuarios';
         $data["usuarios"] = $this->getUsuarios();
         $data["grupos"] = $this->getGrupos();
         $data["grupo_usuarios"] = $this->getGrupos_usuario();
@@ -159,7 +164,8 @@ class AppController extends AbstractController
         return $this->render('gestion_usuarios/index.html.twig', [
             'controller_name' => 'AddController',
             'user' => $this->user,
-            'data' => $data
+            'data' => $data,
+            'sesionApp' => $sesionApp
         ]);
     }
 
@@ -171,6 +177,7 @@ class AppController extends AbstractController
     public function new(Request $request): Response
     {
         $usuario = new Usuarios();
+        $sesionApp = 'Gestion Usuarios';
         $form = $this->createForm(UsuariosType::class, $usuario);
         $form->handleRequest($request);
 
@@ -203,6 +210,7 @@ class AppController extends AbstractController
             'usuario' => $usuario,
             'user' => $this->user,
             'form' => $form->createView(),
+            'sesionApp' => $sesionApp
         ]);
     }
 
@@ -210,10 +218,12 @@ class AppController extends AbstractController
      * @Route("/gestion_usuarios/usuario/{dni}", name="_usuarios_show", methods={"GET"})
      */
     public function show(Usuarios $usuario): Response
-    {
+    {   
+        $sesionApp = 'Gestion Usuarios';
         return $this->render('usuarios/show.html.twig', [
             'usuario' => $usuario,
             'user' => $this->user,
+            'sesionApp' => $sesionApp
         ]);
     }
 
@@ -221,7 +231,8 @@ class AppController extends AbstractController
      * @Route("/gestion_usuarios/usuario/{dni}/edit", name="_usuarios_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Usuarios $usuario): Response
-    {
+    {   
+        $sesionApp = 'Gestion Usuarios';
         $form = $this->createForm(UsuariosType::class, $usuario);
         $form->handleRequest($request);
 
@@ -253,6 +264,7 @@ class AppController extends AbstractController
             'usuario' => $usuario,
             'user' => $this->user,
             'form' => $form->createView(),
+            'sesionApp' => $sesionApp
         ]);
         
     }
@@ -282,6 +294,7 @@ class AppController extends AbstractController
     public function newGrupo(Request $request): Response
     {
         $grupo = new Grupos();
+        $sesionApp = 'Gestion Usuarios';
         $form = $this->createForm(GruposType::class, $grupo);
         $form->handleRequest($request);
 
@@ -297,6 +310,7 @@ class AppController extends AbstractController
             'grupo' => $grupo,
             'user' => $this->user,
             'form' => $form->createView(),
+            'sesionApp' => $sesionApp
         ]);
     }
 
@@ -304,11 +318,13 @@ class AppController extends AbstractController
      * @Route("/gestion_usuarios/grupo/show/{id}", name="_grupos_show", methods={"GET"})
      */
     public function showGrupo(Grupos $grupo): Response
-    {
+    {   
+        $sesionApp = 'Gestion Usuarios';
         return $this->render('grupos/show.html.twig', [
             'grupo' => $grupo,
             'user' => $this->user,
             'data' => $this->getGrupos_usuario(),
+            'sesionApp' => $sesionApp
         ]);
     }
 
@@ -318,6 +334,7 @@ class AppController extends AbstractController
     public function editGrupo(Request $request, Grupos $grupo): Response
     {
         $grupoUsuario = new GrupoUsuario();
+        $sesionApp = 'Gestion Usuarios';
         $form = $this->createForm(GrupoUsuarioType::class, $grupoUsuario);
         $form->handleRequest($request);
 
@@ -332,6 +349,7 @@ class AppController extends AbstractController
             'grupo' => $grupo,
             'user' => $this->user,
             'form' => $form->createView(),
+            'sesionApp' => $sesionApp
         ]);
 
     }
@@ -375,7 +393,8 @@ class AppController extends AbstractController
      * @Route("/gestion_web", name="_gestion_web", methods={"GET","POST"})
      */
     public function gestionWeb(Request $request): Response
-    {
+    {   
+        $sesionApp = 'Gestion Web';
         $web = $this->getDoctrine()
                     ->getRepository(Web::class)
                     ->findBy(['id' => 0])[0];
@@ -434,6 +453,7 @@ class AppController extends AbstractController
             'data' => $webFotos,
             'form2' => $form2->createView(),
             'form' => $form->createView(),
+            'sesionApp' => $sesionApp
         ]);
     }
 
