@@ -1,0 +1,123 @@
+{% extends 'layoutApp.html.twig' %}
+
+{% block title %}Sesion {{sesion.fecha|date('Y-m-d')}}{% endblock %}
+
+{% block main %}
+
+<button class="atras-button">
+    <a class="atras-href" href="{{ path('app_index') }}">❮ Volver</a>
+</button>
+
+<h1>Sesion del dia {{sesion.fecha|date('Y-m-d')}}</h1>
+<h5>
+    {% if sesion.horaInicio != null %}
+    Hora de inicio:{{sesion.horaInicio|date('H:i')}}
+    {% endif %}
+    <br>
+    {% if sesion.horaFinal != null %}
+    Hora de finalización:{{sesion.horaFinal|date('H:i')}}
+    {% endif %}
+</h5>
+{% if sesion.entrenamientos != null %}
+
+<table class="app-table mb-4" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th class="app-th">Tipo
+            </th>
+            <th class="app-th">Estilo
+            </th>
+            <th class="app-th">Series
+            </th>
+            <th class="app-th">Metros
+            </th>
+            <th class="app-th">Descripcion
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for entrenamiento in sesion.entrenamientos %}
+
+        <tr class="app-tr">
+            <td class="app-td">{{ entrenamiento.tipos.tipo }}</td>
+            <td class="app-td">
+                {% if entrenamiento.estilo != null %}
+                {{ entrenamiento.estilo.nombre }}
+                {% endif %}
+            </td>
+            <td class="app-td">
+                {% if entrenamiento.series != null %}
+                {{ entrenamiento.series }}
+                {% endif %}
+            </td>
+            <td class="app-td">
+                {% if entrenamiento.metros != null %}
+                {{ entrenamiento.metros.distancia }}
+                {% endif %}
+            </td>
+            <td class="app-td">
+                {% if entrenamiento.descripcion != null %}
+                {{ entrenamiento.descripcion }}
+                {% endif %}
+            </td>
+        </tr>
+
+        {% else %}
+        {% endfor %}
+
+    </tbody>
+
+</table>
+{% endif %}
+{% if sesion_usuario.comentario != null %}
+
+<div class="card mt-5">
+    <div class="card-body">
+        <h5 class="card-title">{{sesion_usuario.dni.nombre}}</h5>
+
+        <p class="card-text">{{sesion_usuario.comentario}}</p>
+
+    </div>
+</div>
+
+
+{% endif %}
+
+
+
+
+{{ form_start(form, {'attr':{'class':'border border-light p-5'} }) }}
+
+
+<div class="row">
+    {{ form_widget(form.dni, {'attr':{'hidden':''} } ) }}
+</div>
+
+<div class="row">
+
+    <label for="">Asistencia</label>
+
+    {{ form_widget(form.asistencia, {'attr':{'class':'form-control mb-4 ' } } ) }}
+</div>
+
+<div class="row">
+
+    {% if user.rol.nombre == 'usuario' %}
+    {% if sesion_usuario.comentario != null %}
+    <label for="">Editar comentario</label>
+    
+    {% else %}
+    <label for="">Mandar un comentario</label>
+    {% endif %}
+    {% endif %}
+    {{ form_widget(form.comentario,(user.rol =='usuario' or user.rol =='admin' ? {'attr':{'class':'form-control mb-4 ' } } : {'attr':{'hidden':''}}
+    )) }}
+</div>
+
+<button class="btn app-button-func2 btn-block">{{ button_label|default('Guardar') }}</button>
+
+{{ form_end(form) }}
+
+
+{% endblock %}

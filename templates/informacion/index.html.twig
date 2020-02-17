@@ -1,0 +1,47 @@
+{% extends 'layoutApp.html.twig' %}
+
+{% block title %}Noticias{% endblock %}
+
+{% block main %}
+
+<h1>Noticias</h1>
+
+
+{% for noticia in noticias %}
+
+<div class="card mt-5">
+    <div class="card-body">
+        <h5 class="card-title">{{noticia.nombre}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted"> {{noticia.fecha|date('d-m-Y')}}</h6>
+        <p class="card-text">{{noticia.descripcion}}</p>
+        {% if user.rol != 'usuario' and user.rol != 'parental' %}
+        <button type="button" class="app-button-func2"><a class="app-href" href="{{ path('app_noticias_edit', {'id': noticia.id}) }}">Editar</a></button>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endfor %}
+
+{% if user.rol == 'admin' or user.rol == 'entrenador' or user.rol == 'junta' %}
+
+{{ form_start(form, {'attr':{'class':'border border-light p-5'} }) }}
+<h3 class="mb-5 text-center">Añadir noticia</h3>
+
+<div class="row">
+    <label for="">Nombre</label>
+    {{ form_widget(form.nombre, {'attr':{'class':'form-control mb-4'} }) }}
+</div>
+
+<div class="row">
+    <label for="">Descripción</label>
+    {{ form_widget(form.descripcion, {'attr':{'class':'form-control mb-4'} }) }}
+</div>
+
+<button class="btn app-button-func1 btn-block">{{ button_label|default('Añadir') }}</button>
+
+{{ form_end(form) }}
+
+{% endif %}
+
+{% endblock %}

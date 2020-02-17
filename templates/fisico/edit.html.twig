@@ -1,0 +1,35 @@
+{% extends 'layoutApp.html.twig' %}
+
+{% block title %}Edit Fisico{% endblock %}
+
+{% block main %}
+<button class="atras-button">
+    <a class="atras-href" href="{{ path('app_fisico') }}">❮ Volver</a>
+</button>
+
+{{ form_start(form, {'attr':{'class':'border border-light p-5'} }) }}
+
+
+<div class="row">
+    {{ form_widget(form.dni, {'attr':{'hidden':''} , value : user.dni} ) }}
+</div>
+
+<div class="row">
+    <label for="">Altura</label>
+    {{ form_widget(form.altura, {'attr':{'class':'form-control mb-4 ' } } ) }}
+</div>
+
+<div class="row">
+    <label for="">Peso</label>
+    {{ form_widget(form.peso, {'attr':{'class':'form-control mb-4 ' } } ) }}
+</div>
+
+<div class="row">
+    <label class="mr-3" for="">Fecha</label>
+    {{ form_widget(form.fechaInserc, {'attr':{'class':'' } } ) }}
+</div>
+
+<button class="btn app-button-func2 btn-block mt-3">{{ button_label|default('Modificar') }}</button>
+
+{{ form_end(form) }}
+{% endblock %}

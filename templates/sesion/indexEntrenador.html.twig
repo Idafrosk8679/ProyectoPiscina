@@ -1,0 +1,196 @@
+{% extends 'layoutApp.html.twig' %}
+
+{% block title %}Sesion {{sesion.fecha|date('Y-m-d')}}{% endblock %}
+
+{% block main %}
+
+<button class="atras-button">
+    <a class="atras-href" href="{{ path('app_index') }}">❮ Volver</a>
+</button>
+
+<h1>Sesion del dia {{sesion.fecha|date('Y-m-d')}}</h1>
+<h5>
+    {% if sesion.horaInicio != null %}
+    Hora de inicio:{{sesion.horaInicio|date('H:i')}}
+    {% endif %}
+    <br>
+    {% if sesion.horaFinal != null %}
+    Hora de finalización:{{sesion.horaFinal|date('H:i')}}
+    {% endif %}
+</h5>
+
+<form method="post" action="{{ path('app_sesion_delete', {'id': sesion.id}) }}"
+    onsubmit="return confirm('Estás seguro/a de borrarlo?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ sesion.id) }}">
+    <button class="app-button-func2">Eliminar sesion</button>
+</form>
+
+{% if sesion.entrenamientos|length > 0 %}
+<table class="app-table mb-4" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th class="app-th">Tipo
+            </th>
+            <th class="app-th">Estilo
+            </th>
+            <th class="app-th">Series
+            </th>
+            <th class="app-th">Metros
+            </th>
+            <th class="app-th">Descripcion
+            </th>
+            <th class="app-th">Acciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for entrenamiento in sesion.entrenamientos %}
+
+        <tr class="app-tr">
+            <td class="app-td">{{ entrenamiento.tipos.tipo }}</td>
+            <td class="app-td">
+                {% if entrenamiento.estilo != null %}
+                {{ entrenamiento.estilo.nombre }}
+                {% endif %}
+            </td>
+            <td class="app-td">
+                {% if entrenamiento.series != null %}
+                {{ entrenamiento.series }}
+                {% endif %}
+            </td>
+            <td class="app-td">
+                {% if entrenamiento.metros != null %}
+                {{ entrenamiento.metros.distancia }}
+                {% endif %}
+            </td>
+            <td class="app-td">
+                {% if entrenamiento.descripcion != null %}
+                {{ entrenamiento.descripcion }}
+                {% endif %}
+            </td>
+            
+            <td class="app-td">
+                <form method="post" action="{{ path('app_entrenamiento_delete', {'id': entrenamiento.id}) }}"
+                    onsubmit="return confirm('Estás seguro/a de borrarlo?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ entrenamiento.id) }}">
+                    <button class="app-button-func2">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+
+        {% else %}
+        {% endfor %}
+
+    </tbody>
+
+</table>
+{% endif %}
+
+{% for comen in dataUsers %}
+
+{% if comen.comentario != null %}
+
+<div class="card mt-5">
+    <div class="card-body">
+        <h5 class="card-title">{{comen.dni.nombre}}</h5>
+
+        <p class="card-text">{{comen.comentario}}</p>
+    </div>
+</div>
+
+{% endif %}
+
+{% endfor %}
+
+
+
+{{ form_start(form, {'attr':{'class':'border border-light p-5'} }) }}
+<h3 class="mb-5 text-center">Añadir ejercicios</h3>
+<div class="row">
+    <label for="">Tipo *</label>
+    {{ form_widget(form.tipos, {'attr':{'class':'form-control mb-4'} }) }}
+</div>
+
+<div class="row">
+    <label for="">Estilo</label>
+    {{ form_widget(form.estilo, {'attr':{'class':'form-control mb-4'} }) }}
+</div>
+
+<div class="row">
+    <label for="">Series</label>
+    {{ form_widget(form.series, {'attr':{'class':'form-control mb-4'} }) }}
+    <label for="">Metros</label>
+    {{ form_widget(form.metros, {'attr':{'class':'form-control mb-4'} }) }}
+</div>
+<div class="row">
+    <label for="">Descripción</label>
+    {{ form_widget(form.descripcion, {'attr':{'class':'form-control mb-4'} }) }}
+</div>
+
+<button class="btn app-button-func1 btn-block">{{ button_label|default('Añadir') }}</button>
+
+{{ form_end(form) }}
+
+
+{{ form_start(form2, {'attr':{'class':'border border-light p-5'} }) }}
+<h3 class="mb-5 text-center">Añadir alumnos a la sesión</h3>
+
+
+<div class="row">
+    {{ form_widget(form2.usuarios, {'attr':{'class':'form-control mb-4'} } ) }}
+</div>
+
+<div class="row">
+
+    {{ form_widget(form2.asistencia,(user.rol =='usuario' or user.rol =='admin' ? {'attr':{'class':'form-control mb-4 ' } } : {'attr':{'hidden':''}}
+    )) }}
+</div>
+<button class="btn app-button-func1 btn-block">{{ button_label|default('Guardar') }}</button>
+
+{{ form_end(form2) }}
+
+
+<table class="mb-3" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th class="app-th">Nombre
+            </th>
+            <th class="app-th">Asistencia
+            </th>
+            <th class="app-th">Acciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for u in dataUsers %}
+
+
+        <tr class="app-tr">
+            <td class="app-td">{{ u.dni.nombre }}</td>
+
+            <td class="app-td">{{ u.asistencia }}</td>
+
+            <td class="app-td">
+                <button type="button" class="app-button-func2"><a class="app-href" href="{{ path('app_sesion', {'id': sesion.id, 'dni':u.dni.dni}) }}">Editar</a></button>
+                <form method="post" action="{{ path('app_sesion_usuarios_delete', {'id': u.id}) }}"
+                    onsubmit="return confirm('Estás seguro/a de borrarlo?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ u.id) }}">
+                    <button class="app-button-func2">Eliminar</button>
+                </form>
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+
+{% endblock %}
