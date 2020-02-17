@@ -1,25 +1,32 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutApp.html.twig' %}
 
-{% block title %}Marcas index{% endblock %}
+{% block title %}Marcas{% endblock %}
 
-{% block body %}
+{% block main %}
+
+
+{% if user.rol == 'usuario' or user.rol == 'parental' %}
+
+
+
+<div {% if user.rol == 'parental'%}hidden{% endif %}>
 {{ form_start(form, {'attr':{'class':'border border-light p-5'} }) }}
 <h1 class="mb-5 text-center">Marcas</h1>
 
 <div class="row">
 	<label for="">Competición</label>
-{{ form_widget(form.nombreComp, {'attr':{'class':'form-control mb-4'} }) }}
+	{{ form_widget(form.nombreComp, {'attr':{'class':'form-control mb-4'} }) }}
 
 </div>
 
 <div class="row">
 	<label for="">Fecha</label>
-{{ form_widget(form.fecha, {'attr':{'class':'form-control mb-4'} }) }}
+	{{ form_widget(form.fecha, {'attr':{'class':'form-control mb-4'} }) }}
 </div>
 
 <div class="row">
 	<label for="">Marca</label>
-{{ form_widget(form.marca, {'attr':{'class':'form-control mb-4'} }) }}
+	{{ form_widget(form.marca, {'attr':{'class':'form-control mb-4'} }) }}
 
 </div>
 
@@ -27,5 +34,89 @@
 <button class="btn app-button-func1 btn-block">{{ button_label|default('Guardar') }}</button>
 
 {{ form_end(form) }}
+</div>
+
+
+<table class="mb-3" cellspacing="0" width="100%">
+	<thead>
+		<tr>
+			<th class="app-th">Competición
+			</th>
+			<th class="app-th">Fecha
+			</th>
+			<th class="app-th">Marca
+			</th>
+			{% if user.rol != 'parental'%}
+			<th class="app-th">Acciones
+			</th>
+			{% endif %}
+		</tr>
+	</thead>
+	<tbody>
+
+		{% for m in marcas %}
+
+
+		<tr class="app-tr">
+
+			<td class="app-td">{{ m.nombreComp }}</td>
+
+			<td class="app-td">{{ m.fecha|date('d-m-Y') }}</td>
+
+			<td class="app-td">{{ m.marca|date('h:i:s') }}</td>
+			{% if user.rol != 'parental'%}
+			<td class="app-td">
+				<button type="button" class="app-button-func2"><a class="app-href"
+						href="{{ path('app_marcas_edit', {'id': m.id}) }}">Editar</a></button>
+			</td>
+			{% endif %}
+		</tr>
+
+		{% endfor %}
+
+	</tbody>
+
+</table>
+{% else %}
+<table id="dtBasicExample" class="app-table" cellspacing="0" width="100%">
+	<thead>
+		<tr>
+			<th class="app-th">Nombre
+			</th>
+			<th class="app-th">Competicion
+			</th>
+			<th class="app-th">Fecha
+			</th>
+			<th class="app-th">Marca
+			</th>
+			<th class="app-th">Acciones
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+		{% for marc in todas %}
+
+		
+		<tr class="app-tr">
+			<td class="app-td">{{ marc.dni.nombre }}</td>
+			<td class="app-td">{{ marc.nombreComp }}</td>
+			<td class="app-td">{{ marc.fecha|date("d-m-Y") }}</td>
+			<td class="app-td">{{ marc.marca|date('h:i:s') }}</td>
+			<td class="app-td">
+					<button type="button" class="app-button-func2"><a class="app-href"
+						href="{{ path('app_marcas_edit', {'id': m.id}) }}">Editar</a></button>
+			</td>
+		</tr>
+
+		{% endfor %}
+
+	</tbody>
+
+</table>
+
+{% endif %}
+
+
 
 {% endblock %}

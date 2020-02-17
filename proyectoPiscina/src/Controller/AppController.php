@@ -398,6 +398,25 @@ class AppController extends AbstractController
      */
     public function newMarcas(Request $request): Response
     {
+
+
+            $todasMarcas = $this->getDoctrine()
+            ->getRepository(Marcas::class)
+            ->findAll();
+        
+       
+
+        $data = $this->getMarcas();
+        if ($data != null) {
+            $comp = json_encode($data['comp']);
+            $marcas = json_encode($data['marcas']);
+    
+            echo "<script type='text/javascript'>
+            let marcas = " . $marcas . "
+            let compe = " . $comp . "
+            </script>";
+        }
+
         $marca = new Marcas();
         $form = $this->createForm(MarcasType::class, $marca);
         $form->handleRequest($request);
@@ -413,7 +432,10 @@ class AppController extends AbstractController
 
         return $this->render('marcas/index.html.twig', [
             'marca' => $marca,
+            'user' => $this->user,
+            'marcas' => $data['dataMarcas'],
             'form' => $form->createView(),
+            'todas' => $todasMarcas,
         ]);
     }
 
@@ -433,6 +455,7 @@ class AppController extends AbstractController
 
         return $this->render('marcas/edit.html.twig', [
             'marca' => $marca,
+            'user' => $this->user,
             'form' => $form->createView(),
         ]);
     }
@@ -977,6 +1000,47 @@ class AppController extends AbstractController
         }
 
         return $dataFisico;
+
+    }
+
+    public function getMarcas()
+    {
+        $marcas = [];
+
+        $marcas = $this->getDoctrine()
+            ->getRepository(Marcas::class)
+            ->findBy(array(
+                'dni' => $this->user->getDni(),
+            ));
+
+        if ($marcas !=null) {
+            $comp = [];
+            $marc = [];
+           
+            array_push($comp, 0);
+            array_push($marc, 0);
+    
+            foreach ($marcas as $m) {
+                array_push($marc, $m->getMarca()->format('h:i:s') );
+                array_push($comp, $m->getNombreComp());
+            }
+   
+    
+            $dataMarcas['comp'] = $comp;
+            $dataMarcas['marcas']= array(
+                'label' => 'Marcas',
+                'data' => $marc,
+                'backgroundColor' => array('rgba(105, 0, 132, .2)'),
+                'borderColor' => array('rgba(200, 99, 132, .7)'),
+                'borderWidth' => 2,
+            );
+
+            $dataMarcas['dataMarcas']= $marcas;
+        }else{
+            return null;
+        }
+
+        return $dataMarcas;
 
     }
 

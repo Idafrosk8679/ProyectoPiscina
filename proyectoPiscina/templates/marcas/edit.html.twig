@@ -1,13 +1,40 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutApp.html.twig' %}
 
-{% block title %}Edit Marcas{% endblock %}
+{% block title %}Edit Marca{% endblock %}
 
-{% block body %}
-    <h1>Edit Marcas</h1>
+{% block main %}
 
-    {{ include('marcas/_form.html.twig', {'button_label': 'Update'}) }}
+<button class="atras-button">
+    <a class="atras-href" href="{{ path('app_marcas') }}">❮ Volver</a>
+</button>
 
-    <a href="{{ path('marcas_index') }}">back to list</a>
+{{ form_start(form, {'attr':{'class':'border border-light p-5'} }) }}
+<h1 class="mb-5 text-center">Marcas</h1>
 
-    {{ include('marcas/_delete_form.html.twig') }}
+<div class="row">
+    <label for="">Competición</label>
+    {{ form_widget(form.nombreComp, {'attr':{'class':'form-control mb-4'} }) }}
+</div>
+
+<div class="row">
+    <label for="">Fecha</label>
+    {{ form_widget(form.fecha, {'attr':{'class':'form-control mb-4'} }) }}
+</div>
+
+<div class="row">
+    <label for="">Marca</label>
+    {{ form_widget(form.marca, {'attr':{'class':'form-control mb-4'} }) }}
+</div>
+
+<button class="btn app-button-func1 btn-block">{{ button_label|default('Guardar') }}</button>
+
+{{ form_end(form) }}
+
+<form method="post" action="{{ path('app_marcas_delete', {'id': marca.id}) }}"
+    onsubmit="return confirm('Estás seguro/a de borrarlo?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ marca.id) }}">
+    <button class="app-button-func2">Eliminar</button>
+</form>
+
 {% endblock %}

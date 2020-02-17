@@ -24,7 +24,7 @@ class Marcas
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre_comp", type="string", length=20, nullable=false, options={"default"="''"})
+     * @ORM\Column(name="nombre_comp", type="string", length=30, nullable=false, options={"default"="''"})
      */
     private $nombreComp ;
 
