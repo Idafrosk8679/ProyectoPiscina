@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Versión del servidor:         10.4.8-MariaDB - mariadb.org binary distribution
+-- Versión del servidor:         10.1.40-MariaDB - mariadb.org binary distribution
 -- SO del servidor:              Win64
--- HeidiSQL Versión:             10.3.0.5876
+-- HeidiSQL Versión:             10.1.0.5464
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -23,27 +23,16 @@ CREATE TABLE IF NOT EXISTS `distancia` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla piscina.distancia: ~7 rows (aproximadamente)
-/*!40000 ALTER TABLE `distancia` DISABLE KEYS */;
-INSERT INTO `distancia` (`id`, `distancia`) VALUES
-	(1, 50),
-	(2, 100),
-	(3, 200),
-	(4, 400),
-	(5, 800),
-	(6, 1500),
-	(7, 2000);
-/*!40000 ALTER TABLE `distancia` ENABLE KEYS */;
-
+-- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla piscina.entrenamiento
 CREATE TABLE IF NOT EXISTS `entrenamiento` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_sesion` int(11) NOT NULL DEFAULT 0,
-  `tipos` int(11) NOT NULL DEFAULT 0,
+  `id_sesion` int(11) NOT NULL DEFAULT '0',
+  `tipos` int(11) NOT NULL DEFAULT '0',
   `estilo` int(11) DEFAULT NULL,
   `series` int(11) DEFAULT NULL,
   `metros` int(11) DEFAULT NULL,
-  `descripcion` text DEFAULT NULL,
+  `descripcion` text,
   PRIMARY KEY (`id`),
   KEY `FK_entrenamiento_tipos_entrenamiento` (`tipos`),
   KEY `FK_entrenamiento_distancia_entrenamiento` (`metros`),
@@ -55,18 +44,7 @@ CREATE TABLE IF NOT EXISTS `entrenamiento` (
   CONSTRAINT `FK_entrenamiento_tipos_entrenamiento` FOREIGN KEY (`tipos`) REFERENCES `tipos_entrenamiento` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla piscina.entrenamiento: ~7 rows (aproximadamente)
-/*!40000 ALTER TABLE `entrenamiento` DISABLE KEYS */;
-INSERT INTO `entrenamiento` (`id`, `id_sesion`, `tipos`, `estilo`, `series`, `metros`, `descripcion`) VALUES
-	(6, 1, 1, 5, 5, 5, 'hgyhjfu u uyg uyf jkug liugiuiuiugiug u  iuiugi gio  iuogi iou iou iuog'),
-	(7, 2, 5, 3, 5, 4, NULL),
-	(8, 2, 2, NULL, NULL, NULL, NULL),
-	(9, 2, 2, NULL, NULL, NULL, NULL),
-	(12, 4, 1, 3, NULL, 5, 'guyguui'),
-	(13, 3, 5, NULL, NULL, NULL, NULL),
-	(14, 3, 1, 4, 4, 4, 'hfrhoifheiurhifer');
-/*!40000 ALTER TABLE `entrenamiento` ENABLE KEYS */;
-
+-- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla piscina.estilos_entrenamiento
 CREATE TABLE IF NOT EXISTS `estilos_entrenamiento` (
   `id` int(11) NOT NULL,
@@ -74,36 +52,20 @@ CREATE TABLE IF NOT EXISTS `estilos_entrenamiento` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla piscina.estilos_entrenamiento: ~5 rows (aproximadamente)
-/*!40000 ALTER TABLE `estilos_entrenamiento` DISABLE KEYS */;
-INSERT INTO `estilos_entrenamiento` (`id`, `nombre`) VALUES
-	(1, 'Mariposa'),
-	(2, 'Braza'),
-	(3, 'Espalda'),
-	(4, 'Libre'),
-	(5, 'Crol');
-/*!40000 ALTER TABLE `estilos_entrenamiento` ENABLE KEYS */;
-
+-- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla piscina.fisico
 CREATE TABLE IF NOT EXISTS `fisico` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `dni` varchar(9) COLLATE ucs2_spanish_ci DEFAULT NULL,
-  `altura` float(10,2) NOT NULL DEFAULT 0.00,
-  `peso` float(10,2) NOT NULL DEFAULT 0.00,
+  `altura` float(10,2) NOT NULL DEFAULT '0.00',
+  `peso` float(10,2) NOT NULL DEFAULT '0.00',
   `fecha_inserc` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_fisico_usuarios` (`dni`),
   CONSTRAINT `FK_fisico_usuarios` FOREIGN KEY (`dni`) REFERENCES `usuarios` (`dni`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=ucs2 COLLATE=ucs2_spanish_ci;
 
--- Volcando datos para la tabla piscina.fisico: ~3 rows (aproximadamente)
-/*!40000 ALTER TABLE `fisico` DISABLE KEYS */;
-INSERT INTO `fisico` (`id`, `dni`, `altura`, `peso`, `fecha_inserc`) VALUES
-	(4, '23515456h', 1.80, 87.00, '2020-02-16'),
-	(5, '57745756h', 1.90, 54.00, '2015-01-01'),
-	(6, '57745756h', 1.89, 56.00, '2015-01-01');
-/*!40000 ALTER TABLE `fisico` ENABLE KEYS */;
-
+-- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla piscina.grupos
 CREATE TABLE IF NOT EXISTS `grupos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -111,12 +73,7 @@ CREATE TABLE IF NOT EXISTS `grupos` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla piscina.grupos: ~2 rows (aproximadamente)
-/*!40000 ALTER TABLE `grupos` DISABLE KEYS */;
-INSERT INTO `grupos` (`id`, `nombre`) VALUES
-	(3, 'hola');
-/*!40000 ALTER TABLE `grupos` ENABLE KEYS */;
-
+-- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla piscina.grupo_usuario
 CREATE TABLE IF NOT EXISTS `grupo_usuario` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -129,28 +86,30 @@ CREATE TABLE IF NOT EXISTS `grupo_usuario` (
   CONSTRAINT `FK_grupo_usuario_usuarios` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`dni`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla piscina.grupo_usuario: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `grupo_usuario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `grupo_usuario` ENABLE KEYS */;
-
+-- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla piscina.informacion
 CREATE TABLE IF NOT EXISTS `informacion` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fecha` date NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
-  `descripcion` text DEFAULT NULL,
+  `descripcion` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla piscina.informacion: ~4 rows (aproximadamente)
-/*!40000 ALTER TABLE `informacion` DISABLE KEYS */;
-INSERT INTO `informacion` (`id`, `fecha`, `nombre`, `descripcion`) VALUES
-	(1, '2020-02-16', 'gergerg', 'gerggggggggggggggggggggggggggggggggggggggggggggggggr'),
-	(2, '2020-02-16', 'gergergerger', 'gergergergergerger'),
-	(3, '2020-02-16', 'gergergergergergergerg', 'gergergegergergergergerg'),
-	(4, '2020-02-16', 'gergergergergergergerger', 'gergergergergergergergergrgergerg');
-/*!40000 ALTER TABLE `informacion` ENABLE KEYS */;
+-- La exportación de datos fue deseleccionada.
+-- Volcando estructura para tabla piscina.marcas
+CREATE TABLE IF NOT EXISTS `marcas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dni` varchar(9) COLLATE ucs2_spanish_ci NOT NULL,
+  `nombre_comp` varchar(30) COLLATE ucs2_spanish_ci NOT NULL,
+  `marca` time NOT NULL,
+  `fecha` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_marcas_usuarios` (`dni`),
+  CONSTRAINT `FK_marcas_usuarios` FOREIGN KEY (`dni`) REFERENCES `usuarios` (`dni`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=ucs2 COLLATE=ucs2_spanish_ci;
 
+-- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla piscina.roles
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -158,16 +117,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=ucs2 COLLATE=ucs2_spanish_ci;
 
--- Volcando datos para la tabla piscina.roles: ~5 rows (aproximadamente)
-/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` (`id`, `nombre`) VALUES
-	(6, 'admin'),
-	(7, 'usuario'),
-	(8, 'entrenador'),
-	(9, 'junta'),
-	(10, 'parental');
-/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
-
+-- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla piscina.sesion
 CREATE TABLE IF NOT EXISTS `sesion` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -177,23 +127,14 @@ CREATE TABLE IF NOT EXISTS `sesion` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla piscina.sesion: ~5 rows (aproximadamente)
-/*!40000 ALTER TABLE `sesion` DISABLE KEYS */;
-INSERT INTO `sesion` (`id`, `fecha`, `hora_inicio`, `hora_final`) VALUES
-	(1, '2018-02-13', '11:06:00', '15:06:00'),
-	(2, '2020-02-14', NULL, NULL),
-	(3, '2020-02-12', NULL, NULL),
-	(4, '2020-02-11', NULL, NULL),
-	(5, '2020-02-16', '19:15:00', '20:25:00');
-/*!40000 ALTER TABLE `sesion` ENABLE KEYS */;
-
+-- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla piscina.sesion_usuarios
 CREATE TABLE IF NOT EXISTS `sesion_usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `dni` varchar(9) CHARACTER SET ucs2 COLLATE ucs2_spanish_ci NOT NULL,
   `id_sesion` int(11) DEFAULT NULL,
   `asistencia` varchar(2) DEFAULT NULL,
-  `comentario` text DEFAULT NULL,
+  `comentario` text,
   PRIMARY KEY (`id`),
   KEY `FK_sesion_usuarios_usuarios` (`dni`),
   KEY `FK_sesion_usuarios_sesion` (`id_sesion`),
@@ -201,17 +142,7 @@ CREATE TABLE IF NOT EXISTS `sesion_usuarios` (
   CONSTRAINT `FK_sesion_usuarios_usuarios` FOREIGN KEY (`dni`) REFERENCES `usuarios` (`dni`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla piscina.sesion_usuarios: ~6 rows (aproximadamente)
-/*!40000 ALTER TABLE `sesion_usuarios` DISABLE KEYS */;
-INSERT INTO `sesion_usuarios` (`id`, `dni`, `id_sesion`, `asistencia`, `comentario`) VALUES
-	(20, '235r556h', 4, NULL, NULL),
-	(21, '57745756h', 4, 'No', 'htsrthrsdthr'),
-	(22, '23515456h', 4, NULL, NULL),
-	(23, '23515456h', 3, NULL, NULL),
-	(24, '235r556h', 3, NULL, NULL),
-	(25, '57745756h', 3, 'No', 'hrhrhrthrthrt');
-/*!40000 ALTER TABLE `sesion_usuarios` ENABLE KEYS */;
-
+-- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla piscina.tipos_entrenamiento
 CREATE TABLE IF NOT EXISTS `tipos_entrenamiento` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -219,17 +150,7 @@ CREATE TABLE IF NOT EXISTS `tipos_entrenamiento` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla piscina.tipos_entrenamiento: ~6 rows (aproximadamente)
-/*!40000 ALTER TABLE `tipos_entrenamiento` DISABLE KEYS */;
-INSERT INTO `tipos_entrenamiento` (`id`, `tipo`) VALUES
-	(1, 'Aeróbico intenso'),
-	(2, 'Aeróbico ligero'),
-	(3, 'Aeróbico medio'),
-	(4, 'Anaeróbico'),
-	(5, 'Fuerza'),
-	(6, 'Pierna');
-/*!40000 ALTER TABLE `tipos_entrenamiento` ENABLE KEYS */;
-
+-- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla piscina.usuarios
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `dni` varchar(9) COLLATE ucs2_spanish_ci NOT NULL,
@@ -245,19 +166,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   CONSTRAINT `FK_usuarios_roles` FOREIGN KEY (`rol`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=ucs2 COLLATE=ucs2_spanish_ci;
 
--- Volcando datos para la tabla piscina.usuarios: ~6 rows (aproximadamente)
-/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` (`dni`, `nombre`, `apelllidos`, `foto`, `fecha_nac`, `rol`, `pass`, `familiar`) VALUES
-	('23513456h', 'dawdaw', 'dwadwad', NULL, '2018-02-13', 6, '123piscina', NULL),
-	('23513456p', 'Saúl', 'aaaaa ni', NULL, '1916-01-01', 6, '123piscina', NULL),
-	('23515456h', 'ggwg', 'grtgrt', NULL, '1900-01-01', 7, '123piscina', NULL),
-	('235r556h', 'adfgas', 'fgerger', NULL, '1972-01-01', 7, '123piscina', NULL),
-	('432434234', 'prueba', 'parental', 'NULL', NULL, 10, '123', '57745756h'),
-	('443231432', 'fes', 'fesfes', NULL, '2018-02-13', 8, '123', NULL),
-	('57745756h', 'gtgrt', 'gtgrt', NULL, '1962-01-01', 7, '123piscina', NULL),
-	('675673567', 'grgrg', 'rgrgrgr', NULL, '2008-01-01', 7, '123', 'NULL');
-/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
-
+-- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla piscina.web
 CREATE TABLE IF NOT EXISTS `web` (
   `id` int(11) NOT NULL,
@@ -266,12 +175,7 @@ CREATE TABLE IF NOT EXISTS `web` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla piscina.web: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `web` DISABLE KEYS */;
-INSERT INTO `web` (`id`, `telefono`, `email`) VALUES
-	(0, '961 84 92 44', 'cnfenixmanises@gmail.com');
-/*!40000 ALTER TABLE `web` ENABLE KEYS */;
-
+-- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla piscina.web_fotos
 CREATE TABLE IF NOT EXISTS `web_fotos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -283,10 +187,7 @@ CREATE TABLE IF NOT EXISTS `web_fotos` (
   CONSTRAINT `FK_web_fotos_usuarios` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`dni`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla piscina.web_fotos: ~1 rows (aproximadamente)
-/*!40000 ALTER TABLE `web_fotos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `web_fotos` ENABLE KEYS */;
-
+-- La exportación de datos fue deseleccionada.
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
