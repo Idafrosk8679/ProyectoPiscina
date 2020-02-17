@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Entrenamiento;
 use App\Entity\Fisico;
+use App\Entity\Marcas;
 use App\Entity\Roles;
 use App\Entity\Grupos;
 use App\Entity\GrupoUsuario;
@@ -14,6 +15,7 @@ use App\Entity\Web;
 use App\Entity\WebFotos;
 use App\Entity\Informacion;
 use App\Form\InformacionType;
+use App\Form\MarcasType;
 use App\Form\EntrenamientoType;
 use App\Form\GruposType;
 use App\Form\GrupoUsuarioType;
@@ -389,6 +391,66 @@ class AppController extends AbstractController
 
         return $this->redirectToRoute('app_sesion', array('id' => $entrenamiento->getIdSesion()->getId()));
     }
+
+
+    /**
+     * @Route("/marcas", name="_marcas", methods={"GET","POST"})
+     */
+    public function newMarcas(Request $request): Response
+    {
+        $marca = new Marcas();
+        $form = $this->createForm(MarcasType::class, $marca);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $marca->setDni($this->user);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($marca);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_marcas');
+        }
+
+        return $this->render('marcas/index.html.twig', [
+            'marca' => $marca,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/marcas/{id}", name="_marcas_edit", methods={"GET","POST"})
+     */
+    public function editMarcas(Request $request, Marcas $marca): Response
+    {
+        $form = $this->createForm(MarcasType::class, $marca);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('app_marcas');
+        }
+
+        return $this->render('marcas/edit.html.twig', [
+            'marca' => $marca,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/marcas/remove/{id}", name="_marcas_delete", methods={"DELETE"})
+     */
+    public function deleteMarcas(Request $request, Marcas $marca): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$marca->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($marca);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_marcas');
+    }
+
 
     /**
      * @Route("/gestion_usuarios", name="_gestion_usuarios")

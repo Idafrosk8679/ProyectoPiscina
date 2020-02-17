@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Marcas{% endblock %}
+
+{% block body %}
+    <h1>Edit Marcas</h1>
+
+    {{ include('marcas/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('marcas_index') }}">back to list</a>
+
+    {{ include('marcas/_delete_form.html.twig') }}
+{% endblock %}

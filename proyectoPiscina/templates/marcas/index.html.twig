@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Marcas index{% endblock %}
+
+{% block body %}
+{{ form_start(form, {'attr':{'class':'border border-light p-5'} }) }}
+<h1 class="mb-5 text-center">Marcas</h1>
+
+<div class="row">
+	<label for="">Competición</label>
+{{ form_widget(form.nombreComp, {'attr':{'class':'form-control mb-4'} }) }}
+
+</div>
+
+<div class="row">
+	<label for="">Fecha</label>
+{{ form_widget(form.fecha, {'attr':{'class':'form-control mb-4'} }) }}
+</div>
+
+<div class="row">
+	<label for="">Marca</label>
+{{ form_widget(form.marca, {'attr':{'class':'form-control mb-4'} }) }}
+
+</div>
+
+
+<button class="btn app-button-func1 btn-block">{{ button_label|default('Guardar') }}</button>
+
+{{ form_end(form) }}
+
+{% endblock %}
