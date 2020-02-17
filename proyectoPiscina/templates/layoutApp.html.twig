@@ -8,13 +8,13 @@
 			<header class="header">
 				<nav class="navbar nav navbar-expand-lg">
 					<div class="row w-100">
+
 						<div class="col-12 col-lg-10 d-flex align-items-center">
 							<button class="navbar-toggler navbar-light" type="button" data-toggle="collapse"
 								data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 								aria-expanded="false" aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon"></span>
 							</button>
-
 
 
 							<a class="navbar-brand pl-lg-5 pl-md-4 pl-sm-3 mr-lg-3 mr-md-2 mr-sm-0"
@@ -41,35 +41,29 @@
 					<a class="nav-link" href="{{path('app_index')}}">Inicio</a>
 				</li>
 
-				{% if user.rol == 'usuario' or user.rol == 'admin' %}
+				{% if user.rol == 'usuario' or user.rol == 'admin'  or user.rol == 'entrenador' %}
 				<li class="nav-item">
 					<a class="nav-link" href="#">Físico</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Tiempos</a>
+					<a class="nav-link" href="#">Marcas</a>
 				</li>
 				{% endif %}
 
 				{% if user.rol == 'entrenador' or user.rol == 'junta' or user.rol == 'admin' %}
 				<li class="nav-item">
-					<a class="nav-link" href="{{ path('app_add') }}">Añadir</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('app_edit') }}">Modificar</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('app_remove') }}">Eliminar</a>
+					<a class="nav-link" href="{{ path('app_gestion_usuarios') }}">Gestión Usuarios</a>
 				</li>
 				{% endif %}
 
-				{% if user.rol == 'junta' or user.rol == 'admin' %}
+				{% if user.rol == 'junta' or user.rol == 'admin'%}
 				<li class="nav-item">
-					<a class="nav-link" href="#">Web</a>
+					<a class="nav-link" href="{{ path('app_gestion_web') }}">Gestión Web</a>
 				</li>
 				{% endif %}
 
 				<li class="nav-item">
-					<a class="nav-link" href="#">Editar perfil</a>
+					<a class="nav-link" href="{{ path('app_usuarios_edit', {'dni': user.dni}) }}">Editar perfil</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('app_logout') }}">Cerrar sesión</a>
@@ -78,7 +72,7 @@
 
 		</div>
 
-		<div class="col-12 col-md-12 col-lg-10 d-flex justify-content-center" id="wrap">
+		<div class="col-12 col-md-12 col-lg-10 d-flex justify-content-center mb-5" id="wrap">
 			<main class="container-fluid">
 				{% block main %}{% endblock %}
 			</main>

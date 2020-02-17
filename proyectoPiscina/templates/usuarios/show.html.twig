@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutApp.html.twig' %}
 
 {% block title %}Usuarios{% endblock %}
 
-{% block body %}
-    <h1>Usuarios</h1>
+{% block main %}
+    <h1 class="app-title">Perfil de usuario</h1>
 
     <table class="table">
         <tbody>
@@ -19,24 +19,30 @@
                 <th>Apelllidos</th>
                 <td>{{ usuario.apelllidos }}</td>
             </tr>
+            {% if usuario.foto != null %}
             <tr>
                 <th>Foto</th>
-                <td>{{ usuario.foto }}</td>
+                <td>
+                    
+                    <img src="{{ asset (usuario.foto, 'fotos')}}" width="100px">
+                   
+                </td>
             </tr>
+            {% endif %}
             <tr>
-                <th>FechaNac</th>
-                <td>{{ usuario.fechaNac }}</td>
-            </tr>
-            <tr>
-                <th>Pass</th>
-                <td>{{ usuario.pass }}</td>
+                <th>Fecha de nacimiento</th>
+                <td>{{ usuario.fechaNac ? usuario.fechaNac|date('d-m-Y') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('usuarios_index') }}">back to list</a>
+    <button class="atras-button">
+        <a class="atras-href" href="{{ path('app_gestion_usuarios') }}">❮ Volver</a>
+    </button>
 
-    <a href="{{ path('usuarios_edit', {'dni': usuario.dni}) }}">edit</a>
+    <button class="app-button">
+        <a class="app-button-href" href="{{ path('app_usuarios_edit', {'dni': usuario.dni}) }}">Editar</a>
+    </button>
 
     {{ include('usuarios/_delete_form.html.twig') }}
 {% endblock %}

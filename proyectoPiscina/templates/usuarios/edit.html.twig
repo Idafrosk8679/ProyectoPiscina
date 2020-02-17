@@ -1,13 +1,62 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutApp.html.twig' %}
 
 {% block title %}Edit Usuarios{% endblock %}
 
-{% block body %}
-    <h1>Edit Usuarios</h1>
+{% block main %}
+<button class="atras-button">
+    <a class="atras-href" href="{{ path('app_gestion_usuarios') }}">❮ Volver</a>
+</button>
 
-    {{ include('usuarios/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('usuarios_index') }}">back to list</a>
+{{ form_start(form, {'attr':{'class':'border border-light p-5'} }) }}
+<h1 class="mb-5 text-center">Modificar Usuario</h1>
+<div class="row">
+    <label for="">Foto</label>
+    {% if usuario.foto != null %}
+    <img src="{{ asset (usuario.foto, 'fotos')}}" alt="" width="100px">
+    {% endif %}
 
-    {{ include('usuarios/_delete_form.html.twig') }}
+    {{ form_widget(form.fotoFile, {'attr':{'class':'mb-4'}, value : usuario.foto }) }}
+</div>
+
+<div class="row">
+    <label for="">DNI</label>
+    {{ form_widget(form.dni, {'attr':{'class':'form-control mb-4'} }) }}
+</div>
+
+<div class="row">
+    <label for="">Password</label>
+    {{ form_widget(form.pass, {'attr':{'class':'form-control validate mb-4'}, value : usuario.pass }) }}
+</div>
+
+<div class="row">
+    <label for="">Nombre</label>
+    {{ form_widget(form.nombre, {'attr':{'class':'form-control mb-4'} }) }}
+</div>
+
+<div class="row">
+    <label for="">Apellidos</label>
+    {{ form_widget(form.apelllidos, {'attr':{'class':'form-control mb-4'} }) }}
+</div>
+
+<div class="row">
+    <label for="">Rol</label>
+    {{ form_widget(form.rol, {'attr':{'class':'form-control mb-4'} }) }}
+</div>
+
+<div class="row">
+    <label for="">Fecha de nacimiento</label>
+    {{ form_widget(form.fechaNac, {'attr':{'class':'mb-4'} }) }}
+
+</div>
+
+<p align="center">
+    <button class="app-button" style="width:200px;">
+        <a class="app-button-href">{{ button_label|default('Update') }}</a>
+    </button>
+</p>
+
+{{ form_end(form) }}
+
+{{ include('usuarios/_delete_form.html.twig') }}
 {% endblock %}

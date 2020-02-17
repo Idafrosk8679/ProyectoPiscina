@@ -7,36 +7,36 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * SesionUsuarios
  *
- * @ORM\Table(name="sesion_usuarios", indexes={@ORM\Index(name="FK_sesion_usuarios_usuarios", columns={"dni"}), @ORM\Index(name="FK_sesion_usuarios_sesion", columns={"id_sesion"})})
+ * @ORM\Table(name="sesion_usuarios", indexes={@ORM\Index(name="FK_sesion_usuarios_usuarios", columns={"dni"})})
  * @ORM\Entity
  */
 class SesionUsuarios
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
-    /**
      * @var int|null
      *
-     * @ORM\Column(name="asistencia", type="integer", nullable=true)
+     * @ORM\Column(name="asistencia", type="integer", nullable=true, options={"default"="NULL"})
      */
-    private $asistencia;
+    private $asistencia = 'NULL';
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="comentario", type="text", length=65535, nullable=true, options={"default"="NULL"})
+     */
+    private $comentario = 'NULL';
 
     /**
      * @var \Sesion
      *
-     * @ORM\ManyToOne(targetEntity="Sesion")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Sesion")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_sesion", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
      */
-    private $idSesion;
+    private $id;
 
     /**
      * @var \Usuarios
@@ -47,11 +47,6 @@ class SesionUsuarios
      * })
      */
     private $dni;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getAsistencia(): ?int
     {
@@ -65,14 +60,26 @@ class SesionUsuarios
         return $this;
     }
 
-    public function getIdSesion(): ?Sesion
+    public function getComentario(): ?string
     {
-        return $this->idSesion;
+        return $this->comentario;
     }
 
-    public function setIdSesion(?Sesion $idSesion): self
+    public function setComentario(?string $comentario): self
     {
-        $this->idSesion = $idSesion;
+        $this->comentario = $comentario;
+
+        return $this;
+    }
+
+    public function getId(): ?Sesion
+    {
+        return $this->id;
+    }
+
+    public function setId(?Sesion $id): self
+    {
+        $this->id = $id;
 
         return $this;
     }

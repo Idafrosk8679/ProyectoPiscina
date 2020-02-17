@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WebFotos index{% endblock %}
+
+{% block body %}
+    <h1>WebFotos index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Foto</th>
+                <th>Descripcion</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for web_foto in web_fotos %}
+            <tr>
+                <td>{{ web_foto.id }}</td>
+                <td>{{ web_foto.foto }}</td>
+                <td>{{ web_foto.descripcion }}</td>
+                <td>
+                    <a href="{{ path('web_fotos_show', {'id': web_foto.id}) }}">show</a>
+                    <a href="{{ path('web_fotos_edit', {'id': web_foto.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('web_fotos_new') }}">Create new</a>
+{% endblock %}

@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    var span = document.getElementsByClassName("close")[0];
-    span.onclick = function () {
+    var div = document.getElementById("myModal");[0];
+    div.onclick = function () {
         modal.style.display = "none";
     }
 });

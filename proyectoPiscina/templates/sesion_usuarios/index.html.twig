@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SesionUsuarios index{% endblock %}
+
+{% block body %}
+    <h1>SesionUsuarios index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Asistencia</th>
+                <th>Comentario</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sesion_usuario in sesion_usuarios %}
+            <tr>
+                <td>{{ sesion_usuario.asistencia }}</td>
+                <td>{{ sesion_usuario.comentario }}</td>
+                <td>
+                    <a href="{{ path('sesion_usuarios_show', {'id': sesion_usuario.id}) }}">show</a>
+                    <a href="{{ path('sesion_usuarios_edit', {'id': sesion_usuario.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('sesion_usuarios_new') }}">Create new</a>
+{% endblock %}

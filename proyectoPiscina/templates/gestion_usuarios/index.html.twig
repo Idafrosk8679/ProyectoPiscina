@@ -1,0 +1,107 @@
+{% extends 'layoutApp.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block main %}
+
+
+<button class="atras-button">
+    <a class="atras-href" href="{{ path('app_index') }}">❮ Volver</a>
+</button>
+
+
+<h1 class="app-title">Usuarios</h1>
+<button class="app-button">
+    <a class="app-button-href" href="{{ path('app_usuarios_new') }}">Añadir</a>
+</button>
+<table id="dtBasicExample" class="app-table" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th class="app-th">DNI
+            </th>
+            <th class="app-th">Nombre
+            </th>
+            <th class="app-th">Apellidos
+            </th>
+            <th class="app-th">Rol
+            </th>
+            <th class="app-th">Fecha de Nacimiento
+            </th>
+            <th class="app-th">Acciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if user.rol == 'junta' or user.rol == 'admin' %}
+        {% set filtro = '' %}
+        {% endif %}
+
+        {% if user.rol == 'entrenador' %}
+        {% set filtro = 'junta' %}
+        {% endif %}
+
+        {% for usuario in data["usuarios"] %}
+
+        {% if usuario.rol.nombre != filtro and usuario.dni != user.dni %}
+        <tr class="app-tr">
+            <td class="app-td">{{ usuario.dni }}</td>
+            <td class="app-td">{{ usuario.nombre }}</td>
+            <td class="app-td">{{ usuario.apelllidos }}</td>
+            <td class="app-td">{{ usuario.rol.nombre }}</td>
+            <td class="app-td">{{ usuario.fechaNac|date("d-m-Y") }}</td>
+            <td class="app-td">
+                <button type="button" class="app-button-func1"><a class="app-href" href="{{ path('app_usuarios_show', {'dni': usuario.dni}) }}">Ver</a></button>
+                <button type="button" class="app-button-func2"><a class="app-href" href="{{ path('app_usuarios_edit', {'dni': usuario.dni}) }}">Editar</a></button>
+            </td>
+        </tr>
+        {% endif %}
+        {% else %}
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+
+
+
+<h1 class="app-title">Grupos</h1>
+
+<button class="app-button">
+    <a class="app-button-href" href="{{ path('app_grupos_new') }}">Crear grupo</a>
+</button>
+
+<div class="row">
+    {% for grupo in data["grupos"] %}
+
+    <div class="col-6">
+        <div class="grupo-container">
+            <div class="grupo-header">
+                <div class="row">
+                    <div class="grupo-name col-12 col-md-6">
+                        <button class="grupo-button-1 float-md-center float-center">
+                            <a class="grupo-href-1" href="{{ path('app_grupos_show', {'id': grupo.id}) }}">{{grupo.nombre|upper}}</a> 
+                        </button>
+                    </div>
+                    <div class="grupo-add col-12 col-md-6">
+                        <button class="grupo-button-2 float-md-right float-left">
+                            <a class="grupo-href-2" href="{{ path('app_grupos_edit', {'id': grupo.id}) }}">Añadir a grupo</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            {% for grupoF in data["grupo_usuarios"]|filter(grupoF => grupoF.idGrupo.id == grupo.id) %}
+                <li class="grupo-li">{{ grupoF.idUsuario.nombre }} {{ grupoF.idUsuario.apelllidos }}</li>
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+
+    {% endfor %}
+</div>
+
+
+{% endblock %}
