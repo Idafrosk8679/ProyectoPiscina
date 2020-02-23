@@ -41,8 +41,10 @@
 </div>
 
 <div class="row">
+    {% if user.rol != 'parental' and user.rol != 'usuario' %}
     <label for="">Rol</label>
-    {{ form_widget(form.rol, {'attr':{'class':'form-control mb-4'} }) }}
+    {% endif %}
+    {{ form_widget(form.rol,(user.rol !='usuario' and user.rol !='parent' ? {'attr':{'class':'form-control mb-4'} }: {'attr':{'hidden':''}})) }}
 </div>
 
 <div class="row">

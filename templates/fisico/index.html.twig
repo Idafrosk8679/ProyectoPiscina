@@ -93,6 +93,10 @@
 <table id="dtBasicExample" class="app-table mb-3" cellspacing="0" width="100%">
     <thead>
         <tr>
+            {% if user.rol != 'parental' and user.rol != 'usuario' %}
+            <th class="app-th">Nombre
+            </th>
+            {% endif %}
             <th class="app-th">Fecha
             </th>
             <th class="app-th">Altura
@@ -108,6 +112,9 @@
         {% for fisic in todosFisico %}
 
         <tr class="app-tr">
+            {% if user.rol != 'parental' and user.rol != 'usuario' %}
+            <td class="app-td">{{ fisic.dni.nombre }}</td>
+            {% endif %}
             <td class="app-td">{{ fisic.fechaInserc|date('d-m-Y') }}</td>
 
             <td class="app-td">{{ fisic.altura }}</td>
